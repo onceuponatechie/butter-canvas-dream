@@ -1,24 +1,44 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Preloader } from "@/components/enigma/Preloader";
+import { Nav } from "@/components/enigma/Nav";
+import { SideDock } from "@/components/enigma/SideDock";
+import { Hero } from "@/components/enigma/Hero";
+import { PromiseSection } from "@/components/enigma/PromiseSection";
+import { CasesSection } from "@/components/enigma/CasesSection";
+import { TouchBand, Footer } from "@/components/enigma/TouchBand";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-backdrop">
+      <Preloader />
+      {/* backdrop decorative circles */}
+      <div className="pointer-events-none fixed inset-0 overflow-hidden">
+        <svg className="absolute -left-40 -top-40 h-[500px] w-[500px]" viewBox="0 0 500 500">
+          <circle cx="250" cy="250" r="240" fill="none" stroke="#EFF4B8" strokeWidth="1.5" />
+        </svg>
+        <svg className="absolute -right-60 top-1/4 h-[600px] w-[600px]" viewBox="0 0 600 600">
+          <circle cx="300" cy="300" r="290" fill="none" stroke="#EFF4B8" strokeWidth="1.5" />
+        </svg>
+        <svg className="absolute -bottom-40 -right-20 h-[500px] w-[500px]" viewBox="0 0 500 500">
+          <circle cx="250" cy="250" r="240" fill="none" stroke="#EFF4B8" strokeWidth="1.5" />
+        </svg>
+      </div>
+
+      <main className="relative mx-auto my-8 max-w-[1440px] overflow-hidden rounded-[28px] bg-paper">
+        <Nav />
+        <div className="relative">
+          <SideDock />
+          <Hero />
+        </div>
+        <PromiseSection />
+        <CasesSection />
+        <TouchBand />
+        <Footer />
+      </main>
     </div>
   );
 }
