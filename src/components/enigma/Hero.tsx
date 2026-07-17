@@ -1,19 +1,15 @@
 import { ArrowUpRight, X, Share2, ArrowDown } from "lucide-react";
-import heroSwirl from "@/assets/hero-swirl.jpg";
 import prod1 from "@/assets/prod-1.jpg";
 import prod2 from "@/assets/prod-2.jpg";
 import avatar from "@/assets/avatar.jpg";
+import { SpiralBackground } from "./SpiralBackground";
 
 export function Hero() {
   return (
     <section className="relative min-h-[92vh] overflow-hidden px-16 pt-12">
       {/* background swirl */}
       <div className="pointer-events-none absolute inset-0">
-        <img
-          src={heroSwirl}
-          alt=""
-          className="absolute inset-0 h-full w-full scale-110 object-cover opacity-70 blur-[2px]"
-        />
+        <SpiralBackground />
         <div
           className="absolute inset-0"
           style={{
