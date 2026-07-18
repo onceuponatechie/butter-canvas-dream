@@ -9,7 +9,7 @@ export function SideDock() {
     { icon: Hand },
   ];
   return (
-    <div className="absolute left-6 top-1/2 z-20 flex -translate-y-1/2 flex-col items-center">
+    <div className="absolute left-6 top-1/2 z-20 hidden -translate-y-1/2 flex-col items-center md:flex">
       <div className="relative flex flex-col items-center gap-3">
         <div className="absolute left-1/2 top-2 h-full w-px -translate-x-1/2 bg-black/10" />
         {items.map((it, i) => {

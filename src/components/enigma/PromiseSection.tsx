@@ -7,7 +7,7 @@ import { useCountUp } from "./useCountUp";
 
 export function PromiseSection() {
   return (
-    <section className="relative px-8 py-24">
+    <section className="relative px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-5xl text-center">
         <h2 className="text-[clamp(34px,4.5vw,60px)] font-medium leading-[1.1] tracking-tight">
           <span className="inline-flex items-center gap-2">

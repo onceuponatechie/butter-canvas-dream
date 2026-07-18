@@ -3,6 +3,7 @@ import { Preloader } from "@/components/enigma/Preloader";
 import { Nav } from "@/components/enigma/Nav";
 import { SideDock } from "@/components/enigma/SideDock";
 import { Hero } from "@/components/enigma/Hero";
+import { BentoGrid } from "@/components/enigma/BentoGrid";
 import { PromiseSection } from "@/components/enigma/PromiseSection";
 import { CasesSection } from "@/components/enigma/CasesSection";
 import { TouchBand, Footer } from "@/components/enigma/TouchBand";
@@ -28,12 +29,13 @@ function Index() {
         </svg>
       </div>
 
-      <main className="relative mx-auto my-8 max-w-[1440px] overflow-hidden rounded-[28px] bg-paper">
+      <main className="relative mx-auto my-4 max-w-[1440px] overflow-hidden rounded-[20px] bg-paper sm:my-8 sm:rounded-[28px]">
         <Nav />
         <div className="relative">
           <SideDock />
           <Hero />
         </div>
+        <BentoGrid />
         <PromiseSection />
         <CasesSection />
         <TouchBand />
