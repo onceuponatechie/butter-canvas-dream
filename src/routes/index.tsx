@@ -3,6 +3,7 @@ import { Preloader } from "@/components/enigma/Preloader";
 import { Nav } from "@/components/enigma/Nav";
 import { SideDock } from "@/components/enigma/SideDock";
 import { Hero } from "@/components/enigma/Hero";
+import { BentoGrid } from "@/components/enigma/BentoGrid";
 import { PromiseSection } from "@/components/enigma/PromiseSection";
 import { CasesSection } from "@/components/enigma/CasesSection";
 import { TouchBand, Footer } from "@/components/enigma/TouchBand";
@@ -34,6 +35,7 @@ function Index() {
           <SideDock />
           <Hero />
         </div>
+        <BentoGrid />
         <PromiseSection />
         <CasesSection />
         <TouchBand />
