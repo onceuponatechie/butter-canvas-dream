@@ -29,7 +29,7 @@ function Index() {
         </svg>
       </div>
 
-      <main className="relative mx-auto my-8 max-w-[1440px] overflow-hidden rounded-[28px] bg-paper">
+      <main className="relative mx-auto my-4 max-w-[1440px] overflow-hidden rounded-[20px] bg-paper sm:my-8 sm:rounded-[28px]">
         <Nav />
         <div className="relative">
           <SideDock />

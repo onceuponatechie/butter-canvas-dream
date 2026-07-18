@@ -2,8 +2,8 @@ import { Phone } from "lucide-react";
 
 export function TouchBand() {
   return (
-    <section className="bg-lilac px-8 py-24">
-      <div className="mx-auto flex max-w-4xl items-center justify-center gap-6">
+    <section className="bg-lilac px-4 py-16 sm:px-8 sm:py-24">
+      <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-6 text-center">
         <h2 className="text-[clamp(32px,4vw,54px)] font-medium leading-[1.05] tracking-tight">
           Let's Get
           <br />
@@ -19,7 +19,7 @@ export function TouchBand() {
 
 export function Footer() {
   return (
-    <footer className="flex items-center justify-between px-8 py-8 text-[12px] text-muted-ink">
+    <footer className="flex flex-wrap items-center justify-between gap-4 px-4 py-6 text-[12px] text-muted-ink sm:px-8 sm:py-8">
       <div className="flex items-center gap-2">
         <svg width="18" height="18" viewBox="0 0 26 26" fill="none">
           <path d="M20 5.5A9 9 0 1 0 22.5 13" stroke="#111" strokeWidth="2.2" strokeLinecap="round" />
