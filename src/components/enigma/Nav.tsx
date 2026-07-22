@@ -1,4 +1,4 @@
-import { HelpCircle, User, Home, Settings, Menu } from "lucide-react";
+import { HelpCircle, User, Home, Sparkles, Menu } from "lucide-react";
 
 export function Nav() {
   return (
@@ -12,13 +12,13 @@ export function Nav() {
             strokeLinecap="round"
           />
         </svg>
-        <span className="text-[15px] font-medium tracking-tight">Enigma</span>
+        <span className="text-[15px] font-medium tracking-tight">Essy</span>
       </div>
 
       <div className="hidden items-center gap-1 rounded-full border border-black/5 bg-white/70 px-2 py-1.5 backdrop-blur md:flex">
         <NavPill icon={<Home size={14} />} label="Home" active />
-        <NavPill icon={<Settings size={14} />} label="Technology" />
-        <NavPill icon={<Menu size={14} />} label="Service" />
+        <NavPill icon={<Sparkles size={14} />} label="Projects" />
+        <NavPill icon={<Menu size={14} />} label="Journal" />
       </div>
 
       <div className="flex items-center gap-2 sm:gap-3">
@@ -29,7 +29,7 @@ export function Nav() {
           <User size={16} />
         </button>
         <button className="rounded-full bg-ink px-4 py-2 text-[12px] font-medium text-white transition hover:opacity-90 sm:px-5 sm:py-2.5 sm:text-[13px]">
-          Contact Us
+          Say hi
         </button>
         <button className="grid h-10 w-10 place-items-center rounded-full border border-black/10 bg-white md:hidden">
           <Menu size={16} />

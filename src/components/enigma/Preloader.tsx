@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export function Preloader() {
   const [pct, setPct] = useState(0);
   const [done, setDone] = useState(false);
-  const brand = "Enigma";
+  const brand = "Essy";
 
   useEffect(() => {
     const t = setInterval(() => {
