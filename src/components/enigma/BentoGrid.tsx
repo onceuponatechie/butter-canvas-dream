@@ -1,151 +1,97 @@
-import { ArrowUpRight, Search, Play } from "lucide-react";
-import prod1 from "@/assets/prod-1.jpg";
-import prod2 from "@/assets/prod-2.jpg";
-import avatar from "@/assets/avatar.jpg";
+import { ArrowUpRight, Plus } from "lucide-react";
+import reading from "@/assets/essy-reading.jpg";
+import laptopDash from "@/assets/essy-laptop-dash.jpg";
+import portrait from "@/assets/essy-portrait.jpg";
 
 export function BentoGrid() {
   return (
-    <section className="px-4 py-10 sm:px-8 sm:py-16">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 md:grid-cols-3">
-        {/* Mission */}
-        <div className="rounded-3xl bg-butter p-6">
-          <h3 className="text-[22px] font-medium tracking-tight">Mission</h3>
-          <p className="mt-2 text-[13px] leading-relaxed text-muted-ink">
-            To make AI learning simple and practical so everyone can gain real
-            skills.
-          </p>
-          <div className="mt-5 overflow-hidden rounded-2xl">
-            <img
-              src={prod1}
-              alt=""
-              className="h-40 w-full object-cover"
-              loading="lazy"
-            />
-          </div>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {["EDUCATION", "SMART LEARNING", "CRITICAL"].map((t) => (
-              <span
-                key={t}
-                className="rounded-full border border-ink/15 bg-white/70 px-2.5 py-1 text-[10px] font-medium tracking-wide text-ink"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
+    <section className="px-4 py-8 sm:px-8 sm:py-12">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
+        {/* portrait reading */}
+        <div className="col-span-1 overflow-hidden rounded-3xl">
+          <img src={reading} alt="Essy reading" className="h-full w-full object-cover" loading="lazy" />
         </div>
 
-        {/* Teamwork */}
-        <div className="rounded-3xl bg-lilac p-6">
-          <h3 className="text-[22px] font-medium tracking-tight">Teamwork</h3>
-          <p className="mt-2 text-[13px] leading-relaxed text-muted-ink">
-            Collaborating to design AI courses that help learners succeed
-            faster.
-          </p>
-          <div className="mt-8 flex flex-col items-center gap-4">
-            <div className="grid h-14 w-14 place-items-center rounded-full bg-ink text-white shadow-[0_10px_30px_rgba(0,0,0,0.15)]">
-              <Play size={16} fill="white" />
-            </div>
-            <div className="flex -space-x-2">
-              {[avatar, avatar, avatar, avatar].map((a, i) => (
-                <img
-                  key={i}
-                  src={a}
-                  alt=""
-                  className="h-8 w-8 rounded-full border-2 border-white object-cover"
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Study Route */}
-        <div className="rounded-3xl bg-white p-6 ring-1 ring-black/5">
-          <h3 className="text-[22px] font-medium tracking-tight">
-            Study Route
-          </h3>
-          <p className="mt-2 text-[13px] leading-relaxed text-muted-ink">
-            A clear study path guides learners step by step to master AI skills
-            quickly.
-          </p>
-          <div className="relative mt-6 h-40 overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-100 via-lime-100 to-white">
-            <svg
-              viewBox="0 0 200 120"
-              className="absolute inset-0 h-full w-full"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M0 90 C 40 60, 80 40, 120 55 S 180 90, 200 70"
-                stroke="#4a7c59"
-                strokeWidth="1.5"
-                fill="none"
-                opacity="0.4"
-              />
-              <path
-                d="M0 100 C 40 70, 80 50, 120 65 S 180 100, 200 80"
-                stroke="#4a7c59"
-                strokeWidth="1.5"
-                fill="none"
-                opacity="0.35"
-              />
-            </svg>
-          </div>
-          <div className="mt-4 flex items-center gap-2 rounded-full border border-ink/10 bg-white px-4 py-2">
-            <Search size={13} className="text-muted-ink" />
-            <span className="text-[12px] text-muted-ink">
-              Discover what to learn…
-            </span>
-          </div>
-        </div>
-
-        {/* Smarter Education — wide */}
-        <div className="rounded-3xl bg-butter-deep p-6 md:col-span-2">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="flex flex-col justify-between">
-              <div>
-                <h3 className="text-[24px] font-medium leading-tight tracking-tight">
-                  Smarter Education With AI
-                  <br />
-                  Made Simple
-                </h3>
-                <p className="mt-3 text-[13px] leading-relaxed text-muted-ink">
-                  Providing easy AI learning that helps to build real skills
-                  fast and smart.
-                </p>
-              </div>
-              <div className="mt-6 flex gap-2">
-                <button className="rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
-                  Start Learning
-                </button>
-                <button className="rounded-full border border-ink/20 bg-white/70 px-5 py-2.5 text-[13px] font-medium text-ink">
-                  Course Plans
-                </button>
-              </div>
-            </div>
-            <div className="overflow-hidden rounded-2xl">
-              <img
-                src={prod2}
-                alt=""
-                className="h-56 w-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Small companion card */}
-        <div className="flex flex-col justify-between rounded-3xl bg-ink p-6 text-white">
+        {/* tools & templates */}
+        <div className="col-span-1 flex flex-col justify-between rounded-3xl bg-[#dff0d0] p-5">
           <div>
-            <span className="rounded-full border border-white/20 px-3 py-1 text-[11px] font-medium">
-              Live Cohort
+            <span className="inline-flex items-center gap-1 rounded-full bg-white/70 px-2.5 py-1 text-[10px] font-medium text-ink">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-600" /> Tools & Templates
             </span>
-            <h3 className="mt-4 text-[22px] font-medium leading-tight tracking-tight">
-              Join the next AI intensive
-            </h3>
+            <p className="mt-3 text-[12px] leading-relaxed text-muted-ink">
+              Handmade Notion, Figma & code kits I ship weekly.
+            </p>
           </div>
-          <button className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-white px-4 py-2 text-[13px] font-medium text-ink">
-            Reserve seat <ArrowUpRight size={14} />
+          <div className="mt-4">
+            <div className="text-[38px] font-medium leading-none tracking-tight">20+</div>
+            <button className="mt-3 inline-flex items-center gap-1 rounded-full bg-ink px-3 py-1.5 text-[11px] font-medium text-white">
+              Follow <Plus size={11} />
+            </button>
+          </div>
+        </div>
+
+        {/* laptop dash — spans 2 */}
+        <div className="col-span-2 overflow-hidden rounded-3xl bg-butter-deep">
+          <img src={laptopDash} alt="" className="h-56 w-full object-cover sm:h-64" loading="lazy" />
+        </div>
+
+        {/* product lab */}
+        <div className="col-span-2 flex flex-col justify-between rounded-3xl bg-white p-5 ring-1 ring-black/5 md:col-span-1">
+          <div>
+            <span className="inline-flex items-center gap-1 rounded-full bg-butter px-2.5 py-1 text-[10px] font-medium text-ink">
+              The Product Lab
+            </span>
+            <p className="mt-3 text-[12px] leading-relaxed text-muted-ink">
+              A living notebook of experiments, teardowns, and prototypes.
+            </p>
+          </div>
+          <button className="mt-4 inline-flex w-fit items-center gap-1 rounded-full border border-ink/15 px-3 py-1.5 text-[11px] font-medium">
+            Read on <ArrowUpRight size={11} />
           </button>
         </div>
+
+        {/* tiny testimonial */}
+        <div className="col-span-2 rounded-3xl bg-white p-5 ring-1 ring-black/5 md:col-span-1">
+          <div className="mb-2 inline-flex items-center gap-1 rounded-full bg-butter px-2.5 py-1 text-[10px] font-medium">
+            ✦ Kind words
+          </div>
+          <p className="text-[12px] leading-relaxed text-ink/80">
+            "Every launch with Essy leaves me smarter. She sees the seams other people miss."
+          </p>
+          <div className="mt-3 text-[10px] font-medium tracking-wide text-muted-ink">
+            — MAYA O., PM AT NORTHWIND
+          </div>
+        </div>
+
+        {/* resources — big center */}
+        <div className="col-span-2 flex flex-col items-center justify-center rounded-3xl bg-[#d9edc6] p-8 text-center">
+          <h3 className="font-serif text-[42px] italic leading-none tracking-tight text-ink sm:text-[56px]">
+            resources
+          </h3>
+          <p className="mt-3 max-w-[22ch] text-[12px] leading-relaxed text-ink/70">
+            The stack, the swipe file, and the reads I'd hand a younger me.
+          </p>
+        </div>
+
+        {/* portrait smile */}
+        <div className="col-span-2 overflow-hidden rounded-3xl md:col-span-2">
+          <img src={portrait} alt="Essy" className="h-64 w-full object-cover" loading="lazy" />
+        </div>
+      </div>
+
+      {/* small badge row + subline */}
+      <div className="mx-auto mt-14 max-w-3xl text-center">
+        <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
+          <span className="rounded-full bg-butter px-3 py-1 text-[11px] font-medium">✧ builder</span>
+          <span className="rounded-full bg-[#dff0d0] px-3 py-1 text-[11px] font-medium">◐ writer</span>
+        </div>
+        <p className="text-[clamp(18px,2.2vw,26px)] font-medium leading-snug tracking-tight text-ink">
+          Around here, ideas turn into websites, apps,
+          <br className="hidden sm:block" /> decks, stories, & digital{" "}
+          <span className="inline-flex items-center gap-1 rounded-full bg-butter px-3 py-1 text-[12px]">
+            things ✦
+          </span>
+        </p>
       </div>
     </section>
   );
