@@ -43,7 +43,7 @@ const projects = [
     year: "2024",
     body: "A deck kit that reads like a magazine and closes like a founder brief.",
     img: slide,
-    bg: "#ececea",
+    bg: "#ffffff",
     stat: "3 May",
     statLabel: "launch day",
   },
@@ -87,7 +87,7 @@ function ProjectCard({ name, tag, year, body, img, bg, stat, statLabel, index, t
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.96]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.7]);
   const isLast = index === total - 1;
-  const ring = "ring-1 ring-black/5";
+  const ring = bg === "#ffffff" ? "ring-1 ring-black/5" : "";
 
   return (
     <div ref={ref} className="sticky" style={{ top: `${80 + index * 18}px`, zIndex: index + 1 }}>
