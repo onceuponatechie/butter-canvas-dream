@@ -52,38 +52,38 @@ export function TouchBand() {
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden px-4 pb-10 pt-6 sm:px-8">
+    <footer className="relative overflow-hidden bg-ink px-4 pb-10 pt-6 text-white sm:px-8">
       <div className="mx-auto max-w-5xl">
-        <div className="rounded-[24px] bg-white p-6 ring-1 ring-black/5 sm:p-8">
+        <div className="rounded-[24px] bg-white/[0.04] p-6 ring-1 ring-white/10 sm:p-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto] md:items-end">
             <div className="min-w-0 grid grid-cols-2 gap-6 text-[12px] sm:grid-cols-3">
               <div>
-                <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-muted-ink">
+                <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/50">
                   Sitemap
                 </div>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1.5 text-white/80">
                   <li><a href="#">Home</a></li>
                   <li><a href="#">Projects</a></li>
                   <li><a href="#">Journal</a></li>
                 </ul>
               </div>
               <div>
-                <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-muted-ink">
+                <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/50">
                   Elsewhere
                 </div>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1.5 text-white/80">
                   <li><a href="#">Twitter / X</a></li>
                   <li><a href="#">LinkedIn</a></li>
                   <li><a href="#">Read.cv</a></li>
                 </ul>
               </div>
               <div>
-                <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-muted-ink">
+                <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-white/50">
                   Say hi
                 </div>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1.5 text-white/80">
                   <li><a href="mailto:hi@essyudeme.com">hi@essyudeme.com</a></li>
-                  <li className="text-muted-ink">Lagos → Everywhere</li>
+                  <li className="text-white/50">Lagos → Everywhere</li>
                 </ul>
               </div>
             </div>
@@ -93,12 +93,12 @@ export function Footer() {
                 <br />
                 people <span className="font-serif italic">remember</span>.
               </h3>
-              <button className="mt-4 inline-flex items-center gap-1 rounded-full bg-ink px-4 py-2 text-[12px] font-medium text-white">
+              <button className="mt-4 inline-flex items-center gap-1 rounded-full bg-[#c9e5b8] px-4 py-2 text-[12px] font-medium text-ink">
                 Book a coffee ↗
               </button>
             </div>
           </div>
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-2 border-t border-black/5 pt-4 text-[11px] text-muted-ink">
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-2 border-t border-white/10 pt-4 text-[11px] text-white/50">
             <span>© 2026 Essy Udeme — made with care.</span>
             <div className="flex gap-4">
               <a href="#">Privacy</a>
@@ -113,7 +113,7 @@ export function Footer() {
           style={{
             fontSize: "clamp(64px, 18vw, 220px)",
             background:
-              "linear-gradient(180deg, rgba(17,17,17,0.10) 0%, rgba(17,17,17,0.02) 100%)",
+              "linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.03) 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
