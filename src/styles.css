@@ -20,7 +20,7 @@
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
-  --color-backdrop: #e4e4e4;
+  --color-backdrop: #fcfcfc;
   --color-paper: #ffffff;
   --color-butter: #fcffe1;
   --color-butter-deep: #f4f9c8;
