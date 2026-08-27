@@ -1,63 +1,66 @@
-import { HelpCircle, User, Home, Sparkles, Menu } from "lucide-react";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+
+const links = [
+  { label: "Home", href: "#top" },
+  { label: "Resources", href: "#resources" },
+  { label: "Projects", href: "#projects" },
+  { label: "About", href: "#about" },
+];
 
 export function Nav() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="relative z-30 flex items-center justify-between gap-4 px-4 pt-5 sm:px-8 sm:pt-6">
-      <div className="flex items-center gap-2">
-        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-          <path
-            d="M20 5.5A9 9 0 1 0 22.5 13"
-            stroke="#111"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-          />
-        </svg>
-        <span className="text-[15px] font-medium tracking-tight">Essy</span>
+    <header id="top" className="relative z-40 px-5 pt-6 sm:px-10 sm:pt-8">
+      <div className="flex items-center justify-between gap-4">
+        <a href="#top" className="font-serif text-[20px] italic tracking-tight text-ink">
+          Essy
+        </a>
+
+        <nav className="hidden items-center gap-8 md:flex">
+          {links.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              className="text-[13px] font-medium text-ink/70 transition-colors hover:text-ink"
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <a
+            href="#contact"
+            className="rounded-full bg-ink px-6 py-2.5 text-[12px] font-medium text-white transition-opacity hover:opacity-90"
+          >
+            Say hi
+          </a>
+          <button
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Menu"
+            className="grid h-10 w-10 place-items-center rounded-full border border-ink/10 bg-card md:hidden"
+          >
+            {open ? <X size={16} /> : <Menu size={16} />}
+          </button>
+        </div>
       </div>
 
-      <div className="hidden items-center gap-1 rounded-full border border-black/5 bg-white/70 px-2 py-1.5 backdrop-blur md:flex">
-        <NavPill icon={<Home size={14} />} label="Home" active />
-        <NavPill icon={<Sparkles size={14} />} label="Projects" />
-        <NavPill icon={<Menu size={14} />} label="Journal" />
-      </div>
-
-      <div className="flex items-center gap-2 sm:gap-3">
-        <button className="hidden h-10 w-10 place-items-center rounded-full border border-black/10 bg-white transition hover:scale-105 sm:grid">
-          <HelpCircle size={16} />
-        </button>
-        <button className="hidden h-10 w-10 place-items-center rounded-full border border-black/10 bg-white transition hover:scale-105 sm:grid">
-          <User size={16} />
-        </button>
-        <button className="rounded-full bg-ink px-4 py-2 text-[12px] font-medium text-white transition hover:opacity-90 sm:px-5 sm:py-2.5 sm:text-[13px]">
-          Say hi
-        </button>
-        <button className="grid h-10 w-10 place-items-center rounded-full border border-black/10 bg-white md:hidden">
-          <Menu size={16} />
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function NavPill({
-  icon,
-  label,
-  active,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  active?: boolean;
-}) {
-  return (
-    <button
-      className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[13px] font-medium transition ${
-        active ? "bg-butter text-ink" : "text-ink hover:bg-black/5"
-      }`}
-    >
-      <span>{label}</span>
-      <span className="grid h-5 w-5 place-items-center rounded-full border border-black/15">
-        {icon}
-      </span>
-    </button>
+      {open && (
+        <nav className="mt-4 grid gap-1 rounded-3xl border border-ink/10 bg-card p-3 md:hidden">
+          {links.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className="rounded-2xl px-4 py-2.5 text-[13px] font-medium text-ink/80 hover:bg-black/5"
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+      )}
+    </header>
   );
 }
