@@ -65,7 +65,7 @@ export function PromiseSection() {
         </p>
       </div>
 
-      <div className="relative mt-14" style={{ height: `${projects.length * 100}vh` }}>
+      <div className="relative mt-14">
         {projects.map((p, i) => (
           <ProjectCard key={p.name} index={i} total={projects.length} {...p} />
         ))}
@@ -98,11 +98,15 @@ function ProjectCard({
   return (
     <div
       ref={ref}
-      className="sticky top-20 min-h-screen md:top-24"
+      className="sticky top-16 h-[100svh] md:top-20"
       style={{ zIndex: index + 1 }}
     >
       <motion.article
-        style={{ scale: isLast ? 1 : scale, y: isLast ? 0 : y }}
+        style={{
+          scale: isLast ? 1 : scale,
+          y: isLast ? 0 : y,
+          transformOrigin: "top center",
+        }}
         className={`group relative mx-auto max-w-6xl overflow-hidden rounded-[32px] ring-1 ring-black/5 md:min-h-[72vh] md:rounded-[44px] lg:min-h-[78vh] ${tints[index % tints.length]} shadow-[0_1px_2px_rgba(0,0,0,0.03),0_24px_44px_-32px_rgba(0,0,0,0.14)]`}
       >
         <a href="#projects" aria-label={name} className="absolute inset-0 z-10" />
