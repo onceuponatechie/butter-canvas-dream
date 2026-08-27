@@ -6,6 +6,7 @@ import { BentoGrid } from "@/components/enigma/BentoGrid";
 import { PromiseSection } from "@/components/enigma/PromiseSection";
 import { CasesSection } from "@/components/enigma/CasesSection";
 import { TouchBand, Footer } from "@/components/enigma/TouchBand";
+import heroCover from "@/assets/hero-cover.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -34,8 +35,19 @@ function Index() {
     <div className="min-h-screen bg-backdrop">
       <Preloader />
       <main className="relative mx-auto w-full max-w-[1440px] overflow-hidden bg-backdrop">
-        <Nav />
-        <Hero />
+        <div className="relative overflow-hidden">
+          <img
+            src={heroCover.url}
+            alt=""
+            aria-hidden
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-backdrop" />
+          <div className="relative">
+            <Nav />
+            <Hero />
+          </div>
+        </div>
         <BentoGrid />
         <PromiseSection />
         <CasesSection />
