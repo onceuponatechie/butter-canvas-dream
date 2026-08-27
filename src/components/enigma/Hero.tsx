@@ -5,6 +5,7 @@ import reading from "@/assets/essy-reading.jpg";
 import portrait from "@/assets/essy-portrait.jpg";
 import notes from "@/assets/essy-notes.jpg";
 import waves from "@/assets/essy-waves.jpg";
+import heroVideo from "@/assets/hero-waves.mp4.asset.json";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const heroImages = [reading, portrait, notes, waves];
@@ -43,7 +44,8 @@ function SmileyReel() {
   }, [panel]);
 
   return (
-    <div className="mx-auto h-11 w-11 overflow-hidden">
+    <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-[#FDFBE6]">
+      <div className="h-11 w-11 overflow-hidden">
       <div
         className="h-full w-full"
         style={{
@@ -82,6 +84,7 @@ function SmileyReel() {
         </div>
         {/* spacer */}
         <div className="h-11 w-11" />
+      </div>
       </div>
     </div>
   );
@@ -133,12 +136,22 @@ function Word({ children, delay }: { children: React.ReactNode; delay: number })
 
 export function Hero() {
   return (
-    <section className="px-4 py-16 md:pb-36 md:pt-6">
+    <section className="relative overflow-hidden px-4 py-16 md:pb-36 md:pt-6">
+      <video
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+        src={heroVideo.url}
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-backdrop" />
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="mx-auto max-w-5xl text-center"
+        className="relative mx-auto max-w-5xl text-center"
       >
         <motion.div variants={fadeUp}>
           <SmileyReel />
@@ -154,7 +167,7 @@ export function Hero() {
           </span>
         </motion.div>
 
-        <h1 className="mt-8 text-[clamp(32px,6vw,68px)] font-medium leading-[1.12] tracking-tight text-ink">
+        <h1 className="mt-8 text-[clamp(32px,6vw,68px)] font-normal leading-[1.12] tracking-tight text-ink">
           <Word delay={0.4}>
             <span className="inline-block mb-[0.14em] md:mb-0">Products, people,</span>
           </Word>
