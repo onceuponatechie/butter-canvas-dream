@@ -33,7 +33,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-backdrop">
       <Preloader />
-      <main className="relative mx-auto w-full max-w-[1440px] overflow-hidden bg-paper">
+      <main className="relative mx-auto w-full max-w-[1440px] overflow-hidden bg-backdrop">
         <Nav />
         <Hero />
         <BentoGrid />
