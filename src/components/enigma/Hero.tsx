@@ -44,8 +44,8 @@ function SmileyReel() {
   }, [panel]);
 
   return (
-    <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-[#FDFBE6]">
-      <div className="h-11 w-11 overflow-hidden">
+    <div className="mx-auto grid h-10 w-10 place-items-center rounded-full bg-[#FDFBE6]">
+      <div className="h-7 w-7 overflow-hidden">
       <div
         className="h-full w-full"
         style={{
@@ -137,16 +137,6 @@ function Word({ children, delay }: { children: React.ReactNode; delay: number })
 export function Hero() {
   return (
     <section className="relative overflow-hidden px-4 py-16 md:pb-36 md:pt-6">
-      <video
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
-        src={heroVideo.url}
-        autoPlay
-        muted
-        loop
-        playsInline
-        aria-hidden
-      />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-backdrop" />
       <motion.div
         variants={container}
         initial="hidden"
