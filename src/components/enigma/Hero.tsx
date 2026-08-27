@@ -5,7 +5,6 @@ import reading from "@/assets/essy-reading.jpg";
 import portrait from "@/assets/essy-portrait.jpg";
 import notes from "@/assets/essy-notes.jpg";
 import waves from "@/assets/essy-waves.jpg";
-import heroVideo from "@/assets/hero-waves.mp4.asset.json";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const heroImages = [reading, portrait, notes, waves];
@@ -54,8 +53,8 @@ function SmileyReel() {
         }}
       >
         {/* smiley */}
-        <div className="grid h-11 w-11 place-items-center">
-          <svg viewBox="0 0 44 44" className="h-9 w-9">
+        <div className="grid h-7 w-7 place-items-center">
+          <svg viewBox="0 0 44 44" className="h-6 w-6">
             <circle cx="16" cy="18" r="2.4" fill="#1a1a1a" />
             {wink ? (
               <path d="M25 18.5c1.4-1.6 3.4-1.6 4.8 0" stroke="#1a1a1a" strokeWidth="2.2" fill="none" strokeLinecap="round" />
@@ -66,10 +65,10 @@ function SmileyReel() {
           </svg>
         </div>
         {/* waving hand */}
-        <div className="grid h-11 w-11 place-items-center">
+        <div className="grid h-7 w-7 place-items-center">
           <motion.svg
             viewBox="0 0 44 44"
-            className="h-9 w-9"
+            className="h-6 w-6"
             style={{ originX: 0.5, originY: 1 }}
             animate={{ rotate: [-12, 18, -12] }}
             transition={{ duration: 0.7, ease: "easeInOut", repeat: Infinity }}
@@ -83,7 +82,7 @@ function SmileyReel() {
           </motion.svg>
         </div>
         {/* spacer */}
-        <div className="h-11 w-11" />
+        <div className="h-7 w-7" />
       </div>
       </div>
     </div>
