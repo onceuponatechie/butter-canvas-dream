@@ -1,8 +1,11 @@
-import { ArrowUpRight, Plus } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import reading from "@/assets/essy-reading.jpg";
 import laptopDash from "@/assets/essy-laptop-dash.jpg";
 import phone from "@/assets/essy-phone.jpg";
 import slide from "@/assets/essy-slide.jpg";
+import notes from "@/assets/essy-notes.jpg";
+import productLabIcon from "@/assets/product-lab-icon.png";
+
 
 export function BentoGrid() {
   return (
@@ -50,27 +53,48 @@ export function BentoGrid() {
 
         {/* ---------- column 2 ---------- */}
         <div className="flex flex-col gap-3 sm:gap-4">
-          <article className="flex flex-1 flex-col justify-between rounded-[28px] bg-card p-5 ring-1 ring-black/5">
-            <div className="flex items-start justify-between gap-3">
-              <h3 className="max-w-[10ch] text-[26px] font-medium leading-[1.1] tracking-tight text-ink">
-                Tools &amp; Templates
-              </h3>
-              <ArrowUpRight size={20} className="mt-1 shrink-0 text-ink" />
+          <article className="group flex flex-1 cursor-pointer flex-col justify-between rounded-[28px] bg-card p-5 ring-1 ring-black/5">
+            <h3 className="text-[26px] font-medium leading-[1.1] tracking-tight text-ink transition-colors duration-500 group-hover:text-[#6b7d3a]">
+              Tools &amp;
+              <br />
+              Templates{" "}
+              <ArrowRight
+                size={22}
+                className="inline-block align-middle transition-transform duration-500 group-hover:translate-x-1.5"
+              />
+            </h3>
+
+            {/* expanding thumbnail stack */}
+            <div className="mt-5 flex items-end">
+              {[phone, slide, notes].map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt=""
+                  aria-hidden
+                  loading="lazy"
+                  style={{ transitionDelay: `${i * 60}ms`, zIndex: 3 - i }}
+                  className={[
+                    "relative h-[68px] w-[68px] rounded-[16px] object-cover shadow-[0_10px_24px_-14px_rgba(0,0,0,0.45)] ring-2 ring-card",
+                    "transition-all duration-500 [transition-timing-function:cubic-bezier(0.7,0,0.2,1)]",
+                    i === 0
+                      ? ""
+                      : i === 1
+                        ? "-ml-[52px] rotate-[4deg] group-hover:ml-1.5 group-hover:rotate-0"
+                        : "-ml-[52px] rotate-[8deg] group-hover:ml-1.5 group-hover:rotate-0",
+                  ].join(" ")}
+                />
+              ))}
             </div>
-            <img
-              src={phone}
-              alt="Notion, Figma and code templates"
-              loading="lazy"
-              className="mt-4 h-36 w-full rounded-2xl object-cover"
-            />
+
             <div className="mt-4 flex flex-wrap items-center gap-2 text-[10px] font-medium text-ink/60">
               <span className="rounded-full bg-black/5 px-2.5 py-1">✦ Notion</span>
               <span className="rounded-full bg-black/5 px-2.5 py-1">◐ Figma</span>
               <span className="rounded-full bg-black/5 px-2.5 py-1">20+ kits</span>
-              <button className="ml-auto inline-flex items-center gap-1 rounded-full bg-ink px-3 py-1.5 text-[11px] text-white">
-                Follow <Plus size={11} />
-              </button>
             </div>
+            <p className="mt-3 text-[12px] leading-relaxed text-muted-ink">
+              Systems, files and starter kits I actually use — free to steal and make yours.
+            </p>
           </article>
 
           <article className="flex flex-col items-center justify-center rounded-[28px] bg-sage-soft px-6 py-10 text-center">
@@ -85,26 +109,34 @@ export function BentoGrid() {
 
         {/* ---------- column 3 ---------- */}
         <div className="flex flex-col gap-3 sm:gap-4">
-          <article className="flex flex-1 flex-col justify-between rounded-[28px] bg-card p-5 ring-1 ring-black/5">
-            <div>
-              <h3 className="max-w-[9ch] text-[30px] font-medium leading-[1.05] tracking-tight text-ink">
+          <article className="relative flex flex-1 flex-col justify-between overflow-hidden rounded-[28px] bg-[#f1f1ef] p-5 ring-1 ring-black/5">
+            <img
+              src={productLabIcon}
+              alt=""
+              aria-hidden
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="pointer-events-none absolute -right-10 -top-6 h-48 w-48 object-contain sm:h-56 sm:w-56"
+            />
+            <div className="relative">
+              <h3 className="max-w-[7ch] text-[30px] font-medium leading-[1.05] tracking-tight text-ink sm:text-[34px]">
                 The Product Lab
               </h3>
-              <p className="mt-3 max-w-[34ch] text-[12px] leading-relaxed text-muted-ink">
+              <p className="mt-3 max-w-[26ch] text-[12px] leading-relaxed text-muted-ink">
                 Teardowns, case studies, and behind-the-scenes breakdowns of products worth
                 studying.
               </p>
             </div>
-            <img
-              src={slide}
-              alt="Product teardowns and case studies"
-              loading="lazy"
-              className="mt-5 h-36 w-full rounded-2xl object-cover"
-            />
-            <button className="mt-4 inline-flex w-fit items-center gap-1 rounded-full border border-ink/15 px-3 py-1.5 text-[11px] font-medium">
-              Read on <ArrowUpRight size={11} />
+            <button className="group relative mt-24 inline-flex w-full items-center justify-between rounded-full bg-ink px-5 py-3 text-[13px] font-medium text-white">
+              Enter the Lab
+              <ArrowRight
+                size={16}
+                className="text-butter-deep transition-transform duration-300 group-hover:translate-x-1"
+              />
             </button>
           </article>
+
 
           <div className="overflow-hidden rounded-[28px]">
             <img
