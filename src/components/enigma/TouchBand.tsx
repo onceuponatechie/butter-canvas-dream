@@ -1,4 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
+import heroCover from "@/assets/hero-cover.png.asset.json";
+
 
 export function TouchBand() {
   return (
