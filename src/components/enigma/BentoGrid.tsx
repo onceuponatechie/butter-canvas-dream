@@ -119,7 +119,7 @@ export function BentoGrid() {
 
         {/* ---------- column 3 ---------- */}
         <div className="flex flex-col gap-3 sm:gap-4">
-          <article className="relative flex flex-1 flex-col justify-between overflow-hidden rounded-[28px] bg-[#f1f1ef] p-5 ring-1 ring-black/5">
+          <article className="group relative flex flex-1 flex-col justify-between overflow-hidden rounded-[28px] bg-[#f1f1ef] p-5 ring-1 ring-black/5">
             <img
               src={productLabIcon}
               alt=""
@@ -127,18 +127,18 @@ export function BentoGrid() {
               loading="lazy"
               width={1024}
               height={1024}
-              className="pointer-events-none absolute -right-10 -top-6 h-48 w-48 object-contain sm:h-56 sm:w-56"
+              className="pointer-events-none absolute bottom-3 right-2 h-36 w-36 object-contain sm:h-44 sm:w-44"
             />
-            <div className="relative">
-              <h3 className="max-w-[7ch] text-[30px] font-medium leading-[1.05] tracking-tight text-ink sm:text-[34px]">
+            <div className="relative max-w-[60%]">
+              <h3 className="text-[28px] font-medium leading-[1.05] tracking-tight text-ink sm:text-[32px]">
                 The Product Lab
               </h3>
-              <p className="mt-3 max-w-[26ch] text-[12px] leading-relaxed text-muted-ink">
+              <p className="mt-3 text-[12px] leading-relaxed text-muted-ink">
                 Teardowns, case studies, and behind-the-scenes breakdowns of products worth
                 studying.
               </p>
             </div>
-            <button className="group relative mt-24 inline-flex w-full items-center justify-between rounded-full bg-ink px-5 py-3 text-[13px] font-medium text-white">
+            <button className="relative mt-10 inline-flex w-fit items-center gap-6 rounded-full bg-ink px-5 py-3 text-[13px] font-medium text-white">
               Enter the Lab
               <ArrowRight
                 size={16}
@@ -146,6 +146,7 @@ export function BentoGrid() {
               />
             </button>
           </article>
+
 
 
           <div className="overflow-hidden rounded-[28px]">
