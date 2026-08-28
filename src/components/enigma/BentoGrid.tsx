@@ -1,8 +1,11 @@
-import { ArrowUpRight, Plus } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import reading from "@/assets/essy-reading.jpg";
 import laptopDash from "@/assets/essy-laptop-dash.jpg";
 import phone from "@/assets/essy-phone.jpg";
 import slide from "@/assets/essy-slide.jpg";
+import notes from "@/assets/essy-notes.jpg";
+import productLabIcon from "@/assets/product-lab-icon.png";
+
 
 export function BentoGrid() {
   return (
