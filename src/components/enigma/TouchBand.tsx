@@ -53,7 +53,15 @@ export function TouchBand() {
 export function Footer() {
   return (
     <footer className="relative overflow-hidden px-4 pb-10 pt-6 sm:px-8">
-      <div className="mx-auto max-w-5xl">
+      <img
+        src={heroCover.url}
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute inset-0 h-full w-full scale-y-[-1] object-cover"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-backdrop via-transparent to-transparent" />
+      <div className="relative mx-auto max-w-5xl">
+
         <div className="rounded-[24px] bg-white p-6 ring-1 ring-black/5 sm:p-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto] md:items-end">
             <div className="min-w-0 grid grid-cols-2 gap-6 text-[12px] sm:grid-cols-3">
