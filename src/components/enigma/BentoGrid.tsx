@@ -53,7 +53,7 @@ export function BentoGrid() {
 
         {/* ---------- column 2 ---------- */}
         <div className="flex flex-col gap-3 sm:gap-4">
-          <article className="group flex flex-1 cursor-pointer flex-col justify-between rounded-[28px] bg-card p-5 ring-1 ring-black/5">
+          <article className="group flex flex-1 cursor-pointer flex-col rounded-[28px] bg-[#f1f1ef] p-5 ring-1 ring-black/5">
             <h3 className="text-[26px] font-medium leading-[1.1] tracking-tight text-ink transition-colors duration-500 group-hover:text-[#6b7d3a]">
               Tools &amp;
               <br />
@@ -64,8 +64,12 @@ export function BentoGrid() {
               />
             </h3>
 
+            <p className="mt-3 text-[12px] leading-relaxed text-muted-ink">
+              Systems, files and starter kits I actually use — free to steal and make yours.
+            </p>
+
             {/* expanding thumbnail stack */}
-            <div className="mt-5 flex items-end">
+            <div className="mt-4 flex items-end">
               {[phone, slide, notes].map((src, i) => (
                 <img
                   key={i}
@@ -75,7 +79,7 @@ export function BentoGrid() {
                   loading="lazy"
                   style={{ transitionDelay: `${i * 60}ms`, zIndex: 3 - i }}
                   className={[
-                    "relative h-[68px] w-[68px] rounded-[16px] object-cover shadow-[0_10px_24px_-14px_rgba(0,0,0,0.45)] ring-2 ring-card",
+                    "relative h-[68px] w-[68px] rounded-[16px] object-cover shadow-[0_10px_24px_-14px_rgba(0,0,0,0.45)] ring-2 ring-[#f1f1ef]",
                     "transition-all duration-500 [transition-timing-function:cubic-bezier(0.7,0,0.2,1)]",
                     i === 0
                       ? ""
@@ -92,10 +96,16 @@ export function BentoGrid() {
               <span className="rounded-full bg-black/5 px-2.5 py-1">◐ Figma</span>
               <span className="rounded-full bg-black/5 px-2.5 py-1">20+ kits</span>
             </div>
-            <p className="mt-3 text-[12px] leading-relaxed text-muted-ink">
-              Systems, files and starter kits I actually use — free to steal and make yours.
-            </p>
+
+            <button className="mt-4 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
+              Browse the kits
+              <ArrowRight
+                size={16}
+                className="text-butter-deep transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </button>
           </article>
+
 
           <article className="flex flex-col items-center justify-center rounded-[28px] bg-sage-soft px-6 py-10 text-center">
             <h3 className="font-serif text-[38px] italic leading-none tracking-tight text-ink sm:text-[46px]">
@@ -109,7 +119,7 @@ export function BentoGrid() {
 
         {/* ---------- column 3 ---------- */}
         <div className="flex flex-col gap-3 sm:gap-4">
-          <article className="relative flex flex-1 flex-col justify-between overflow-hidden rounded-[28px] bg-[#f1f1ef] p-5 ring-1 ring-black/5">
+          <article className="group relative flex flex-1 flex-col justify-between overflow-hidden rounded-[28px] bg-[#f1f1ef] p-5 ring-1 ring-black/5">
             <img
               src={productLabIcon}
               alt=""
@@ -117,18 +127,18 @@ export function BentoGrid() {
               loading="lazy"
               width={1024}
               height={1024}
-              className="pointer-events-none absolute -right-10 -top-6 h-48 w-48 object-contain sm:h-56 sm:w-56"
+              className="pointer-events-none absolute bottom-3 right-2 h-36 w-36 object-contain sm:h-44 sm:w-44"
             />
-            <div className="relative">
-              <h3 className="max-w-[7ch] text-[30px] font-medium leading-[1.05] tracking-tight text-ink sm:text-[34px]">
+            <div className="relative max-w-[60%]">
+              <h3 className="text-[28px] font-medium leading-[1.05] tracking-tight text-ink sm:text-[32px]">
                 The Product Lab
               </h3>
-              <p className="mt-3 max-w-[26ch] text-[12px] leading-relaxed text-muted-ink">
+              <p className="mt-3 text-[12px] leading-relaxed text-muted-ink">
                 Teardowns, case studies, and behind-the-scenes breakdowns of products worth
                 studying.
               </p>
             </div>
-            <button className="group relative mt-24 inline-flex w-full items-center justify-between rounded-full bg-ink px-5 py-3 text-[13px] font-medium text-white">
+            <button className="relative mt-10 inline-flex w-fit items-center gap-6 rounded-full bg-ink px-5 py-3 text-[13px] font-medium text-white">
               Enter the Lab
               <ArrowRight
                 size={16}
@@ -136,6 +146,7 @@ export function BentoGrid() {
               />
             </button>
           </article>
+
 
 
           <div className="overflow-hidden rounded-[28px]">
