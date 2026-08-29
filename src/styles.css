@@ -165,3 +165,11 @@
 @utility animate-floaty {
   animation: floaty 4s ease-in-out infinite;
 }
+
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@utility animate-marquee-x {
+  animation: marquee-x 18s linear infinite;
+}
