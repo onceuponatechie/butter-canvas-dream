@@ -13,7 +13,7 @@ export function BentoGrid() {
       <div className="mx-auto grid max-w-6xl gap-3 sm:gap-4 md:grid-cols-3">
         {/* ---------- column 1 ---------- */}
         <div className="flex flex-col gap-3 sm:gap-4">
-          <article className="flex flex-1 flex-col justify-between overflow-hidden rounded-[28px] bg-ink p-5 text-white">
+          <article className="flex flex-1 flex-col overflow-hidden rounded-[28px] bg-ink p-5 text-white">
             <div>
               <div className="flex items-center gap-2">
                 <span className="grid h-6 w-6 place-items-center rounded-full bg-white/10 text-[11px]">
@@ -33,23 +33,12 @@ export function BentoGrid() {
               src={laptopDash}
               alt="Notes and experiments from the rabbit hole"
               loading="lazy"
-              className="mt-5 h-40 w-full rounded-2xl object-cover"
+              className="mt-5 min-h-40 w-full flex-1 rounded-2xl object-cover"
             />
             <div className="mt-3 text-[10px] tracking-wide text-white/40">MAY 6, THOUGHTS</div>
           </article>
-
-          <article className="rounded-[28px] bg-sage-soft p-5">
-            <span className="inline-flex items-center gap-1 rounded-full bg-white/70 px-2.5 py-1 text-[10px] font-medium text-ink">
-              ✦ Kind words
-            </span>
-            <p className="mt-3 text-[12px] italic leading-relaxed text-ink/80">
-              "Every launch with Essy leaves me smarter. She sees the seams other people miss."
-            </p>
-            <div className="mt-3 text-[10px] font-medium tracking-wide text-muted-ink">
-              — MAYA O., PM AT NORTHWIND
-            </div>
-          </article>
         </div>
+
 
         {/* ---------- column 2 ---------- */}
         <div className="flex flex-col gap-3 sm:gap-4">
