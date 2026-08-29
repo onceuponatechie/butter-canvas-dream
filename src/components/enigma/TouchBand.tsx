@@ -109,7 +109,7 @@ export function Footer() {
               </button>
             </div>
           </div>
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-2 border-t border-black/5 pt-4 text-[11px] text-muted-ink">
+          <div className="relative mt-8 flex flex-wrap items-center justify-between gap-2 border-t border-black/5 pt-4 text-[11px] text-muted-ink">
             <span>© 2026 Essy Udeme — made with care.</span>
             <div className="flex gap-4">
               <a href="#">Privacy</a>
