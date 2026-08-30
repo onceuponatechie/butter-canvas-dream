@@ -119,36 +119,27 @@ export function BentoGrid() {
 
         {/* ---------- column 3 ---------- */}
         <div className="flex flex-col gap-3 sm:gap-4">
-          <article className="group flex flex-1 cursor-pointer flex-col rounded-[28px] bg-[#f1f1ef] p-5 ring-1 ring-black/5">
-            <h3 className="text-[26px] font-medium leading-[1.1] tracking-tight text-ink transition-colors duration-500 group-hover:text-[#6b7d3a]">
-              The Product
-              <br />
-              Lab{" "}
-              <ArrowRight
-                size={22}
-                className="inline-block align-middle transition-transform duration-500 group-hover:translate-x-1.5"
-              />
-            </h3>
+          <article
+            className="group relative flex flex-1 cursor-pointer flex-col justify-between overflow-hidden rounded-[28px] bg-[#f1f1ef] bg-cover bg-center bg-no-repeat p-5 ring-1 ring-black/5"
+            style={{ backgroundImage: `url(${productLabCover.url})` }}
+          >
+            <div className="max-w-[58%]">
+              <h3 className="text-[26px] font-medium leading-[1.1] tracking-tight text-ink transition-colors duration-500 group-hover:text-[#6b7d3a]">
+                The Product
+                <br />
+                Lab{" "}
+                <ArrowRight
+                  size={22}
+                  className="inline-block align-middle transition-transform duration-500 group-hover:translate-x-1.5"
+                />
+              </h3>
 
-            <p className="mt-3 text-[12px] leading-relaxed text-muted-ink">
-              Teardowns, case studies, and behind-the-scenes breakdowns of products worth studying.
-            </p>
-
-            <div className="mt-4 overflow-hidden rounded-[16px]">
-              <img
-                src={productLabCover.url}
-                alt="3D objects representing product teardowns"
-                loading="lazy"
-                className="h-[68px] w-full scale-105 object-cover transition-transform duration-500 group-hover:scale-100"
-              />
+              <p className="mt-3 text-[12px] leading-relaxed text-muted-ink">
+                Teardowns, case studies, and breakdowns of products worth studying.
+              </p>
             </div>
 
-            <div className="mt-4 flex flex-wrap items-center gap-2 text-[10px] font-medium text-ink/60">
-              <span className="rounded-full bg-black/5 px-2.5 py-1">✦ Teardowns</span>
-              <span className="rounded-full bg-black/5 px-2.5 py-1">◐ Case studies</span>
-            </div>
-
-            <button className="mt-4 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
+            <button className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
               Enter the Lab
               <ArrowRight
                 size={16}
