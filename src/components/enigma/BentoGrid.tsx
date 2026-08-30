@@ -4,7 +4,7 @@ import laptopDash from "@/assets/essy-laptop-dash.jpg";
 import phone from "@/assets/essy-phone.jpg";
 import slide from "@/assets/essy-slide.jpg";
 import notes from "@/assets/essy-notes.jpg";
-import productLabIcon from "@/assets/product-lab-icon.png";
+import productLabCover from "@/assets/product-lab-cover.jpg.asset.json";
 
 
 export function BentoGrid() {
@@ -119,26 +119,36 @@ export function BentoGrid() {
 
         {/* ---------- column 3 ---------- */}
         <div className="flex flex-col gap-3 sm:gap-4">
-          <article className="group relative flex flex-1 flex-col justify-between overflow-hidden rounded-[28px] bg-[#f1f1ef] p-5 ring-1 ring-black/5">
-            <img
-              src={productLabIcon}
-              alt=""
-              aria-hidden
-              loading="lazy"
-              width={1024}
-              height={1024}
-              className="pointer-events-none absolute bottom-3 right-2 h-36 w-36 object-contain sm:h-44 sm:w-44"
-            />
-            <div className="relative max-w-[60%]">
-              <h3 className="text-[28px] font-medium leading-[1.05] tracking-tight text-ink sm:text-[32px]">
-                The Product Lab
-              </h3>
-              <p className="mt-3 text-[12px] leading-relaxed text-muted-ink">
-                Teardowns, case studies, and behind-the-scenes breakdowns of products worth
-                studying.
-              </p>
+          <article className="group flex flex-1 cursor-pointer flex-col rounded-[28px] bg-[#f1f1ef] p-5 ring-1 ring-black/5">
+            <h3 className="text-[26px] font-medium leading-[1.1] tracking-tight text-ink transition-colors duration-500 group-hover:text-[#6b7d3a]">
+              The Product
+              <br />
+              Lab{" "}
+              <ArrowRight
+                size={22}
+                className="inline-block align-middle transition-transform duration-500 group-hover:translate-x-1.5"
+              />
+            </h3>
+
+            <p className="mt-3 text-[12px] leading-relaxed text-muted-ink">
+              Teardowns, case studies, and behind-the-scenes breakdowns of products worth studying.
+            </p>
+
+            <div className="mt-4 overflow-hidden rounded-[16px]">
+              <img
+                src={productLabCover.url}
+                alt="3D objects representing product teardowns"
+                loading="lazy"
+                className="h-[68px] w-full scale-105 object-cover transition-transform duration-500 group-hover:scale-100"
+              />
             </div>
-            <button className="relative mt-10 inline-flex w-fit items-center gap-6 rounded-full bg-ink px-5 py-3 text-[13px] font-medium text-white">
+
+            <div className="mt-4 flex flex-wrap items-center gap-2 text-[10px] font-medium text-ink/60">
+              <span className="rounded-full bg-black/5 px-2.5 py-1">✦ Teardowns</span>
+              <span className="rounded-full bg-black/5 px-2.5 py-1">◐ Case studies</span>
+            </div>
+
+            <button className="mt-4 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
               Enter the Lab
               <ArrowRight
                 size={16}
