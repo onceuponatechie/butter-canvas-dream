@@ -54,19 +54,18 @@ export function TouchBand() {
 
 export function Footer() {
   return (
-    <footer className="px-4 pb-10 pt-6 sm:px-8">
+    <footer className="relative overflow-hidden px-4 pb-10 pt-6 sm:px-8">
+      <img
+        src={heroCover.url}
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute inset-0 h-full w-full scale-y-[-1] object-cover"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-backdrop via-transparent to-transparent" />
       <div className="relative mx-auto max-w-5xl">
 
-        <div className="relative overflow-hidden rounded-[24px] bg-white p-6 ring-1 ring-black/5 sm:p-8">
-          <img
-            src={heroCover.url}
-            alt=""
-            aria-hidden
-            className="pointer-events-none absolute inset-0 h-full w-full scale-y-[-1] object-cover"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-white/70" />
-          <div className="relative grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto] md:items-end">
-
+        <div className="rounded-[24px] bg-white p-6 ring-1 ring-black/5 sm:p-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto] md:items-end">
             <div className="min-w-0 grid grid-cols-2 gap-6 text-[12px] sm:grid-cols-3">
               <div>
                 <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-muted-ink">
@@ -109,7 +108,7 @@ export function Footer() {
               </button>
             </div>
           </div>
-          <div className="relative mt-8 flex flex-wrap items-center justify-between gap-2 border-t border-black/5 pt-4 text-[11px] text-muted-ink">
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-2 border-t border-black/5 pt-4 text-[11px] text-muted-ink">
             <span>© 2026 Essy Udeme — made with care.</span>
             <div className="flex gap-4">
               <a href="#">Privacy</a>

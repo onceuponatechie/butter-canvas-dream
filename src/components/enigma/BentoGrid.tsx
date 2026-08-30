@@ -13,7 +13,7 @@ export function BentoGrid() {
       <div className="mx-auto grid max-w-6xl gap-3 sm:gap-4 md:grid-cols-3">
         {/* ---------- column 1 ---------- */}
         <div className="flex flex-col gap-3 sm:gap-4">
-          <article className="flex flex-1 flex-col overflow-hidden rounded-[28px] bg-ink p-5 text-white">
+          <article className="flex flex-1 flex-col justify-between overflow-hidden rounded-[28px] bg-ink p-5 text-white">
             <div>
               <div className="flex items-center gap-2">
                 <span className="grid h-6 w-6 place-items-center rounded-full bg-white/10 text-[11px]">
@@ -33,69 +33,78 @@ export function BentoGrid() {
               src={laptopDash}
               alt="Notes and experiments from the rabbit hole"
               loading="lazy"
-              className="mt-5 min-h-40 w-full flex-1 rounded-2xl object-cover"
+              className="mt-5 h-40 w-full rounded-2xl object-cover"
             />
             <div className="mt-3 text-[10px] tracking-wide text-white/40">MAY 6, THOUGHTS</div>
           </article>
-        </div>
 
+          <article className="rounded-[28px] bg-sage-soft p-5">
+            <span className="inline-flex items-center gap-1 rounded-full bg-white/70 px-2.5 py-1 text-[10px] font-medium text-ink">
+              ✦ Kind words
+            </span>
+            <p className="mt-3 text-[12px] italic leading-relaxed text-ink/80">
+              "Every launch with Essy leaves me smarter. She sees the seams other people miss."
+            </p>
+            <div className="mt-3 text-[10px] font-medium tracking-wide text-muted-ink">
+              — MAYA O., PM AT NORTHWIND
+            </div>
+          </article>
+        </div>
 
         {/* ---------- column 2 ---------- */}
         <div className="flex flex-col gap-3 sm:gap-4">
-          <article className="group flex flex-1 cursor-pointer flex-col overflow-hidden rounded-[28px] bg-[#f1f1ef] ring-1 ring-black/5">
-            {/* auto-sliding diagonal reel */}
-            <div className="relative h-[150px] overflow-hidden">
-              <div className="absolute inset-x-[-14%] top-1/2 -translate-y-1/2 rotate-[-8deg]">
-                <div className="flex w-max animate-marquee-x items-center gap-3 group-hover:[animation-play-state:paused]">
-                  {[...Array(2)].flatMap((_, r) =>
-                    [phone, slide, notes, laptopDash].map((src, i) => (
-                      <img
-                        key={`${r}-${i}`}
-                        src={src}
-                        alt=""
-                        aria-hidden
-                        loading="lazy"
-                        style={{ transform: `rotate(${i % 2 === 0 ? -3 : 3}deg)` }}
-                        className="h-[104px] w-[150px] shrink-0 rounded-[14px] bg-white object-cover shadow-[0_14px_30px_-18px_rgba(0,0,0,0.5)] ring-1 ring-black/5"
-                      />
-                    )),
-                  )}
-                </div>
-              </div>
-            </div>
+          <article className="group flex flex-1 cursor-pointer flex-col rounded-[28px] bg-[#f1f1ef] p-5 ring-1 ring-black/5">
+            <h3 className="text-[26px] font-medium leading-[1.1] tracking-tight text-ink transition-colors duration-500 group-hover:text-[#6b7d3a]">
+              Tools &amp;
+              <br />
+              Templates{" "}
+              <ArrowRight
+                size={22}
+                className="inline-block align-middle transition-transform duration-500 group-hover:translate-x-1.5"
+              />
+            </h3>
 
-            <div className="flex flex-1 flex-col p-5 pt-1">
-              <div className="flex items-start justify-between gap-3">
-                <h3 className="text-[28px] font-medium leading-[1.05] tracking-tight text-ink transition-colors duration-500 group-hover:text-[#6b7d3a] sm:text-[32px]">
-                  Tools &amp;
-                  <br />
-                  Templates{" "}
-                  <ArrowRight
-                    size={22}
-                    className="inline-block align-middle transition-transform duration-500 group-hover:translate-x-1.5"
-                  />
-                </h3>
-                <div className="flex shrink-0 flex-col items-end gap-1.5 text-[10px] font-medium text-ink/60">
-                  <span className="rounded-full bg-black/5 px-2.5 py-1">✦ Notion</span>
-                  <span className="rounded-full bg-black/5 px-2.5 py-1">◐ Figma</span>
-                  <span className="rounded-full bg-black/5 px-2.5 py-1">20+ kits</span>
-                </div>
-              </div>
+            <p className="mt-3 text-[12px] leading-relaxed text-muted-ink">
+              Systems, files and starter kits I actually use — free to steal and make yours.
+            </p>
 
-              <p className="mt-3 text-[12px] leading-relaxed text-muted-ink">
-                Systems, files and starter kits I actually use — free to steal and make yours.
-              </p>
-
-              <button className="mt-4 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
-                Browse the kits
-                <ArrowRight
-                  size={16}
-                  className="text-butter-deep transition-transform duration-300 group-hover:translate-x-1"
+            {/* expanding thumbnail stack */}
+            <div className="mt-4 flex items-end">
+              {[phone, slide, notes].map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt=""
+                  aria-hidden
+                  loading="lazy"
+                  style={{ transitionDelay: `${i * 60}ms`, zIndex: 3 - i }}
+                  className={[
+                    "relative h-[68px] w-[68px] rounded-[16px] object-cover shadow-[0_10px_24px_-14px_rgba(0,0,0,0.45)] ring-2 ring-[#f1f1ef]",
+                    "transition-all duration-500 [transition-timing-function:cubic-bezier(0.7,0,0.2,1)]",
+                    i === 0
+                      ? ""
+                      : i === 1
+                        ? "-ml-[52px] rotate-[4deg] group-hover:ml-1.5 group-hover:rotate-0"
+                        : "-ml-[52px] rotate-[8deg] group-hover:ml-1.5 group-hover:rotate-0",
+                  ].join(" ")}
                 />
-              </button>
+              ))}
             </div>
-          </article>
 
+            <div className="mt-4 flex flex-wrap items-center gap-2 text-[10px] font-medium text-ink/60">
+              <span className="rounded-full bg-black/5 px-2.5 py-1">✦ Notion</span>
+              <span className="rounded-full bg-black/5 px-2.5 py-1">◐ Figma</span>
+              <span className="rounded-full bg-black/5 px-2.5 py-1">20+ kits</span>
+            </div>
+
+            <button className="mt-4 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
+              Browse the kits
+              <ArrowRight
+                size={16}
+                className="text-butter-deep transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </button>
+          </article>
 
 
           <article className="flex flex-col items-center justify-center rounded-[28px] bg-sage-soft px-6 py-10 text-center">
