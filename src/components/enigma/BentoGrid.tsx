@@ -46,7 +46,7 @@ export function BentoGrid() {
         </article>
 
         {/* ---------- Tools & Templates ---------- */}
-        <article className="group order-2 flex cursor-pointer flex-col justify-between overflow-hidden rounded-[28px] bg-[#f4f4f2] p-6 ring-1 ring-black/[0.04] md:col-span-4">
+        <article className="group order-3 md:order-2 flex cursor-pointer flex-col justify-between overflow-hidden rounded-[28px] bg-[#f4f4f2] p-6 ring-1 ring-black/[0.04] md:col-span-4">
           <div>
             <h3 className="text-[30px] font-medium leading-[1.05] tracking-[-1.2px] text-ink transition-colors duration-500 group-hover:text-[#6b7d3a]">
               Tools &amp;
@@ -99,7 +99,7 @@ export function BentoGrid() {
 
         {/* ---------- The Product Lab ---------- */}
         <article
-          className="group order-3 flex cursor-pointer flex-col justify-between overflow-hidden rounded-[28px] bg-[#f4f4f2] bg-cover bg-center bg-no-repeat p-6 ring-1 ring-black/[0.04] md:col-span-5"
+          className="group order-4 md:order-3 flex cursor-pointer flex-col justify-between overflow-hidden rounded-[28px] bg-[#f4f4f2] bg-cover bg-center bg-no-repeat p-6 ring-1 ring-black/[0.04] md:col-span-5"
           style={{ backgroundImage: `url(${productLabCover.url})` }}
         >
           <div className="max-w-[56%]">
@@ -128,7 +128,7 @@ export function BentoGrid() {
         </article>
 
         {/* ---------- resources ---------- */}
-        <article className="order-4 flex flex-col items-center justify-center rounded-[28px] bg-sage-soft px-6 py-12 text-center md:col-span-6">
+        <article className="order-2 md:order-4 flex flex-col items-center justify-center rounded-[28px] bg-sage-soft px-6 py-12 text-center md:col-span-6">
           <h3 className="font-serif text-[42px] italic leading-none tracking-tight text-ink sm:text-[52px]">
             resources
           </h3>
