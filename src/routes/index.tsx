@@ -49,6 +49,7 @@ function Index() {
           </div>
         </div>
         <BentoGrid />
+        <AboutSection />
         <PromiseSection />
         <CasesSection />
         <TouchBand />
