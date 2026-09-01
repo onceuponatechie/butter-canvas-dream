@@ -10,10 +10,10 @@ import productLabCover from "@/assets/product-lab-cover.jpg.asset.json";
 export function BentoGrid() {
   return (
     <section id="resources" className="px-4 py-10 sm:px-8 sm:py-14">
-      <div className="mx-auto grid max-w-6xl gap-3 sm:gap-4 md:grid-cols-3">
+      <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:gap-4 md:grid md:grid-cols-3 md:items-stretch">
         {/* ---------- column 1 ---------- */}
-        <div className="flex flex-col gap-3 sm:gap-4">
-          <article className="flex flex-1 flex-col justify-between overflow-hidden rounded-[28px] bg-ink p-5 text-white">
+        <div className="contents md:flex md:flex-col md:gap-4">
+          <article className="order-1 flex flex-col justify-between overflow-hidden rounded-[28px] bg-ink p-5 text-white md:h-full md:flex-1">
             <div>
               <div className="flex items-center gap-2">
                 <span className="grid h-6 w-6 place-items-center rounded-full bg-white/10 text-[11px]">
@@ -33,27 +33,15 @@ export function BentoGrid() {
               src={laptopDash}
               alt="Notes and experiments from the rabbit hole"
               loading="lazy"
-              className="mt-5 h-40 w-full rounded-2xl object-cover"
+              className="mt-5 h-40 w-full rounded-2xl object-cover md:h-auto md:flex-1"
             />
             <div className="mt-3 text-[10px] tracking-wide text-white/40">MAY 6, THOUGHTS</div>
-          </article>
-
-          <article className="rounded-[28px] bg-sage-soft p-5">
-            <span className="inline-flex items-center gap-1 rounded-full bg-white/70 px-2.5 py-1 text-[10px] font-medium text-ink">
-              ✦ Kind words
-            </span>
-            <p className="mt-3 text-[12px] italic leading-relaxed text-ink/80">
-              "Every launch with Essy leaves me smarter. She sees the seams other people miss."
-            </p>
-            <div className="mt-3 text-[10px] font-medium tracking-wide text-muted-ink">
-              — MAYA O., PM AT NORTHWIND
-            </div>
           </article>
         </div>
 
         {/* ---------- column 2 ---------- */}
-        <div className="flex flex-col gap-3 sm:gap-4">
-          <article className="group flex flex-1 cursor-pointer flex-col rounded-[28px] bg-[#f1f1ef] p-5 ring-1 ring-black/5">
+        <div className="contents md:flex md:flex-col md:gap-4">
+          <article className="group order-3 flex cursor-pointer flex-col rounded-[28px] bg-[#f1f1ef] p-5 ring-1 ring-black/5 md:flex-1">
             <h3 className="text-[26px] font-medium leading-[1.1] tracking-tight text-ink transition-colors duration-500 group-hover:text-[#6b7d3a]">
               Tools &amp;
               <br />
@@ -106,8 +94,7 @@ export function BentoGrid() {
             </button>
           </article>
 
-
-          <article className="flex flex-col items-center justify-center rounded-[28px] bg-sage-soft px-6 py-10 text-center">
+          <article className="order-2 flex flex-col items-center justify-center rounded-[28px] bg-sage-soft px-6 py-10 text-center">
             <h3 className="font-serif text-[38px] italic leading-none tracking-tight text-ink sm:text-[46px]">
               resources
             </h3>
@@ -118,9 +105,9 @@ export function BentoGrid() {
         </div>
 
         {/* ---------- column 3 ---------- */}
-        <div className="flex flex-col gap-3 sm:gap-4">
+        <div className="contents md:flex md:flex-col md:gap-4">
           <article
-            className="group relative flex flex-1 cursor-pointer flex-col justify-between overflow-hidden rounded-[28px] bg-[#f1f1ef] bg-cover bg-center bg-no-repeat p-5 ring-1 ring-black/5"
+            className="group relative order-4 flex cursor-pointer flex-col justify-between overflow-hidden rounded-[28px] bg-[#f1f1ef] bg-cover bg-center bg-no-repeat p-5 ring-1 ring-black/5 md:flex-1"
             style={{ backgroundImage: `url(${productLabCover.url})` }}
           >
             <div className="max-w-[58%]">
@@ -148,9 +135,7 @@ export function BentoGrid() {
             </button>
           </article>
 
-
-
-          <div className="overflow-hidden rounded-[28px]">
+          <div className="order-5 overflow-hidden rounded-[28px]">
             <img
               src={reading}
               alt="Essy reading"
@@ -159,21 +144,6 @@ export function BentoGrid() {
             />
           </div>
         </div>
-      </div>
-
-      {/* closing line */}
-      <div className="mx-auto mt-14 max-w-3xl text-center">
-        <p className="text-[clamp(20px,3vw,34px)] font-normal leading-snug tracking-tight text-ink">
-          Making{" "}
-          <span className="inline-block h-8 w-12 overflow-hidden rounded-xl align-middle">
-            <img src={reading} alt="" aria-hidden className="h-full w-full object-cover" />
-          </span>{" "}
-          <span className="inline-block h-8 w-12 overflow-hidden rounded-xl align-middle">
-            <img src={slide} alt="" aria-hidden className="h-full w-full object-cover" />
-          </span>{" "}
-          things is how I make
-          <br className="hidden sm:block" /> sense of the world
-        </p>
       </div>
     </section>
   );
