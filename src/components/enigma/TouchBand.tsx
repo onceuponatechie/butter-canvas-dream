@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import heroCover from "@/assets/hero-cover.png.asset.json";
+
 
 
 export function TouchBand() {
@@ -55,13 +55,6 @@ export function TouchBand() {
 export function Footer() {
   return (
     <footer className="relative overflow-hidden px-4 pb-10 pt-6 sm:px-8">
-      <img
-        src={heroCover.url}
-        alt=""
-        aria-hidden
-        className="pointer-events-none absolute inset-0 h-full w-full scale-y-[-1] object-cover"
-      />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-backdrop via-transparent to-transparent" />
       <div className="relative mx-auto max-w-5xl">
 
         <div className="rounded-[24px] bg-white p-6 ring-1 ring-black/5 sm:p-8">
