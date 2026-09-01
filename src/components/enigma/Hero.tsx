@@ -156,7 +156,7 @@ export function Hero() {
           </span>
         </motion.div>
 
-        <h1 className="mt-8 text-[clamp(32px,6vw,68px)] font-normal leading-[1.12] tracking-tight text-ink">
+        <h1 className="mt-8 text-[clamp(32px,6vw,68px)] font-normal leading-[1.12] tracking-tight text-ink md:tracking-[-2.5px]">
           <Word delay={0.4}>
             <span className="inline-block mb-[0.14em] md:mb-0">Products, people,</span>
           </Word>
@@ -166,12 +166,13 @@ export function Hero() {
           <MediaChip offset={0} delay={0.14} />
           <Word delay={0.62}>stories</Word>
           <br className="md:hidden" />{" "}
-          <Word delay={0.73}>between</Word>
+          <Word delay={0.73}>worth</Word>
           <br className="hidden md:block" />
           <MediaChip offset={2} delay={0.18} />
           <br className="md:hidden" />
-          <Word delay={0.84}>them.</Word>
+          <Word delay={0.84}>building.</Word>
         </h1>
+
 
         <motion.p variants={fadeUp} className="mt-7 text-[16px] text-ink/70">
           Creator
