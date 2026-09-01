@@ -183,7 +183,7 @@ function ProjectCard({
             <div className="relative z-20 mt-1 flex flex-wrap items-center gap-4">
               <a
                 href="#projects"
-                className="group/btn inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-[12px] font-medium text-white transition-colors hover:bg-ink"
+                className="group/btn inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-[12px] font-medium text-white transition-colors hover:bg-sage"
               >
                 View Case Study
                 <ArrowUpRight
