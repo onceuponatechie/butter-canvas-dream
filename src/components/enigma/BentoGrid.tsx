@@ -1,164 +1,229 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import reading from "@/assets/essy-reading.jpg";
 import phone from "@/assets/essy-phone.jpg";
 import slide from "@/assets/essy-slide.jpg";
 import notes from "@/assets/essy-notes.jpg";
 import rabbitHole from "@/assets/rabbit-hole-3d.png";
-import productLabCover from "@/assets/product-lab-cover.jpg.asset.json";
+import productLabIcon from "@/assets/product-lab-icon.png";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const gridStagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+};
+
+const cardReveal = {
+  hidden: { opacity: 0, y: 26 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE } },
+};
+
+/* Shared card anatomy ------------------------------------------------ */
+
+function Kicker({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <span
+      className={`text-[10px] font-semibold uppercase tracking-[0.16em] ${className}`}
+    >
+      {children}
+    </span>
+  );
+}
+
+function CornerArrow({ tone = "light" }: { tone?: "light" | "dark" | "glass" }) {
+  const tones = {
+    light: "bg-ink/[0.05] text-ink group-hover:bg-ink group-hover:text-white",
+    dark: "bg-white/10 text-white group-hover:bg-butter group-hover:text-ink",
+    glass: "bg-white/90 text-ink backdrop-blur group-hover:bg-ink group-hover:text-white",
+  };
+  return (
+    <span
+      aria-hidden
+      className={`absolute right-5 top-5 z-10 grid h-9 w-9 place-items-center rounded-full transition-colors duration-300 ${tones[tone]}`}
+    >
+      <ArrowUpRight
+        size={15}
+        className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+      />
+    </span>
+  );
+}
+
+const cardBase =
+  "group relative flex flex-col overflow-hidden rounded-[28px] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_50px_-24px_rgba(17,17,17,0.25)]";
+
+/* Section ------------------------------------------------------------ */
 
 export function BentoGrid() {
   return (
-    <section id="resources" className="px-4 py-10 sm:px-8 sm:py-14">
-      <div className="mx-auto grid max-w-6xl gap-3 sm:gap-4 md:grid-cols-12 md:grid-rows-[minmax(300px,auto)_minmax(300px,auto)]">
-        {/* ---------- The Rabbit Hole (tall, left) ---------- */}
-        <Link
-          to="/blog"
-          className="group order-1 flex flex-col overflow-hidden rounded-[28px] bg-ink p-6 text-white md:col-span-3 md:row-span-2"
-        >
-          <div className="flex items-center gap-2.5">
-            <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-white/10 text-[13px]">
-              ◐
-            </span>
-            <span className="text-[15px] font-medium tracking-tight">The Rabbit Hole</span>
-          </div>
+    <section id="resources" className="px-4 py-14 sm:px-8 sm:py-20">
+      {/* header — the section title lives up here, not trapped inside a cell */}
+      <div className="mx-auto max-w-2xl text-center">
+        <h2 className="text-[clamp(28px,3.6vw,44px)] font-medium tracking-tight text-ink">
+          start with the <span className="font-serif italic">good stuff</span>
+        </h2>
+        <p className="mx-auto mt-2 max-w-md text-[12px] text-muted-ink">
+          The stack, the file, and the reads I'd hand a younger me.
+        </p>
+      </div>
 
-          <p className="mt-3 text-[12.5px] leading-relaxed text-white/60">
-            Curious by nature. Obsessed with what's under the surface — deep dives into products,
-            people, ideas, and the random rabbit holes in between.
-          </p>
+      <motion.div
+        variants={gridStagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-80px" }}
+        className="mx-auto mt-10 grid max-w-6xl gap-4 md:grid-cols-12 md:grid-rows-[minmax(290px,auto)_minmax(290px,auto)]"
+      >
+        {/* ---------- The Rabbit Hole — dark anchor, tall left ---------- */}
+        <motion.div variants={cardReveal} className="order-1 flex md:col-span-4 md:row-span-2">
+          <Link to="/blog" className={`${cardBase} w-full bg-ink p-7 text-white`}>
+            <CornerArrow tone="dark" />
+            <Kicker className="text-white/40">Blog & Thoughts</Kicker>
+            <h3 className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.8px]">
+              The Rabbit Hole
+            </h3>
+            <p className="mt-2.5 max-w-[28ch] text-[13px] leading-relaxed text-white/60">
+              Deep dives into products, people, ideas — and the strange little tunnels
+              between them.
+            </p>
+            <div className="relative mt-6 flex flex-1 items-end justify-center">
+              <img
+                src={rabbitHole}
+                alt="A laptop glowing with a spiral tunnel, surrounded by floating idea cards"
+                loading="lazy"
+                width={1024}
+                height={1024}
+                className="w-[80%] max-w-[340px] translate-y-4 select-none drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 md:w-[105%] md:max-w-none"
+              />
+            </div>
+          </Link>
+        </motion.div>
 
-          <span className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-butter px-3.5 py-1.5 text-[11.5px] font-medium text-ink">
-            Explore{" "}
-            <ArrowUpRight
-              size={12}
-              className="transition-transform duration-300 group-hover:translate-x-0.5"
-            />
-          </span>
+        {/* ---------- Tools & Templates ---------- */}
+        <motion.div variants={cardReveal} className="order-2 flex md:col-span-5">
+          <Link
+            to="/tools-and-templates"
+            className={`${cardBase} w-full justify-between bg-paper p-7 ring-1 ring-black/5`}
+          >
+            <CornerArrow />
+            <div>
+              <Kicker className="text-muted-ink">Free kits & files</Kicker>
+              <h3 className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.8px] text-ink">
+                Tools & Templates
+              </h3>
+              <p className="mt-2.5 max-w-[34ch] text-[13px] leading-relaxed text-muted-ink">
+                The Notion systems, Figma files, and checklists I actually use — packaged
+                up and free to take.
+              </p>
+            </div>
 
-          <div className="relative mt-6 flex flex-1 items-end justify-center">
+            {/* thumbnail fan that spreads on hover */}
+            <div className="mt-6 flex items-end justify-between gap-4">
+              <div className="flex items-end">
+                {[phone, slide, notes].map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt=""
+                    aria-hidden
+                    loading="lazy"
+                    style={{ transitionDelay: `${i * 60}ms`, zIndex: 3 - i }}
+                    className={[
+                      "relative h-[72px] w-[72px] rounded-[16px] object-cover shadow-[0_12px_28px_-16px_rgba(0,0,0,0.5)] ring-2 ring-paper",
+                      "transition-all duration-500 [transition-timing-function:cubic-bezier(0.7,0,0.2,1)]",
+                      i === 0
+                        ? ""
+                        : i === 1
+                          ? "-ml-[54px] rotate-[4deg] group-hover:ml-1.5 group-hover:rotate-0"
+                          : "-ml-[54px] rotate-[8deg] group-hover:ml-1.5 group-hover:rotate-0",
+                    ].join(" ")}
+                  />
+                ))}
+              </div>
+              <div className="flex flex-wrap items-center justify-end gap-2 text-[10.5px] font-medium text-ink/55">
+                <span className="rounded-full bg-black/[0.05] px-2.5 py-1">✦ Notion</span>
+                <span className="rounded-full bg-black/[0.05] px-2.5 py-1">◐ Figma</span>
+                <span className="rounded-full bg-black/[0.05] px-2.5 py-1">20+ kits</span>
+              </div>
+            </div>
+          </Link>
+        </motion.div>
+
+        {/* ---------- portrait → about ---------- */}
+        <motion.div variants={cardReveal} className="order-5 md:order-3 flex md:col-span-3">
+          <a href="#about" className={`${cardBase} w-full ring-1 ring-black/5`}>
+            <CornerArrow tone="glass" />
             <img
-              src={rabbitHole}
-              alt="A laptop glowing with a spiral tunnel, surrounded by floating idea cards"
+              src={reading}
+              alt="Essy reading a book on a sunlit sofa"
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent px-6 pb-5 pt-14">
+              <Kicker className="text-white/60">The human behind it</Kicker>
+              <div className="mt-1 text-[17px] font-medium tracking-tight text-white">
+                Meet Essy
+              </div>
+            </div>
+            {/* keeps the card at a sensible height when the grid rows collapse on mobile */}
+            <div className="h-64 md:h-full" />
+          </a>
+        </motion.div>
+
+        {/* ---------- newsletter — the serif accent card ---------- */}
+        <motion.div variants={cardReveal} className="order-4 flex md:col-span-3">
+          <a
+            href="#newsletter"
+            className={`${cardBase} w-full justify-between bg-sage-soft p-7`}
+          >
+            <CornerArrow />
+            <div>
+              <Kicker className="text-ink/45">The letter</Kicker>
+              <h3 className="mt-3 font-serif text-[34px] italic leading-none tracking-tight text-ink">
+                new tuesdays
+              </h3>
+              <p className="mt-3 max-w-[24ch] text-[13px] leading-relaxed text-ink/70">
+                One idea, one artifact, every week — straight to your inbox.
+              </p>
+            </div>
+            <div className="mt-6 flex items-center gap-1 text-[12px] text-ink/60">
+              <span className="text-ink">★★★★★</span>
+              <span className="ml-1.5 text-[11px]">3,400+ readers</span>
+            </div>
+          </a>
+        </motion.div>
+
+        {/* ---------- The Product Lab ---------- */}
+        <motion.div variants={cardReveal} className="order-3 md:order-5 flex md:col-span-5">
+          <Link
+            to="/product-lab"
+            className={`${cardBase} min-h-[280px] w-full bg-lavender-soft p-7 md:min-h-0`}
+          >
+            <CornerArrow />
+            <div className="relative z-10 max-w-[58%]">
+              <Kicker className="text-ink/45">Teardowns & case studies</Kicker>
+              <h3 className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.8px] text-ink">
+                The Product Lab
+              </h3>
+              <p className="mt-2.5 text-[13px] leading-relaxed text-ink/60">
+                Behind-the-scenes breakdowns of products worth studying — what shipped,
+                what stuck, and why.
+              </p>
+            </div>
+            <img
+              src={productLabIcon}
+              alt=""
+              aria-hidden
               loading="lazy"
               width={1024}
               height={1024}
-              className="w-[68%] max-w-none translate-y-3 select-none drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)] md:w-[112%]"
+              className="pointer-events-none absolute -bottom-8 -right-6 w-[52%] max-w-[280px] select-none drop-shadow-[0_24px_44px_rgba(80,60,120,0.25)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-2 group-hover:rotate-2"
             />
-          </div>
-
-          <div className="mt-4 border-t border-white/10 pt-3">
-            <div className="text-[10px] uppercase tracking-[0.14em] text-white/35">Category</div>
-            <div className="mt-1 text-[13px] font-medium">Blog & Thoughts</div>
-          </div>
-        </Link>
-
-        {/* ---------- Tools & Templates ---------- */}
-        <Link
-          to="/tools-and-templates"
-          className="group order-3 md:order-2 flex cursor-pointer flex-col justify-between overflow-hidden rounded-[28px] bg-[#f4f4f2] p-6 ring-1 ring-black/[0.04] md:col-span-4"
-        >
-          <div>
-            <h3 className="text-[30px] font-medium leading-[1.05] tracking-[-1.2px] text-ink transition-colors duration-500 group-hover:text-[#6b7d3a]">
-              Tools &
-              <br />
-              Templates{" "}
-              <ArrowRight
-                size={24}
-                className="inline-block align-middle transition-transform duration-500 group-hover:translate-x-1.5"
-              />
-            </h3>
-
-            {/* expanding thumbnail stack */}
-            <div className="mt-5 flex items-end">
-              {[phone, slide, notes].map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt=""
-                  aria-hidden
-                  loading="lazy"
-                  style={{ transitionDelay: `${i * 60}ms`, zIndex: 3 - i }}
-                  className={[
-                    "relative h-[78px] w-[78px] rounded-[18px] object-cover shadow-[0_12px_28px_-16px_rgba(0,0,0,0.5)] ring-2 ring-[#f4f4f2]",
-                    "transition-all duration-500 [transition-timing-function:cubic-bezier(0.7,0,0.2,1)]",
-                    i === 0
-                      ? ""
-                      : i === 1
-                        ? "-ml-[60px] rotate-[4deg] group-hover:ml-1.5 group-hover:rotate-0"
-                        : "-ml-[60px] rotate-[8deg] group-hover:ml-1.5 group-hover:rotate-0",
-                  ].join(" ")}
-                />
-              ))}
-            </div>
-
-            <div className="mt-5 flex flex-wrap items-center gap-2 text-[10.5px] font-medium text-ink/55">
-              <span className="rounded-full bg-black/[0.06] px-2.5 py-1">✦ Notion</span>
-              <span className="rounded-full bg-black/[0.06] px-2.5 py-1">◐ Figma</span>
-              <span className="rounded-full bg-black/[0.06] px-2.5 py-1">20+ kits</span>
-            </div>
-          </div>
-
-          <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
-            Browse the kits
-            <ArrowRight
-              size={16}
-              className="text-butter-deep transition-transform duration-300 group-hover:translate-x-1"
-            />
-          </span>
-        </Link>
-
-        {/* ---------- The Product Lab ---------- */}
-        <Link
-          to="/product-lab"
-          className="group order-4 md:order-3 flex cursor-pointer flex-col justify-between overflow-hidden rounded-[28px] bg-[#f4f4f2] bg-cover bg-center bg-no-repeat p-6 ring-1 ring-black/[0.04] md:col-span-5"
-          style={{ backgroundImage: `url(${productLabCover.url})` }}
-        >
-          <div className="max-w-[56%]">
-            <h3 className="text-[30px] font-medium leading-[1.05] tracking-[-1.2px] text-ink transition-colors duration-500 group-hover:text-[#6b7d3a]">
-              The Product
-              <br />
-              Lab{" "}
-              <ArrowRight
-                size={24}
-                className="inline-block align-middle transition-transform duration-500 group-hover:translate-x-1.5"
-              />
-            </h3>
-
-            <p className="mt-3 text-[12.5px] leading-relaxed text-muted-ink">
-              Teardowns, case studies, and behind-the-scenes breakdowns of products worth studying.
-            </p>
-          </div>
-
-          <span className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
-            Enter the Lab
-            <ArrowRight
-              size={16}
-              className="text-butter-deep transition-transform duration-300 group-hover:translate-x-1"
-            />
-          </span>
-        </Link>
-
-        {/* ---------- resources ---------- */}
-        <article className="order-2 md:order-4 flex flex-col items-center justify-center rounded-[28px] bg-sage-soft px-6 py-12 text-center md:col-span-6">
-          <h3 className="font-serif text-[42px] italic leading-none tracking-tight text-ink sm:text-[52px]">
-            resources
-          </h3>
-          <p className="mt-3 max-w-[30ch] text-[12px] leading-relaxed text-ink/70">
-            The stack, the file, and the reads I'd hand a younger me.
-          </p>
-        </article>
-
-        {/* ---------- portrait ---------- */}
-        <div className="order-5 overflow-hidden rounded-[28px] md:col-span-3">
-          <img
-            src={reading}
-            alt="Essy reading a book at a cafe"
-            loading="lazy"
-            className="h-56 w-full object-cover md:h-full"
-          />
-        </div>
-      </div>
+          </Link>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

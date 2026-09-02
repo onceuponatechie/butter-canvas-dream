@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export function TouchBand() {
   return (
-    <section className="px-4 py-10 sm:px-8 sm:py-16">
+    <section id="newsletter" className="scroll-mt-10 px-4 py-10 sm:px-8 sm:py-16">
       <div className="mx-auto max-w-5xl overflow-hidden rounded-[28px] bg-ink p-6 text-white sm:p-10">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center">
           <div className="min-w-0">
