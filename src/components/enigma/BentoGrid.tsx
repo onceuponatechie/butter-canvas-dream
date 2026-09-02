@@ -35,7 +35,7 @@ export function BentoGrid() {
               loading="lazy"
               width={1024}
               height={1024}
-              className="w-[112%] max-w-none translate-y-3 select-none drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)]"
+              className="w-[68%] max-w-none translate-y-3 select-none drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)] md:w-[112%]"
             />
           </div>
 
