@@ -1,4 +1,5 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import reading from "@/assets/essy-reading.jpg";
 import phone from "@/assets/essy-phone.jpg";
 import slide from "@/assets/essy-slide.jpg";
@@ -11,7 +12,10 @@ export function BentoGrid() {
     <section id="resources" className="px-4 py-10 sm:px-8 sm:py-14">
       <div className="mx-auto grid max-w-6xl gap-3 sm:gap-4 md:grid-cols-12 md:grid-rows-[minmax(300px,auto)_minmax(300px,auto)]">
         {/* ---------- The Rabbit Hole (tall, left) ---------- */}
-        <article className="order-1 flex flex-col overflow-hidden rounded-[28px] bg-ink p-6 text-white md:col-span-3 md:row-span-2">
+        <Link
+          to="/blog"
+          className="group order-1 flex flex-col overflow-hidden rounded-[28px] bg-ink p-6 text-white md:col-span-3 md:row-span-2"
+        >
           <div className="flex items-center gap-2.5">
             <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-white/10 text-[13px]">
               ◐
@@ -24,9 +28,13 @@ export function BentoGrid() {
             people, ideas, and the random rabbit holes in between.
           </p>
 
-          <button className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-butter px-3.5 py-1.5 text-[11.5px] font-medium text-ink">
-            Explore <ArrowUpRight size={12} />
-          </button>
+          <span className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-butter px-3.5 py-1.5 text-[11.5px] font-medium text-ink">
+            Explore{" "}
+            <ArrowUpRight
+              size={12}
+              className="transition-transform duration-300 group-hover:translate-x-0.5"
+            />
+          </span>
 
           <div className="relative mt-6 flex flex-1 items-end justify-center">
             <img
@@ -41,15 +49,18 @@ export function BentoGrid() {
 
           <div className="mt-4 border-t border-white/10 pt-3">
             <div className="text-[10px] uppercase tracking-[0.14em] text-white/35">Category</div>
-            <div className="mt-1 text-[13px] font-medium">Blog &amp; Thoughts</div>
+            <div className="mt-1 text-[13px] font-medium">Blog & Thoughts</div>
           </div>
-        </article>
+        </Link>
 
         {/* ---------- Tools & Templates ---------- */}
-        <article className="group order-3 md:order-2 flex cursor-pointer flex-col justify-between overflow-hidden rounded-[28px] bg-[#f4f4f2] p-6 ring-1 ring-black/[0.04] md:col-span-4">
+        <Link
+          to="/tools-and-templates"
+          className="group order-3 md:order-2 flex cursor-pointer flex-col justify-between overflow-hidden rounded-[28px] bg-[#f4f4f2] p-6 ring-1 ring-black/[0.04] md:col-span-4"
+        >
           <div>
             <h3 className="text-[30px] font-medium leading-[1.05] tracking-[-1.2px] text-ink transition-colors duration-500 group-hover:text-[#6b7d3a]">
-              Tools &amp;
+              Tools &
               <br />
               Templates{" "}
               <ArrowRight
@@ -88,17 +99,18 @@ export function BentoGrid() {
             </div>
           </div>
 
-          <button className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
+          <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
             Browse the kits
             <ArrowRight
               size={16}
               className="text-butter-deep transition-transform duration-300 group-hover:translate-x-1"
             />
-          </button>
-        </article>
+          </span>
+        </Link>
 
         {/* ---------- The Product Lab ---------- */}
-        <article
+        <Link
+          to="/product-lab"
           className="group order-4 md:order-3 flex cursor-pointer flex-col justify-between overflow-hidden rounded-[28px] bg-[#f4f4f2] bg-cover bg-center bg-no-repeat p-6 ring-1 ring-black/[0.04] md:col-span-5"
           style={{ backgroundImage: `url(${productLabCover.url})` }}
         >
@@ -118,14 +130,14 @@ export function BentoGrid() {
             </p>
           </div>
 
-          <button className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
+          <span className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
             Enter the Lab
             <ArrowRight
               size={16}
               className="text-butter-deep transition-transform duration-300 group-hover:translate-x-1"
             />
-          </button>
-        </article>
+          </span>
+        </Link>
 
         {/* ---------- resources ---------- */}
         <article className="order-2 md:order-4 flex flex-col items-center justify-center rounded-[28px] bg-sage-soft px-6 py-12 text-center md:col-span-6">
