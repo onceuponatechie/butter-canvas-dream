@@ -103,7 +103,7 @@ function MediaChip({ offset, delay }: { offset: number; delay: number }) {
       initial={{ opacity: 0, scale: 0.6 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.45, ease: EASE, delay }}
-      className="relative mx-[6px] inline-block h-9 w-[60px] overflow-hidden rounded-2xl border border-white/20 align-middle shadow-[0_20px_40px_-18px_rgba(0,0,0,0.45)] sm:h-11 sm:w-[72px]"
+      className="relative mx-[6px] inline-block h-11 w-[72px] overflow-hidden rounded-2xl border border-white/20 align-middle shadow-[0_20px_40px_-18px_rgba(0,0,0,0.45)]"
       style={{ backgroundColor: "hsl(0 0% 12%)" }}
     >
       {heroImages.map((src, idx) => (
