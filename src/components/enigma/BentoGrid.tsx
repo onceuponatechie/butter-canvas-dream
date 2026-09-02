@@ -1,4 +1,5 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import reading from "@/assets/essy-reading.jpg";
 import phone from "@/assets/essy-phone.jpg";
 import slide from "@/assets/essy-slide.jpg";
