@@ -113,7 +113,7 @@ export function BentoGrid() {
             </div>
 
             {/* fanned photo stack that spreads as it scrolls into view */}
-            <div className="pointer-events-none absolute bottom-0 right-4 flex items-end sm:right-6">
+            <div className="pointer-events-none absolute bottom-0 right-5 flex items-end lg:right-7">
               {[phone, slide, notes].map((src, i) => (
                 <motion.img
                   key={i}
@@ -130,11 +130,11 @@ export function BentoGrid() {
                   viewport={{ once: true, amount: 0.6 }}
                   transition={{ delay: 0.4 + i * 0.1, duration: 0.7, ease: EASE }}
                   style={{ zIndex: i }}
-                  className="relative h-[132px] w-[84px] rounded-[14px] object-cover shadow-[0_16px_34px_-18px_rgba(0,0,0,0.45)] ring-[3px] ring-[#f4f4f2] sm:h-[168px] sm:w-[104px]"
+                  className="relative h-[120px] w-[76px] rounded-[14px] object-cover shadow-[0_16px_34px_-18px_rgba(0,0,0,0.45)] ring-[3px] ring-[#f4f4f2] lg:h-[160px] lg:w-[100px]"
                 />
               ))}
               {/* minimalist circular icon centred over the stack */}
-              <span className="absolute bottom-[38%] left-1/2 grid h-11 w-11 -translate-x-1/2 place-items-center rounded-full bg-ink ring-[4px] ring-[#f4f4f2] sm:h-14 sm:w-14">
+              <span className="absolute bottom-[34%] left-1/2 z-10 grid h-10 w-10 -translate-x-1/2 place-items-center rounded-full bg-ink ring-[4px] ring-[#f4f4f2] lg:h-13 lg:w-13">
                 <Sparkles size={18} className="text-butter" />
               </span>
             </div>
