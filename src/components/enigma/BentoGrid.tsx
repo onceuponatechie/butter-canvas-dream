@@ -186,17 +186,23 @@ export function BentoGrid() {
         {/* ---------- courses — the serif accent card ---------- */}
         <motion.div variants={cardReveal} className="order-4 flex md:col-span-3">
           <Link to="/courses" className={`${cardBase} w-full justify-between bg-sage-soft p-7`}>
-            <CornerArrow />
             <div>
               <Kicker className="text-ink/45">Courses & certifications</Kicker>
               <h3 className="mt-3 font-serif text-[34px] italic leading-none tracking-tight text-ink">
                 the classroom
               </h3>
-              <p className="mt-3 max-w-[24ch] text-[13px] leading-relaxed text-ink/70">
-                Courses I'm building, the sharpest ones I've curated — and the
-                certifications earned along the way.
+              <p className="mt-3 text-[13px] leading-relaxed text-ink/70 md:max-w-[26ch]">
+                Courses I'm building, the ones I've curated, and the certifications
+                earned along the way.
               </p>
             </div>
+            <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
+              Enter the classroom
+              <ArrowRight
+                size={16}
+                className="text-butter-deep transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </span>
           </Link>
         </motion.div>
 
@@ -206,17 +212,24 @@ export function BentoGrid() {
             to="/product-lab"
             className={`${cardBase} min-h-[280px] w-full bg-stone p-7 ring-1 ring-black/5 md:min-h-0`}
           >
-            <CornerArrow />
-            <div className="relative z-10 max-w-[58%]">
+            <div className="relative z-10 max-w-[62%]">
               <Kicker className="text-ink/45">Teardowns & case studies</Kicker>
               <h3 className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.8px] text-ink">
                 The Product Lab
               </h3>
               <p className="mt-2.5 text-[13px] leading-relaxed text-ink/60">
-                Behind-the-scenes breakdowns of products worth studying — what shipped,
-                what stuck, and why.
+                Breakdowns of products worth studying — what shipped, what stuck, and why.
               </p>
             </div>
+            {/* spacer keeps a minimum gap while pushing the button to the bottom */}
+            <div className="min-h-6 flex-1" />
+            <span className="relative z-10 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
+              Enter the Lab
+              <ArrowRight
+                size={16}
+                className="text-butter-deep transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </span>
             <img
               src={productLabIcon}
               alt=""
@@ -224,7 +237,7 @@ export function BentoGrid() {
               loading="lazy"
               width={1024}
               height={1024}
-              className="pointer-events-none absolute -bottom-8 -right-6 w-[52%] max-w-[280px] select-none drop-shadow-[0_24px_44px_rgba(17,17,17,0.18)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-2 group-hover:rotate-2"
+              className="pointer-events-none absolute -bottom-6 -right-4 w-[39%] max-w-[210px] select-none drop-shadow-[0_24px_44px_rgba(17,17,17,0.18)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-2 group-hover:rotate-2"
             />
           </Link>
         </motion.div>
