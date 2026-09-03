@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Nav } from "@/components/enigma/Nav";
 import { Footer } from "@/components/enigma/TouchBand";
@@ -176,8 +176,8 @@ function ToolsPage() {
                 One Notion + Figma pack with everything above, plus new kits as I make them.
               </p>
             </div>
-            <button className="inline-flex shrink-0 items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
-              Browse the kits <ArrowRight size={15} />
+            <button className="inline-flex shrink-0 items-center rounded-full bg-ink px-6 py-2.5 text-[12px] font-medium text-white transition-opacity hover:opacity-90">
+              Browse the kits
             </button>
           </div>
         </section>

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Nav } from "@/components/enigma/Nav";
 import { Footer } from "@/components/enigma/TouchBand";
 import laptopDash from "@/assets/essy-laptop-dash.jpg";
@@ -273,11 +273,8 @@ function CoursesPage() {
                 letter — one idea, one artifact, every week.
               </p>
             </div>
-            <a
-              href="/#newsletter"
-              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white"
-            >
-              Get the letter <ArrowRight size={15} />
+            <a href="/#newsletter" className="inline-flex shrink-0 items-center rounded-full bg-ink px-6 py-2.5 text-[12px] font-medium text-white transition-opacity hover:opacity-90">
+              Get the letter
             </a>
           </div>
         </section>

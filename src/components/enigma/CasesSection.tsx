@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import books from "@/assets/essy-books.jpg";
 import slide from "@/assets/essy-slide.jpg";
@@ -7,7 +6,7 @@ import notes from "@/assets/essy-notes.jpg";
 import laptopDash from "@/assets/essy-laptop-dash.jpg";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
-const INTERVAL = 4000;
+const INTERVAL = 6000;
 
 type Row = { label: string; detail: string; value: string };
 
@@ -139,18 +138,8 @@ export function CasesSection() {
           </motion.div>
         </div>
 
-        {/* manual controls */}
-        <div className="mt-10 flex items-center justify-center gap-4">
-          <button
-            type="button"
-            onClick={prev}
-            aria-label="Previous adventure"
-            className="grid h-9 w-9 place-items-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-white"
-          >
-            <ArrowLeft size={15} />
-          </button>
-
-          <div className="flex items-center gap-2.5">
+        {/* dots — swipe the card itself to move between adventures */}
+        <div className="mt-10 flex items-center justify-center gap-2.5">
           {adventures.map((a, i) => (
             <button
               key={a.title}
@@ -163,16 +152,6 @@ export function CasesSection() {
               }`}
             />
           ))}
-          </div>
-
-          <button
-            type="button"
-            onClick={next}
-            aria-label="Next adventure"
-            className="grid h-9 w-9 place-items-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-white"
-          >
-            <ArrowRight size={15} />
-          </button>
         </div>
       </div>
     </section>
@@ -229,15 +208,8 @@ function AdventureCard({ tag, title, subtitle, body, img, alt, to, cta, rows, qu
           </div>
         )}
 
-        <a
-          href={to}
-          className="group/cta mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white"
-        >
+        <a href={to} className={`mt-8 inline-flex w-fit items-center rounded-full bg-ink px-6 py-2.5 text-[12px] font-medium text-white transition-opacity hover:opacity-90`}>
           {cta}
-          <ArrowUpRight
-            size={15}
-            className="text-butter-deep transition-transform duration-300 group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
-          />
         </a>
       </div>
     </article>

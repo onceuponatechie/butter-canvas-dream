@@ -65,15 +65,8 @@ export function Footer() {
             Research, product, or a story that needs telling — the door is open.
           </p>
 
-          <a
-            href="/#contact"
-            className="group mt-6 inline-flex items-center gap-1.5 rounded-full bg-ink px-5 py-2.5 text-[12px] font-medium text-white"
-          >
+          <a href="/#contact" className="mt-6 inline-flex items-center rounded-full bg-ink px-6 py-2.5 text-[12px] font-medium text-white transition-opacity hover:opacity-90">
             Book a coffee
-            <ArrowUpRight
-              size={13}
-              className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            />
           </a>
 
           <nav className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12.5px] font-medium text-ink/75">

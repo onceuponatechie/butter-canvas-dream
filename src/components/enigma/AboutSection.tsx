@@ -6,7 +6,7 @@ export function AboutSection() {
           What I Do
         </div>
         <div className="rounded-[28px] border border-black/10 bg-transparent px-6 py-12 sm:px-14 sm:py-16">
-          <p className="text-center text-[clamp(18px,2.4vw,28px)] leading-[1.45] tracking-tight text-ink/70">
+          <p className="text-center text-[24px] leading-[1.45] tracking-tight text-ink/70 sm:text-[clamp(18px,2.4vw,28px)]">
             I follow curiosity down rabbit holes — into products, people, and the technology
             shaping both. Then I turn what I find into experiments, tools, and stories you can
             actually use.{" "}

@@ -83,10 +83,6 @@ export function PromiseSection() {
           className="group inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors hover:bg-ink hover:text-white"
         >
           Explore all projects
-          <ArrowUpRight
-            size={14}
-            className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-          />
         </a>
       </motion.div>
     </section>
@@ -200,15 +196,8 @@ function ProjectCard({
               {body}
             </p>
             <div className="relative z-20 mt-1 flex flex-wrap items-center gap-4">
-              <a
-                href="#projects"
-                className="group/btn inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-[12px] font-medium text-white transition-colors hover:bg-sage"
-              >
+              <a href="#projects" className="inline-flex items-center rounded-full bg-ink px-6 py-2.5 text-[12px] font-medium text-white transition-opacity hover:opacity-90">
                 View Case Study
-                <ArrowUpRight
-                  size={13}
-                  className="transition-transform group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5"
-                />
               </a>
               <a
                 href="#projects"
