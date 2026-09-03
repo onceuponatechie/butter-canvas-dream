@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Layers } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import reading from "@/assets/essy-reading.jpg";
@@ -95,37 +95,69 @@ export function BentoGrid() {
         <motion.div variants={cardReveal} className="order-2 flex md:col-span-5">
           <Link
             to="/tools-and-templates"
-            className={`${cardBase} w-full justify-between bg-paper p-7 ring-1 ring-black/5`}
+            className={`${cardBase} w-full bg-stone p-7 ring-1 ring-black/5`}
           >
-            <CornerArrow />
-            <div>
-              <Kicker className="text-muted-ink">Free kits & files</Kicker>
-              <h3 className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.8px] text-ink">
-                Tools & Templates
-              </h3>
-              <p className="mt-2.5 max-w-[34ch] text-[13px] leading-relaxed text-muted-ink">
-                The Notion systems, Figma files, and checklists I actually use — packaged
-                up and free to take.
-              </p>
-            </div>
+            <div className="flex flex-1 items-center gap-4">
+              {/* copy + the site's own pill button */}
+              <div className="flex min-w-0 flex-1 flex-col justify-between self-stretch">
+                <div>
+                  <Kicker className="text-muted-ink">Free kits & files</Kicker>
+                  <h3 className="mt-3 text-[24px] font-medium leading-tight tracking-[-0.8px] text-ink lg:text-[26px]">
+                    Tools & Templates
+                  </h3>
+                  <p className="mt-2.5 text-[13px] leading-relaxed text-muted-ink">
+                    The systems, files, and checklists I actually use — packaged up and
+                    free to take.
+                  </p>
+                </div>
 
-            {/* thumbnail fan that spreads as it scrolls into view */}
-            <div className="mt-6 flex items-end">
-              {[phone, slide, notes].map((src, i) => (
-                <motion.img
-                  key={i}
-                  src={src}
-                  alt=""
-                  aria-hidden
-                  loading="lazy"
-                  initial={{ marginLeft: i === 0 ? 0 : -54, rotate: i === 1 ? 4 : i === 2 ? 8 : 0 }}
-                  whileInView={{ marginLeft: i === 0 ? 0 : 6, rotate: 0 }}
-                  viewport={{ once: true, amount: 0.8 }}
-                  transition={{ delay: 0.45 + i * 0.1, duration: 0.6, ease: EASE }}
-                  style={{ zIndex: 3 - i }}
-                  className="relative h-[72px] w-[72px] rounded-[16px] object-cover shadow-[0_12px_28px_-16px_rgba(0,0,0,0.5)] ring-2 ring-paper"
-                />
-              ))}
+                <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
+                  Browse the kits
+                  <ArrowRight
+                    size={16}
+                    className="text-butter-deep transition-transform duration-300 group-hover:translate-x-1"
+                  />
+                </span>
+              </div>
+
+              {/* fanned cards — sized in % of their column so they scale with the
+                  card instead of colliding with the copy on narrow widths */}
+              <div className="flex w-[40%] max-w-[200px] shrink-0 items-center">
+                <div className="relative aspect-[196/145] w-full">
+                  {[
+                    { src: phone, left: "0%", top: "4.8%", rotate: -9 },
+                    { src: slide, left: "26.5%", top: "0%", rotate: -1 },
+                    { src: notes, left: "53%", top: "6.2%", rotate: 8 },
+                  ].map((c, i) => (
+                    <motion.img
+                      key={i}
+                      src={c.src}
+                      alt=""
+                      aria-hidden
+                      loading="lazy"
+                      initial={{ x: `${(1 - i) * 53}%`, rotate: 0, opacity: 0 }}
+                      whileInView={{ x: "0%", rotate: c.rotate, opacity: 1 }}
+                      viewport={{ once: true, amount: 0.6 }}
+                      transition={{ delay: 0.35 + i * 0.12, duration: 0.7, ease: EASE }}
+                      style={{ left: c.left, top: c.top, zIndex: 3 - i }}
+                      className="absolute h-[94%] w-[47%] rounded-[14px] object-cover shadow-[0_16px_34px_-18px_rgba(0,0,0,0.45)] ring-1 ring-black/[0.06]"
+                    />
+                  ))}
+
+                  {/* minimalist circular badge sitting over the fan */}
+                  <motion.span
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{ delay: 0.8, type: "spring", stiffness: 250, damping: 18 }}
+                    className="absolute bottom-[8%] left-[36%] z-10 grid aspect-square w-[24%] place-items-center rounded-full bg-paper shadow-[0_10px_24px_-10px_rgba(0,0,0,0.4)] ring-1 ring-black/[0.06]"
+                  >
+                    <span className="grid aspect-square w-[58%] place-items-center rounded-full bg-sage-soft text-ink">
+                      <Layers size={12} />
+                    </span>
+                  </motion.span>
+                </div>
+              </div>
             </div>
           </Link>
         </motion.div>
@@ -172,7 +204,7 @@ export function BentoGrid() {
         <motion.div variants={cardReveal} className="order-3 md:order-5 flex md:col-span-5">
           <Link
             to="/product-lab"
-            className={`${cardBase} min-h-[280px] w-full bg-lavender-soft p-7 md:min-h-0`}
+            className={`${cardBase} min-h-[280px] w-full bg-stone p-7 ring-1 ring-black/5 md:min-h-0`}
           >
             <CornerArrow />
             <div className="relative z-10 max-w-[58%]">
@@ -192,7 +224,7 @@ export function BentoGrid() {
               loading="lazy"
               width={1024}
               height={1024}
-              className="pointer-events-none absolute -bottom-8 -right-6 w-[52%] max-w-[280px] select-none drop-shadow-[0_24px_44px_rgba(80,60,120,0.25)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-2 group-hover:rotate-2"
+              className="pointer-events-none absolute -bottom-8 -right-6 w-[52%] max-w-[280px] select-none drop-shadow-[0_24px_44px_rgba(17,17,17,0.18)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-2 group-hover:rotate-2"
             />
           </Link>
         </motion.div>
