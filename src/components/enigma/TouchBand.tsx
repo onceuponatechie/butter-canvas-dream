@@ -57,7 +57,7 @@ export function Footer() {
     <footer className="relative overflow-hidden px-4 pb-10 pt-6 sm:px-8">
       <div className="relative mx-auto max-w-5xl">
 
-        <div className="rounded-[24px] bg-white p-8 text-center ring-1 ring-black/5 sm:p-12">
+        <div className="bg-veil rounded-[24px] p-8 text-center ring-1 ring-black/[0.07] sm:p-12">
           <h3 className="mx-auto max-w-[20ch] text-[clamp(22px,2.4vw,30px)] font-medium leading-tight tracking-tight">
             Let's build something people <span className="font-serif italic">remember</span>.
           </h3>

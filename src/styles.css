@@ -159,6 +159,19 @@
   }
 }
 
+/* Soft white-to-grey wash echoing the hero cover, so large panels that would
+   otherwise sit at pure white carry the same depth. Pairs with a light ring. */
+@utility bg-veil {
+  background-color: #fbfbfa;
+  background-image: radial-gradient(
+    132% 116% at 50% -16%,
+    #ffffff 0%,
+    #fcfcfb 40%,
+    #f4f3f1 78%,
+    #efeeec 100%
+  );
+}
+
 @keyframes floaty {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
