@@ -130,7 +130,7 @@ export function BentoGrid() {
                   viewport={{ once: true, amount: 0.6 }}
                   transition={{ delay: 0.4 + i * 0.1, duration: 0.7, ease: EASE }}
                   style={{ zIndex: i }}
-                  className="relative h-[120px] w-[76px] rounded-[14px] object-cover shadow-[0_16px_34px_-18px_rgba(0,0,0,0.45)] ring-[3px] ring-[#f4f4f2] lg:h-[160px] lg:w-[100px]"
+                  className="relative h-[104px] w-[66px] rounded-[14px] object-cover shadow-[0_16px_34px_-18px_rgba(0,0,0,0.45)] ring-[3px] ring-[#f4f4f2] lg:h-[160px] lg:w-[100px]"
                 />
               ))}
               {/* minimalist circular icon centred over the stack */}
