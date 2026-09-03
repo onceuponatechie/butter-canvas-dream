@@ -110,29 +110,22 @@ export function BentoGrid() {
             </div>
 
             {/* thumbnail fan that spreads as it scrolls into view */}
-            <div className="mt-6 flex items-end justify-between gap-4">
-              <div className="flex items-end">
-                {[phone, slide, notes].map((src, i) => (
-                  <motion.img
-                    key={i}
-                    src={src}
-                    alt=""
-                    aria-hidden
-                    loading="lazy"
-                    initial={{ marginLeft: i === 0 ? 0 : -54, rotate: i === 1 ? 4 : i === 2 ? 8 : 0 }}
-                    whileInView={{ marginLeft: i === 0 ? 0 : 6, rotate: 0 }}
-                    viewport={{ once: true, amount: 0.8 }}
-                    transition={{ delay: 0.45 + i * 0.1, duration: 0.6, ease: EASE }}
-                    style={{ zIndex: 3 - i }}
-                    className="relative h-[72px] w-[72px] rounded-[16px] object-cover shadow-[0_12px_28px_-16px_rgba(0,0,0,0.5)] ring-2 ring-paper"
-                  />
-                ))}
-              </div>
-              <div className="flex flex-wrap items-center justify-end gap-2 text-[10.5px] font-medium text-ink/55">
-                <span className="rounded-full bg-black/[0.05] px-2.5 py-1">✦ Skip the blank page</span>
-                <span className="rounded-full bg-black/[0.05] px-2.5 py-1">◐ Steal my workflow</span>
-                <span className="rounded-full bg-black/[0.05] px-2.5 py-1">✿ Free to start</span>
-              </div>
+            <div className="mt-6 flex items-end">
+              {[phone, slide, notes].map((src, i) => (
+                <motion.img
+                  key={i}
+                  src={src}
+                  alt=""
+                  aria-hidden
+                  loading="lazy"
+                  initial={{ marginLeft: i === 0 ? 0 : -54, rotate: i === 1 ? 4 : i === 2 ? 8 : 0 }}
+                  whileInView={{ marginLeft: i === 0 ? 0 : 6, rotate: 0 }}
+                  viewport={{ once: true, amount: 0.8 }}
+                  transition={{ delay: 0.45 + i * 0.1, duration: 0.6, ease: EASE }}
+                  style={{ zIndex: 3 - i }}
+                  className="relative h-[72px] w-[72px] rounded-[16px] object-cover shadow-[0_12px_28px_-16px_rgba(0,0,0,0.5)] ring-2 ring-paper"
+                />
+              ))}
             </div>
           </Link>
         </motion.div>
@@ -171,11 +164,6 @@ export function BentoGrid() {
                 Courses I'm building, the sharpest ones I've curated — and the
                 certifications earned along the way.
               </p>
-            </div>
-            <div className="mt-6 flex flex-wrap items-center gap-2 text-[10.5px] font-medium text-ink/60">
-              <span className="rounded-full bg-ink/[0.06] px-2.5 py-1">✦ Built</span>
-              <span className="rounded-full bg-ink/[0.06] px-2.5 py-1">◐ Curated</span>
-              <span className="rounded-full bg-ink/[0.06] px-2.5 py-1">★ Certified</span>
             </div>
           </Link>
         </motion.div>
