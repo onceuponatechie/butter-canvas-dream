@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import heroCover from "@/assets/hero-cover.png.asset.json";
 
 
 
@@ -57,54 +58,66 @@ export function Footer() {
     <footer className="relative overflow-hidden px-4 pb-10 pt-6 sm:px-8">
       <div className="relative mx-auto max-w-5xl">
 
-        <div className="rounded-[24px] bg-white p-8 text-center ring-1 ring-black/5 sm:p-12">
-          <h3 className="mx-auto max-w-[20ch] text-[clamp(22px,2.4vw,30px)] font-medium leading-tight tracking-tight">
-            Let's build something people <span className="font-serif italic">remember</span>.
-          </h3>
-          <p className="mx-auto mt-3 max-w-[38ch] text-[13px] leading-relaxed text-muted-ink">
-            Research, product, or a story that needs telling — the door is open.
-          </p>
+        {/* same cover art as the hero, flipped vertically so the grey sits at
+            the bottom instead of the top */}
+        <div className="relative overflow-hidden rounded-[24px] bg-white p-8 text-center ring-1 ring-black/5 sm:p-12">
+          <img
+            src={heroCover.url}
+            alt=""
+            aria-hidden
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+            style={{ transform: "scaleY(-1)" }}
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-backdrop via-transparent to-transparent" />
+          <div className="relative">
+            <h3 className="mx-auto max-w-[20ch] text-[clamp(22px,2.4vw,30px)] font-medium leading-tight tracking-tight">
+              Let's build something people <span className="font-serif italic">remember</span>.
+            </h3>
+            <p className="mx-auto mt-3 max-w-[38ch] text-[13px] leading-relaxed text-muted-ink">
+              Research, product, or a story that needs telling — the door is open.
+            </p>
 
-          <a href="/#contact" className="mt-6 inline-flex items-center rounded-full bg-ink px-6 py-2.5 text-[12px] font-medium text-white transition-opacity hover:opacity-90">
-            Book a coffee
-          </a>
-
-          <nav className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12.5px] font-medium text-ink/75">
-            {[
-              { label: "Home", href: "/" },
-              { label: "Why Not Build?", href: "/blog" },
-              { label: "Tools & Templates", href: "/tools-and-templates" },
-              { label: "The Product Lab", href: "/product-lab" },
-              { label: "Courses", href: "/courses" },
-              { label: "Projects", href: "/#projects" },
-              { label: "About", href: "/#about" },
-            ].map((l) => (
-              <a key={l.label} href={l.href} className="transition-colors hover:text-ink">
-                {l.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[12px] text-muted-ink">
-            {["Twitter / X", "LinkedIn", "Instagram"].map((l) => (
-              <a key={l} href="#" className="transition-colors hover:text-ink">
-                {l}
-              </a>
-            ))}
-            <a href="mailto:hi@essyudeme.com" className="transition-colors hover:text-ink">
-              hi@essyudeme.com
+            <a href="/#contact" className="mt-6 inline-flex items-center rounded-full bg-ink px-6 py-2.5 text-[12px] font-medium text-white transition-opacity hover:opacity-90">
+              Book a coffee
             </a>
-          </div>
 
-          <div className="mt-9 border-t border-black/5 pt-5 text-[11px] text-muted-ink">
-            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-              <a href="#" className="transition-colors hover:text-ink">Privacy</a>
-              <span className="h-1 w-1 rounded-full bg-ink/15" />
-              <a href="#" className="transition-colors hover:text-ink">Colophon</a>
-              <span className="h-1 w-1 rounded-full bg-ink/15" />
-              <span>Lagos → Everywhere</span>
+            <nav className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12.5px] font-medium text-ink/75">
+              {[
+                { label: "Home", href: "/" },
+                { label: "Why Not Build?", href: "/blog" },
+                { label: "Tools & Templates", href: "/tools-and-templates" },
+                { label: "The Product Lab", href: "/product-lab" },
+                { label: "Courses", href: "/courses" },
+                { label: "Projects", href: "/#projects" },
+                { label: "About", href: "/#about" },
+              ].map((l) => (
+                <a key={l.label} href={l.href} className="transition-colors hover:text-ink">
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[12px] text-muted-ink">
+              {["Twitter / X", "LinkedIn", "Instagram"].map((l) => (
+                <a key={l} href="#" className="transition-colors hover:text-ink">
+                  {l}
+                </a>
+              ))}
+              <a href="mailto:hi@essyudeme.com" className="transition-colors hover:text-ink">
+                hi@essyudeme.com
+              </a>
             </div>
-            <div className="mt-3">© 2026 Essy Udeme — made with care.</div>
+
+            <div className="mt-9 border-t border-black/5 pt-5 text-[11px] text-muted-ink">
+              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+                <a href="#" className="transition-colors hover:text-ink">Privacy</a>
+                <span className="h-1 w-1 rounded-full bg-ink/15" />
+                <a href="#" className="transition-colors hover:text-ink">Colophon</a>
+                <span className="h-1 w-1 rounded-full bg-ink/15" />
+                <span>Lagos → Everywhere</span>
+              </div>
+              <div className="mt-3">© 2026 Essy Udeme — made with care.</div>
+            </div>
           </div>
         </div>
 
