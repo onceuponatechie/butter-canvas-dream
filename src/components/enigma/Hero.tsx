@@ -175,7 +175,7 @@ export function Hero() {
 
 
         <motion.p variants={fadeUp} className="mt-7 text-[16px] text-ink/70">
-          Creator
+          Researcher
           <span className="mx-2 opacity-50">·</span>
           Builder
           <span className="mx-2 opacity-50">·</span>

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Nav } from "@/components/enigma/Nav";
 import { Footer } from "@/components/enigma/TouchBand";
 import rabbitHole from "@/assets/rabbit-hole-3d.png";
@@ -170,8 +170,8 @@ function BlogPage() {
                       {p.excerpt}
                     </p>
                   </div>
-                  <span className="inline-flex shrink-0 items-center gap-1.5 self-start rounded-full bg-ink px-4 py-2 text-[12px] font-medium text-white sm:self-center">
-                    Read <ArrowRight size={13} />
+                  <span className="inline-flex shrink-0 items-center self-start rounded-full bg-ink px-6 py-2.5 text-[12px] font-medium text-white transition-opacity hover:opacity-90 sm:self-center">
+                    Read
                   </span>
                 </article>
               ))}
