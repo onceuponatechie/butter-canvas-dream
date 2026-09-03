@@ -35,7 +35,9 @@ function Index() {
   return (
     <div className="min-h-screen bg-backdrop">
       <Preloader />
-      <main className="relative mx-auto w-full max-w-[1440px] overflow-hidden bg-backdrop">
+      {/* overflow-x-clip (not overflow-hidden) — a hidden ancestor disables the
+          position:sticky card stacking in the projects section */}
+      <main className="relative mx-auto w-full max-w-[1440px] overflow-x-clip bg-backdrop">
         <div className="relative overflow-hidden">
           <img
             src={heroCover.url}

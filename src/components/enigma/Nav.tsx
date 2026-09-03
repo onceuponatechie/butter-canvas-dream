@@ -7,6 +7,7 @@ type ResourceChild = { label: string; to: string };
 const resourceChildren: ResourceChild[] = [
   { label: "Tools & Templates", to: "/tools-and-templates" },
   { label: "The Product Lab", to: "/product-lab" },
+  { label: "Courses & Certifications", to: "/courses" },
 ];
 
 export function Nav() {

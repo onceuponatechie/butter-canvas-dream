@@ -109,33 +109,29 @@ export function BentoGrid() {
               </p>
             </div>
 
-            {/* thumbnail fan that spreads on hover */}
+            {/* thumbnail fan that spreads as it scrolls into view */}
             <div className="mt-6 flex items-end justify-between gap-4">
               <div className="flex items-end">
                 {[phone, slide, notes].map((src, i) => (
-                  <img
+                  <motion.img
                     key={i}
                     src={src}
                     alt=""
                     aria-hidden
                     loading="lazy"
-                    style={{ transitionDelay: `${i * 60}ms`, zIndex: 3 - i }}
-                    className={[
-                      "relative h-[72px] w-[72px] rounded-[16px] object-cover shadow-[0_12px_28px_-16px_rgba(0,0,0,0.5)] ring-2 ring-paper",
-                      "transition-all duration-500 [transition-timing-function:cubic-bezier(0.7,0,0.2,1)]",
-                      i === 0
-                        ? ""
-                        : i === 1
-                          ? "-ml-[54px] rotate-[4deg] group-hover:ml-1.5 group-hover:rotate-0"
-                          : "-ml-[54px] rotate-[8deg] group-hover:ml-1.5 group-hover:rotate-0",
-                    ].join(" ")}
+                    initial={{ marginLeft: i === 0 ? 0 : -54, rotate: i === 1 ? 4 : i === 2 ? 8 : 0 }}
+                    whileInView={{ marginLeft: i === 0 ? 0 : 6, rotate: 0 }}
+                    viewport={{ once: true, amount: 0.8 }}
+                    transition={{ delay: 0.45 + i * 0.1, duration: 0.6, ease: EASE }}
+                    style={{ zIndex: 3 - i }}
+                    className="relative h-[72px] w-[72px] rounded-[16px] object-cover shadow-[0_12px_28px_-16px_rgba(0,0,0,0.5)] ring-2 ring-paper"
                   />
                 ))}
               </div>
               <div className="flex flex-wrap items-center justify-end gap-2 text-[10.5px] font-medium text-ink/55">
-                <span className="rounded-full bg-black/[0.05] px-2.5 py-1">✦ Notion</span>
-                <span className="rounded-full bg-black/[0.05] px-2.5 py-1">◐ Figma</span>
-                <span className="rounded-full bg-black/[0.05] px-2.5 py-1">20+ kits</span>
+                <span className="rounded-full bg-black/[0.05] px-2.5 py-1">✦ Skip the blank page</span>
+                <span className="rounded-full bg-black/[0.05] px-2.5 py-1">◐ Steal my workflow</span>
+                <span className="rounded-full bg-black/[0.05] px-2.5 py-1">✿ Free to start</span>
               </div>
             </div>
           </Link>
@@ -164,23 +160,24 @@ export function BentoGrid() {
 
         {/* ---------- courses — the serif accent card ---------- */}
         <motion.div variants={cardReveal} className="order-4 flex md:col-span-3">
-          <article className="relative flex w-full flex-col justify-between overflow-hidden rounded-[28px] bg-sage-soft p-7">
+          <Link to="/courses" className={`${cardBase} w-full justify-between bg-sage-soft p-7`}>
+            <CornerArrow />
             <div>
-              <Kicker className="text-ink/45">Courses & curations</Kicker>
+              <Kicker className="text-ink/45">Courses & certifications</Kicker>
               <h3 className="mt-3 font-serif text-[34px] italic leading-none tracking-tight text-ink">
                 the classroom
               </h3>
               <p className="mt-3 max-w-[24ch] text-[13px] leading-relaxed text-ink/70">
-                Courses I'm building, plus the sharpest ones I've found on the web —
-                curated for people building their way in.
+                Courses I'm building, the sharpest ones I've curated — and the
+                certifications earned along the way.
               </p>
             </div>
-            <div className="mt-6">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-ink/[0.06] px-3 py-1.5 text-[10.5px] font-medium text-ink/70">
-                ✦ First class in session soon
-              </span>
+            <div className="mt-6 flex flex-wrap items-center gap-2 text-[10.5px] font-medium text-ink/60">
+              <span className="rounded-full bg-ink/[0.06] px-2.5 py-1">✦ Built</span>
+              <span className="rounded-full bg-ink/[0.06] px-2.5 py-1">◐ Curated</span>
+              <span className="rounded-full bg-ink/[0.06] px-2.5 py-1">★ Certified</span>
             </div>
-          </article>
+          </Link>
         </motion.div>
 
         {/* ---------- The Product Lab ---------- */}
