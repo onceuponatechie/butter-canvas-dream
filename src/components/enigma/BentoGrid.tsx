@@ -58,35 +58,25 @@ const cardBase =
 
 export function BentoGrid() {
   return (
-    <section id="resources" className="px-4 py-14 sm:px-8 sm:py-20">
-      {/* header — the section title lives up here, not trapped inside a cell */}
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-[clamp(28px,3.6vw,44px)] font-medium tracking-tight text-ink">
-          start with the <span className="font-serif italic">good stuff</span>
-        </h2>
-        <p className="mx-auto mt-2 max-w-md text-[12px] text-muted-ink">
-          The stack, the file, and the reads I'd hand a younger me.
-        </p>
-      </div>
-
+    <section id="resources" className="px-4 pb-14 pt-0 sm:px-8 sm:pb-20">
       <motion.div
         variants={gridStagger}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
-        className="mx-auto mt-10 grid max-w-6xl gap-4 md:grid-cols-12 md:grid-rows-[minmax(290px,auto)_minmax(290px,auto)]"
+        className="mx-auto grid max-w-6xl gap-4 md:grid-cols-12 md:grid-rows-[minmax(290px,auto)_minmax(290px,auto)]"
       >
-        {/* ---------- The Rabbit Hole — dark anchor, tall left ---------- */}
+        {/* ---------- Why Not Build? — dark anchor, tall left ---------- */}
         <motion.div variants={cardReveal} className="order-1 flex md:col-span-4 md:row-span-2">
           <Link to="/blog" className={`${cardBase} w-full bg-ink p-7 text-white`}>
             <CornerArrow tone="dark" />
-            <Kicker className="text-white/40">Blog & Thoughts</Kicker>
+            <Kicker className="text-white/40">The Publication</Kicker>
             <h3 className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.8px]">
-              The Rabbit Hole
+              Why Not Build?
             </h3>
             <p className="mt-2.5 max-w-[28ch] text-[13px] leading-relaxed text-white/60">
-              Deep dives into products, people, ideas — and the strange little tunnels
-              between them.
+              Turning curiosity into action — deep dives into products, people, careers,
+              and the ideas worth building.
             </p>
             <div className="relative mt-6 flex flex-1 items-end justify-center">
               <img
@@ -172,27 +162,25 @@ export function BentoGrid() {
           </a>
         </motion.div>
 
-        {/* ---------- newsletter — the serif accent card ---------- */}
+        {/* ---------- courses — the serif accent card ---------- */}
         <motion.div variants={cardReveal} className="order-4 flex md:col-span-3">
-          <a
-            href="#newsletter"
-            className={`${cardBase} w-full justify-between bg-sage-soft p-7`}
-          >
-            <CornerArrow />
+          <article className="relative flex w-full flex-col justify-between overflow-hidden rounded-[28px] bg-sage-soft p-7">
             <div>
-              <Kicker className="text-ink/45">The letter</Kicker>
+              <Kicker className="text-ink/45">Courses & curations</Kicker>
               <h3 className="mt-3 font-serif text-[34px] italic leading-none tracking-tight text-ink">
-                new tuesdays
+                the classroom
               </h3>
               <p className="mt-3 max-w-[24ch] text-[13px] leading-relaxed text-ink/70">
-                One idea, one artifact, every week — straight to your inbox.
+                Courses I'm building, plus the sharpest ones I've found on the web —
+                curated for people building their way in.
               </p>
             </div>
-            <div className="mt-6 flex items-center gap-1 text-[12px] text-ink/60">
-              <span className="text-ink">★★★★★</span>
-              <span className="ml-1.5 text-[11px]">3,400+ readers</span>
+            <div className="mt-6">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-ink/[0.06] px-3 py-1.5 text-[10.5px] font-medium text-ink/70">
+                ✦ First class in session soon
+              </span>
             </div>
-          </a>
+          </article>
         </motion.div>
 
         {/* ---------- The Product Lab ---------- */}

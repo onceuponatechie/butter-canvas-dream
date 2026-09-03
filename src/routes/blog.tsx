@@ -7,17 +7,17 @@ import rabbitHole from "@/assets/rabbit-hole-3d.png";
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "The Rabbit Hole — Stories by Essy Udeme" },
+      { title: "Why Not Build? — Stories by Essy Udeme" },
       {
         name: "description",
         content:
-          "Deep dives into products, people, ideas, and the random rabbit holes in between. The blog and thoughts of Essy Udeme.",
+          "Turning curiosity into action — deep dives into products, people, ideas, and the rabbit holes in between. The publication of Essy Udeme.",
       },
-      { property: "og:title", content: "The Rabbit Hole — Stories by Essy Udeme" },
+      { property: "og:title", content: "Why Not Build? — Stories by Essy Udeme" },
       {
         property: "og:description",
         content:
-          "Deep dives into products, people, ideas, and the random rabbit holes in between.",
+          "Turning curiosity into action — deep dives into products, people, ideas, and the rabbit holes in between.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -83,7 +83,7 @@ function BlogPage() {
                 ◐
               </span>
               <span className="text-[15px] font-medium tracking-tight text-ink">
-                The Rabbit Hole
+                Why Not Build?
               </span>
             </div>
 
