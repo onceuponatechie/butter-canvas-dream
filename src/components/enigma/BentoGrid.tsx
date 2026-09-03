@@ -6,7 +6,7 @@ import phone from "@/assets/essy-phone.jpg";
 import slide from "@/assets/essy-slide.jpg";
 import notes from "@/assets/essy-notes.jpg";
 import rabbitHole from "@/assets/rabbit-hole-3d.png";
-import productLabIcon from "@/assets/product-lab-icon.png";
+import productLabIcon from "@/assets/product-lab-icon-new.png";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
