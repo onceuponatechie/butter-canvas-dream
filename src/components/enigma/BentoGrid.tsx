@@ -78,14 +78,14 @@ export function BentoGrid() {
               Turning curiosity into action — deep dives into products, people, careers,
               and the ideas worth building.
             </p>
-            <div className="relative mt-6 flex flex-1 items-end justify-center">
+            <div className="relative mt-4 flex flex-1 items-center justify-center">
               <img
                 src={rabbitHole}
                 alt="A laptop glowing with a spiral tunnel, surrounded by floating idea cards"
                 loading="lazy"
                 width={1024}
                 height={1024}
-                className="w-[76%] max-w-[300px] translate-y-4 select-none drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 md:w-[118%] md:max-w-none lg:w-[112%]"
+                className="w-[76%] max-w-[300px] translate-y-4 select-none drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 md:w-[150%] md:max-w-none lg:w-[125%]"
               />
             </div>
           </Link>
