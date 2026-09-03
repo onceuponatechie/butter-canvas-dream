@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import books from "@/assets/essy-books.jpg";
 import slide from "@/assets/essy-slide.jpg";
@@ -7,8 +7,7 @@ import laptopDash from "@/assets/essy-laptop-dash.jpg";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const INTERVAL = 6000;
-
-type Row = { label: string; detail: string; value: string };
+const SWIPE_THRESHOLD = 50;
 
 type Adventure = {
   tag: string;
@@ -19,8 +18,6 @@ type Adventure = {
   alt: string;
   to: string;
   cta: string;
-  rows?: Row[];
-  quote?: string;
 };
 
 const adventures: Adventure[] = [
@@ -33,11 +30,6 @@ const adventures: Adventure[] = [
     alt: "A pitch deck slide open on a laptop",
     to: "/tools-and-templates",
     cta: "Browse the kits",
-    rows: [
-      { label: "Format", detail: "Figma file", value: "12 slides" },
-      { label: "Setup", detail: "Duplicate & edit", value: "20 min" },
-      { label: "Price", detail: "Free to start", value: "₦0" },
-    ],
   },
   {
     tag: "Read",
@@ -48,8 +40,6 @@ const adventures: Adventure[] = [
     alt: "A stack of books on a desk",
     to: "/blog",
     cta: "Read the publication",
-    quote:
-      "You don't have to know exactly what you're building your life into before you start building.",
   },
   {
     tag: "Learn",
@@ -60,11 +50,6 @@ const adventures: Adventure[] = [
     alt: "A dashboard being designed on a laptop",
     to: "/courses",
     cta: "Enter the classroom",
-    rows: [
-      { label: "Format", detail: "Self-paced", value: "6 lessons" },
-      { label: "Level", detail: "No code needed", value: "Beginner" },
-      { label: "Status", detail: "In the works", value: "Soon" },
-    ],
   },
   {
     tag: "Shop",
@@ -75,11 +60,6 @@ const adventures: Adventure[] = [
     alt: "A notebook open beside a laptop",
     to: "/tools-and-templates",
     cta: "Browse the kits",
-    rows: [
-      { label: "Format", detail: "Notion doc", value: "1 page" },
-      { label: "Best for", detail: "Scoping an idea", value: "Day one" },
-      { label: "Price", detail: "Free to start", value: "₦0" },
-    ],
   },
 ];
 
@@ -87,15 +67,34 @@ export function CasesSection() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const reduceMotion = useReducedMotion();
+  const swipeStart = useRef<number | null>(null);
 
   const next = () => setIndex((i) => (i + 1) % adventures.length);
   const prev = () => setIndex((i) => (i - 1 + adventures.length) % adventures.length);
 
   useEffect(() => {
     if (paused || reduceMotion) return;
-    const id = setInterval(() => setIndex((i) => (i + 1) % adventures.length), INTERVAL);
+    const id = setInterval(next, INTERVAL);
     return () => clearInterval(id);
   }, [paused, reduceMotion]);
+
+  /* Swipe is handled with pointer events rather than a draggable track: the
+     track's x is already driven by `index`, so making it draggable fought
+     that animation and snapped every touch back to the first card. */
+  const onPointerDown = (e: React.PointerEvent) => {
+    swipeStart.current = e.clientX;
+    setPaused(true);
+  };
+
+  const endSwipe = (clientX?: number) => {
+    const start = swipeStart.current;
+    swipeStart.current = null;
+    setPaused(false);
+    if (start == null || clientX == null) return;
+    const dx = clientX - start;
+    if (dx <= -SWIPE_THRESHOLD) next();
+    else if (dx >= SWIPE_THRESHOLD) prev();
+  };
 
   return (
     <section className="relative px-4 py-16 sm:px-8 sm:py-24">
@@ -115,20 +114,16 @@ export function CasesSection() {
       >
         {/* the negative margin pairs with each slide's padding, so the slide
             either side sits well off the edge instead of bleeding into view */}
-        <div className="-mx-4 overflow-hidden md:-mx-12">
+        <div
+          className="-mx-4 touch-pan-y overflow-hidden md:-mx-12"
+          onPointerDown={onPointerDown}
+          onPointerUp={(e) => endSwipe(e.clientX)}
+          onPointerCancel={() => endSwipe()}
+        >
           <motion.div
-            className="flex cursor-grab active:cursor-grabbing"
+            className="flex"
             animate={{ x: `-${index * 100}%` }}
             transition={{ duration: 0.8, ease: EASE }}
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.14}
-            onDragStart={() => setPaused(true)}
-            onDragEnd={(_e: unknown, info: { offset: { x: number } }) => {
-              if (info.offset.x < -70) next();
-              else if (info.offset.x > 70) prev();
-              setPaused(false);
-            }}
           >
             {adventures.map((a) => (
               <div key={a.title} className="w-full shrink-0 px-4 md:px-12">
@@ -138,7 +133,7 @@ export function CasesSection() {
           </motion.div>
         </div>
 
-        {/* dots — swipe the card itself to move between adventures */}
+        {/* dots — or swipe the card itself */}
         <div className="mt-10 flex items-center justify-center gap-2.5">
           {adventures.map((a, i) => (
             <button
@@ -158,7 +153,7 @@ export function CasesSection() {
   );
 }
 
-function AdventureCard({ tag, title, subtitle, body, img, alt, to, cta, rows, quote }: Adventure) {
+function AdventureCard({ tag, title, subtitle, body, img, alt, to, cta }: Adventure) {
   return (
     <article className="grid items-center gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] md:gap-14">
       {/* framed, slightly slanted image */}
@@ -168,6 +163,7 @@ function AdventureCard({ tag, title, subtitle, body, img, alt, to, cta, rows, qu
             src={img}
             alt={alt}
             loading="lazy"
+            draggable={false}
             className="aspect-[4/3] w-full rounded-[22px] object-cover"
           />
         </div>
@@ -177,7 +173,7 @@ function AdventureCard({ tag, title, subtitle, body, img, alt, to, cta, rows, qu
         </div>
       </div>
 
-      {/* copy + value rows */}
+      {/* copy */}
       <div>
         <span className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-ink/70">
           <span className="h-1.5 w-1.5 rounded-full bg-sage" /> {tag}
@@ -187,28 +183,10 @@ function AdventureCard({ tag, title, subtitle, body, img, alt, to, cta, rows, qu
           {body}
         </p>
 
-        {quote ? (
-          <blockquote className="mt-8 border-l border-ink/15 pl-6 md:pl-8">
-            <p className="max-w-[40ch] font-serif text-[clamp(17px,2vw,24px)] italic leading-snug text-ink/75">
-              “{quote}”
-            </p>
-          </blockquote>
-        ) : (
-          <div className="mt-8 border-l border-ink/15 pl-6 md:pl-8">
-            {rows?.map((r) => (
-              <div
-                key={r.label}
-                className="grid gap-0.5 border-b border-ink/10 py-4 last:border-b-0 md:grid-cols-[1fr_1fr_auto] md:items-center md:gap-4"
-              >
-                <span className="text-[14px] text-ink">{r.label}</span>
-                <span className="text-[14px] text-muted-ink">{r.detail}</span>
-                <span className="text-[14px] text-ink md:text-right">{r.value}</span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        <a href={to} className={`mt-8 inline-flex w-fit items-center rounded-full bg-ink px-6 py-2.5 text-[12px] font-medium text-white transition-opacity hover:opacity-90`}>
+        <a
+          href={to}
+          className="mt-8 inline-flex w-fit items-center rounded-full bg-ink px-6 py-2.5 text-[12px] font-medium text-white transition-opacity hover:opacity-90"
+        >
           {cta}
         </a>
       </div>
