@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import books from "@/assets/essy-books.jpg";
 import slide from "@/assets/essy-slide.jpg";
@@ -7,7 +7,7 @@ import notes from "@/assets/essy-notes.jpg";
 import laptopDash from "@/assets/essy-laptop-dash.jpg";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
-const INTERVAL = 6000;
+const INTERVAL = 4000;
 
 type Row = { label: string; detail: string; value: string };
 
@@ -89,6 +89,9 @@ export function CasesSection() {
   const [paused, setPaused] = useState(false);
   const reduceMotion = useReducedMotion();
 
+  const next = () => setIndex((i) => (i + 1) % adventures.length);
+  const prev = () => setIndex((i) => (i - 1 + adventures.length) % adventures.length);
+
   useEffect(() => {
     if (paused || reduceMotion) return;
     const id = setInterval(() => setIndex((i) => (i + 1) % adventures.length), INTERVAL);
@@ -111,22 +114,43 @@ export function CasesSection() {
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        <div className="overflow-hidden">
+        {/* the negative margin pairs with each slide's padding, so the slide
+            either side sits well off the edge instead of bleeding into view */}
+        <div className="-mx-4 overflow-hidden md:-mx-12">
           <motion.div
-            className="flex"
+            className="flex cursor-grab active:cursor-grabbing"
             animate={{ x: `-${index * 100}%` }}
             transition={{ duration: 0.8, ease: EASE }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.14}
+            onDragStart={() => setPaused(true)}
+            onDragEnd={(_e: unknown, info: { offset: { x: number } }) => {
+              if (info.offset.x < -70) next();
+              else if (info.offset.x > 70) prev();
+              setPaused(false);
+            }}
           >
             {adventures.map((a) => (
-              <div key={a.title} className="w-full shrink-0 px-0.5">
+              <div key={a.title} className="w-full shrink-0 px-4 md:px-12">
                 <AdventureCard {...a} />
               </div>
             ))}
           </motion.div>
         </div>
 
-        {/* dots */}
-        <div className="mt-10 flex items-center justify-center gap-2.5">
+        {/* manual controls */}
+        <div className="mt-10 flex items-center justify-center gap-4">
+          <button
+            type="button"
+            onClick={prev}
+            aria-label="Previous adventure"
+            className="grid h-9 w-9 place-items-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-white"
+          >
+            <ArrowLeft size={15} />
+          </button>
+
+          <div className="flex items-center gap-2.5">
           {adventures.map((a, i) => (
             <button
               key={a.title}
@@ -139,6 +163,16 @@ export function CasesSection() {
               }`}
             />
           ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={next}
+            aria-label="Next adventure"
+            className="grid h-9 w-9 place-items-center rounded-full border border-ink/15 text-ink transition-colors hover:bg-ink hover:text-white"
+          >
+            <ArrowRight size={15} />
+          </button>
         </div>
       </div>
     </section>
@@ -150,7 +184,7 @@ function AdventureCard({ tag, title, subtitle, body, img, alt, to, cta, rows, qu
     <article className="grid items-center gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] md:gap-14">
       {/* framed, slightly slanted image */}
       <div>
-        <div className="rotate-[-1.6deg] rounded-[30px] bg-paper p-2.5 shadow-[0_30px_60px_-34px_rgba(17,17,17,0.45)] ring-1 ring-black/[0.06]">
+        <div className="rotate-[-1.6deg] rounded-[30px] bg-paper p-2.5 shadow-[0_10px_26px_-20px_rgba(17,17,17,0.25)] ring-1 ring-black/[0.06]">
           <img
             src={img}
             alt={alt}

@@ -57,7 +57,7 @@ export function PromiseSection() {
   return (
     <section id="projects" className="relative px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-5xl text-center">
-        <h2 className="font-serif text-[clamp(44px,7vw,88px)] italic leading-none tracking-tight text-ink">
+        <h2 className="font-serif text-[clamp(28px,3.6vw,44px)] italic leading-none tracking-tight text-ink">
           projects
         </h2>
         <p className="mx-auto mt-4 max-w-md text-[13px] leading-relaxed text-muted-ink">

@@ -57,56 +57,61 @@ export function Footer() {
     <footer className="relative overflow-hidden px-4 pb-10 pt-6 sm:px-8">
       <div className="relative mx-auto max-w-5xl">
 
-        <div className="rounded-[24px] bg-white p-6 ring-1 ring-black/5 sm:p-8">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto] md:items-end">
-            <div className="min-w-0 grid grid-cols-2 gap-6 text-[12px] sm:grid-cols-3">
-              <div>
-                <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-muted-ink">
-                  Sitemap
-                </div>
-                <ul className="space-y-1.5">
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">Projects</a></li>
-                  <li><a href="#">Journal</a></li>
-                </ul>
-              </div>
-              <div>
-                <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-muted-ink">
-                  Elsewhere
-                </div>
-                <ul className="space-y-1.5">
-                  <li><a href="#">Twitter / X</a></li>
-                  <li><a href="#">LinkedIn</a></li>
-                  <li><a href="#">Read.cv</a></li>
-                </ul>
-              </div>
-              <div>
-                <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-muted-ink">
-                  Say hi
-                </div>
-                <ul className="space-y-1.5">
-                  <li><a href="mailto:hi@essyudeme.com">hi@essyudeme.com</a></li>
-                  <li className="text-muted-ink">Lagos → Everywhere</li>
-                </ul>
-              </div>
-            </div>
-            <div className="text-right md:min-w-[260px]">
-              <h3 className="text-[clamp(22px,2.4vw,30px)] font-medium leading-tight tracking-tight">
-                Let's build something
-                <br />
-                people <span className="font-serif italic">remember</span>.
-              </h3>
-              <button className="mt-4 inline-flex items-center gap-1 rounded-full bg-ink px-4 py-2 text-[12px] font-medium text-white">
-                Book a coffee ↗
-              </button>
-            </div>
+        <div className="rounded-[24px] bg-white p-8 text-center ring-1 ring-black/5 sm:p-12">
+          <h3 className="mx-auto max-w-[20ch] text-[clamp(22px,2.4vw,30px)] font-medium leading-tight tracking-tight">
+            Let's build something people <span className="font-serif italic">remember</span>.
+          </h3>
+          <p className="mx-auto mt-3 max-w-[38ch] text-[13px] leading-relaxed text-muted-ink">
+            Research, product, or a story that needs telling — the door is open.
+          </p>
+
+          <a
+            href="/#contact"
+            className="group mt-6 inline-flex items-center gap-1.5 rounded-full bg-ink px-5 py-2.5 text-[12px] font-medium text-white"
+          >
+            Book a coffee
+            <ArrowUpRight
+              size={13}
+              className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            />
+          </a>
+
+          <nav className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12.5px] font-medium text-ink/75">
+            {[
+              { label: "Home", href: "/" },
+              { label: "Why Not Build?", href: "/blog" },
+              { label: "Tools & Templates", href: "/tools-and-templates" },
+              { label: "The Product Lab", href: "/product-lab" },
+              { label: "Courses", href: "/courses" },
+              { label: "Projects", href: "/#projects" },
+              { label: "About", href: "/#about" },
+            ].map((l) => (
+              <a key={l.label} href={l.href} className="transition-colors hover:text-ink">
+                {l.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[12px] text-muted-ink">
+            {["Twitter / X", "LinkedIn", "Instagram"].map((l) => (
+              <a key={l} href="#" className="transition-colors hover:text-ink">
+                {l}
+              </a>
+            ))}
+            <a href="mailto:hi@essyudeme.com" className="transition-colors hover:text-ink">
+              hi@essyudeme.com
+            </a>
           </div>
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-2 border-t border-black/5 pt-4 text-[11px] text-muted-ink">
-            <span>© 2026 Essy Udeme — made with care.</span>
-            <div className="flex gap-4">
-              <a href="#">Privacy</a>
-              <a href="#">Colophon</a>
+
+          <div className="mt-9 border-t border-black/5 pt-5 text-[11px] text-muted-ink">
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+              <a href="#" className="transition-colors hover:text-ink">Privacy</a>
+              <span className="h-1 w-1 rounded-full bg-ink/15" />
+              <a href="#" className="transition-colors hover:text-ink">Colophon</a>
+              <span className="h-1 w-1 rounded-full bg-ink/15" />
+              <span>Lagos → Everywhere</span>
             </div>
+            <div className="mt-3">© 2026 Essy Udeme — made with care.</div>
           </div>
         </div>
 
