@@ -85,7 +85,7 @@ export function BentoGrid() {
                 loading="lazy"
                 width={1024}
                 height={1024}
-                className="w-[80%] max-w-[340px] translate-y-4 select-none drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 md:w-[105%] md:max-w-none"
+                className="w-[76%] max-w-[300px] translate-y-4 select-none drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 md:w-[118%] md:max-w-none lg:w-[112%]"
               />
             </div>
           </Link>
