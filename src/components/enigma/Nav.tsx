@@ -50,8 +50,10 @@ export function Nav() {
               />
             </button>
 
+            {/* pt-3 (not mt-3) keeps the gap hoverable so the dropdown
+                doesn't close while the cursor travels down to it */}
             <div
-              className={`absolute left-1/2 top-full z-50 mt-3 -translate-x-1/2 transition-all duration-200 ${
+              className={`absolute left-1/2 top-full z-50 pt-3 -translate-x-1/2 transition-all duration-200 ${
                 resOpen
                   ? "pointer-events-auto translate-y-0 opacity-100"
                   : "pointer-events-none -translate-y-1 opacity-0"
