@@ -65,21 +65,10 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/blog'
-    | '/courses'
-    | '/product-lab'
-    | '/tools-and-templates'
+  fullPaths: '/' | '/blog' | '/courses' | '/product-lab' | '/tools-and-templates'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/blog' | '/courses' | '/product-lab' | '/tools-and-templates'
-  id:
-    | '__root__'
-    | '/'
-    | '/blog'
-    | '/courses'
-    | '/product-lab'
-    | '/tools-and-templates'
+  id: '__root__' | '/' | '/blog' | '/courses' | '/product-lab' | '/tools-and-templates'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
