@@ -184,7 +184,7 @@ export function BentoGrid() {
         <motion.div variants={cardReveal} className="order-3 md:order-5 flex md:col-span-5">
           <Link
             to="/product-lab"
-            className={`${cardBase} min-h-[280px] w-full bg-lavender-soft p-7 md:min-h-0`}
+            className={`${cardBase} min-h-[280px] w-full bg-[#f4f4f2] p-7 ring-1 ring-black/5 md:min-h-0`}
           >
             <CornerArrow />
             <div className="relative z-10 max-w-[58%]">
