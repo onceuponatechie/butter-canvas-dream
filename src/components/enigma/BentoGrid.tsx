@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import reading from "@/assets/essy-reading.jpg";
@@ -78,14 +78,14 @@ export function BentoGrid() {
               Turning curiosity into action — deep dives into products, people, careers,
               and the ideas worth building.
             </p>
-            <div className="relative mt-6 flex flex-1 items-end justify-center">
+            <div className="relative mt-4 flex flex-1 items-center justify-center">
               <img
                 src={rabbitHole}
                 alt="A laptop glowing with a spiral tunnel, surrounded by floating idea cards"
                 loading="lazy"
                 width={1024}
                 height={1024}
-                className="w-[80%] max-w-[340px] translate-y-4 select-none drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 md:w-[105%] md:max-w-none"
+                className="w-[76%] max-w-[300px] translate-y-4 select-none drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 md:w-[150%] md:max-w-none lg:w-[125%]"
               />
             </div>
           </Link>
@@ -95,22 +95,25 @@ export function BentoGrid() {
         <motion.div variants={cardReveal} className="order-2 flex md:col-span-5">
           <Link
             to="/tools-and-templates"
-            className={`${cardBase} w-full justify-between bg-paper p-7 ring-1 ring-black/5`}
+            className={`${cardBase} min-h-[290px] w-full bg-[#f4f4f2] p-7 ring-1 ring-black/5`}
           >
             <CornerArrow />
-            <div>
+            <div className="relative z-10 flex h-full max-w-[56%] flex-col">
               <Kicker className="text-muted-ink">Free kits & files</Kicker>
               <h3 className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.8px] text-ink">
                 Tools & Templates
               </h3>
-              <p className="mt-2.5 max-w-[34ch] text-[13px] leading-relaxed text-muted-ink">
-                The Notion systems, Figma files, and checklists I actually use — packaged
-                up and free to take.
+              <p className="mt-2.5 text-[13px] leading-relaxed text-muted-ink">
+                The Notion systems, Figma files, and checklists I actually use — free
+                to take.
               </p>
+              <span className="mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-ink px-4 py-2 text-[12px] font-medium text-white transition-colors duration-300 group-hover:bg-sage">
+                Browse the kits <ArrowUpRight size={13} />
+              </span>
             </div>
 
-            {/* thumbnail fan that spreads as it scrolls into view */}
-            <div className="mt-6 flex items-end">
+            {/* fanned photo stack that spreads as it scrolls into view */}
+            <div className="pointer-events-none absolute bottom-0 right-5 flex items-end lg:right-7">
               {[phone, slide, notes].map((src, i) => (
                 <motion.img
                   key={i}
@@ -118,17 +121,26 @@ export function BentoGrid() {
                   alt=""
                   aria-hidden
                   loading="lazy"
-                  initial={{ marginLeft: i === 0 ? 0 : -54, rotate: i === 1 ? 4 : i === 2 ? 8 : 0 }}
-                  whileInView={{ marginLeft: i === 0 ? 0 : 6, rotate: 0 }}
-                  viewport={{ once: true, amount: 0.8 }}
-                  transition={{ delay: 0.45 + i * 0.1, duration: 0.6, ease: EASE }}
-                  style={{ zIndex: 3 - i }}
-                  className="relative h-[72px] w-[72px] rounded-[16px] object-cover shadow-[0_12px_28px_-16px_rgba(0,0,0,0.5)] ring-2 ring-paper"
+                  initial={{ marginLeft: i === 0 ? 0 : -60, rotate: 0, y: 22 }}
+                  whileInView={{
+                    marginLeft: i === 0 ? 0 : -22,
+                    rotate: i === 0 ? -7 : i === 1 ? -2 : 4,
+                    y: i === 1 ? 6 : 16,
+                  }}
+                  viewport={{ once: true, amount: 0.6 }}
+                  transition={{ delay: 0.4 + i * 0.1, duration: 0.7, ease: EASE }}
+                  style={{ zIndex: i }}
+                  className="relative h-[104px] w-[66px] rounded-[14px] object-cover shadow-[0_16px_34px_-18px_rgba(0,0,0,0.45)] ring-[3px] ring-[#f4f4f2] lg:h-[160px] lg:w-[100px]"
                 />
               ))}
+              {/* minimalist circular icon centred over the stack */}
+              <span className="absolute bottom-[34%] left-1/2 z-10 grid h-10 w-10 -translate-x-1/2 place-items-center rounded-full bg-ink ring-[4px] ring-[#f4f4f2] lg:h-13 lg:w-13">
+                <Sparkles size={18} className="text-butter" />
+              </span>
             </div>
           </Link>
         </motion.div>
+
 
         {/* ---------- portrait → about ---------- */}
         <motion.div variants={cardReveal} className="order-5 md:order-3 flex md:col-span-3">
@@ -172,7 +184,7 @@ export function BentoGrid() {
         <motion.div variants={cardReveal} className="order-3 md:order-5 flex md:col-span-5">
           <Link
             to="/product-lab"
-            className={`${cardBase} min-h-[280px] w-full bg-lavender-soft p-7 md:min-h-0`}
+            className={`${cardBase} min-h-[280px] w-full bg-[#f4f4f2] p-7 ring-1 ring-black/5 md:min-h-0`}
           >
             <CornerArrow />
             <div className="relative z-10 max-w-[58%]">
