@@ -95,22 +95,25 @@ export function BentoGrid() {
         <motion.div variants={cardReveal} className="order-2 flex md:col-span-5">
           <Link
             to="/tools-and-templates"
-            className={`${cardBase} w-full justify-between bg-paper p-7 ring-1 ring-black/5`}
+            className={`${cardBase} min-h-[290px] w-full bg-[#f4f4f2] p-7 ring-1 ring-black/5`}
           >
             <CornerArrow />
-            <div>
+            <div className="relative z-10 flex h-full max-w-[56%] flex-col">
               <Kicker className="text-muted-ink">Free kits & files</Kicker>
               <h3 className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.8px] text-ink">
                 Tools & Templates
               </h3>
-              <p className="mt-2.5 max-w-[34ch] text-[13px] leading-relaxed text-muted-ink">
-                The Notion systems, Figma files, and checklists I actually use — packaged
-                up and free to take.
+              <p className="mt-2.5 text-[13px] leading-relaxed text-muted-ink">
+                The Notion systems, Figma files, and checklists I actually use — free
+                to take.
               </p>
+              <span className="mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-ink px-4 py-2 text-[12px] font-medium text-white transition-colors duration-300 group-hover:bg-sage">
+                Browse the kits <ArrowUpRight size={13} />
+              </span>
             </div>
 
-            {/* thumbnail fan that spreads as it scrolls into view */}
-            <div className="mt-6 flex items-end">
+            {/* fanned photo stack that spreads as it scrolls into view */}
+            <div className="pointer-events-none absolute bottom-0 right-4 flex items-end sm:right-6">
               {[phone, slide, notes].map((src, i) => (
                 <motion.img
                   key={i}
@@ -118,17 +121,26 @@ export function BentoGrid() {
                   alt=""
                   aria-hidden
                   loading="lazy"
-                  initial={{ marginLeft: i === 0 ? 0 : -54, rotate: i === 1 ? 4 : i === 2 ? 8 : 0 }}
-                  whileInView={{ marginLeft: i === 0 ? 0 : 6, rotate: 0 }}
-                  viewport={{ once: true, amount: 0.8 }}
-                  transition={{ delay: 0.45 + i * 0.1, duration: 0.6, ease: EASE }}
-                  style={{ zIndex: 3 - i }}
-                  className="relative h-[72px] w-[72px] rounded-[16px] object-cover shadow-[0_12px_28px_-16px_rgba(0,0,0,0.5)] ring-2 ring-paper"
+                  initial={{ marginLeft: i === 0 ? 0 : -60, rotate: 0, y: 22 }}
+                  whileInView={{
+                    marginLeft: i === 0 ? 0 : -22,
+                    rotate: i === 0 ? -7 : i === 1 ? -2 : 4,
+                    y: i === 1 ? 6 : 16,
+                  }}
+                  viewport={{ once: true, amount: 0.6 }}
+                  transition={{ delay: 0.4 + i * 0.1, duration: 0.7, ease: EASE }}
+                  style={{ zIndex: i }}
+                  className="relative h-[132px] w-[84px] rounded-[14px] object-cover shadow-[0_16px_34px_-18px_rgba(0,0,0,0.45)] ring-[3px] ring-[#f4f4f2] sm:h-[168px] sm:w-[104px]"
                 />
               ))}
+              {/* minimalist circular icon centred over the stack */}
+              <span className="absolute bottom-[38%] left-1/2 grid h-11 w-11 -translate-x-1/2 place-items-center rounded-full bg-ink ring-[4px] ring-[#f4f4f2] sm:h-14 sm:w-14">
+                <Sparkles size={18} className="text-butter" />
+              </span>
             </div>
           </Link>
         </motion.div>
+
 
         {/* ---------- portrait → about ---------- */}
         <motion.div variants={cardReveal} className="order-5 md:order-3 flex md:col-span-3">
