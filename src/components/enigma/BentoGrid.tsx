@@ -111,11 +111,11 @@ export function BentoGrid() {
                   </p>
                 </div>
 
-                <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
+                <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-ink/25 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
                   Browse the kits
                   <ArrowRight
                     size={16}
-                    className="text-butter-deep transition-transform duration-300 group-hover:translate-x-1"
+                    className="transition-transform duration-300 group-hover:translate-x-1"
                   />
                 </span>
               </div>
@@ -196,11 +196,11 @@ export function BentoGrid() {
                 earned along the way.
               </p>
             </div>
-            <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
+            <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-ink/25 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
               Enter the classroom
               <ArrowRight
                 size={16}
-                className="text-butter-deep transition-transform duration-300 group-hover:translate-x-1"
+                className="transition-transform duration-300 group-hover:translate-x-1"
               />
             </span>
           </Link>
@@ -223,11 +223,11 @@ export function BentoGrid() {
             </div>
             {/* spacer keeps a minimum gap while pushing the button to the bottom */}
             <div className="min-h-6 flex-1" />
-            <span className="relative z-10 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[13px] font-medium text-white">
+            <span className="relative z-10 inline-flex w-fit items-center gap-2 rounded-full border border-ink/25 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
               Enter the Lab
               <ArrowRight
                 size={16}
-                className="text-butter-deep transition-transform duration-300 group-hover:translate-x-1"
+                className="transition-transform duration-300 group-hover:translate-x-1"
               />
             </span>
             <img
