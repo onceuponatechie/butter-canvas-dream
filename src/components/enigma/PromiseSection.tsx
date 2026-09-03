@@ -70,6 +70,25 @@ export function PromiseSection() {
           <ProjectCard key={p.name} index={i} total={projects.length} {...p} />
         ))}
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: EASE }}
+        className="mx-auto mt-10 flex max-w-6xl items-center justify-center"
+      >
+        <a
+          href="#projects"
+          className="group inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors hover:bg-ink hover:text-white"
+        >
+          Explore all projects
+          <ArrowUpRight
+            size={14}
+            className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+          />
+        </a>
+      </motion.div>
     </section>
   );
 }
@@ -89,6 +108,8 @@ function ProjectCard({
   total,
 }: ProjectProps) {
   const ref = useRef<HTMLDivElement>(null);
+  // Progress across this card's slot: 0 when it pins, 1 when the next card
+  // has fully stacked over it. Drives the "receding into the deck" animation.
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
   const y = useTransform(scrollYProgress, [0, 1], [0, -24]);
@@ -98,7 +119,7 @@ function ProjectCard({
   return (
     <div
       ref={ref}
-      className="sticky top-16 h-[100svh] md:top-20"
+      className="sticky top-16 mt-4 first:mt-0 md:mt-6"
       style={{ zIndex: index + 1 }}
     >
       <motion.article
@@ -107,65 +128,63 @@ function ProjectCard({
           y: isLast ? 0 : y,
           transformOrigin: "top center",
         }}
-        className={`group relative mx-auto max-w-6xl overflow-hidden rounded-[32px] ring-1 ring-black/5 md:h-[calc(100svh-7rem)] md:rounded-[44px] ${tints[index % tints.length]} shadow-[0_1px_2px_rgba(0,0,0,0.03),0_24px_44px_-32px_rgba(0,0,0,0.14)]`}
+        className={`group relative mx-auto max-w-6xl overflow-hidden rounded-[32px] p-4 ring-1 ring-black/5 md:h-[calc(100svh-8rem)] md:rounded-[44px] md:p-5 ${tints[index % tints.length]} shadow-[0_1px_2px_rgba(0,0,0,0.03),0_24px_44px_-32px_rgba(0,0,0,0.14)]`}
       >
         <a href="#projects" aria-label={name} className="absolute inset-0 z-10" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 md:items-stretch">
-          {/* image */}
-          <div className="order-1 p-3 md:order-2 md:p-4">
-            <div className="relative h-full overflow-hidden rounded-3xl md:rounded-[32px]">
-              <img
-                src={img}
-                alt={name}
-                loading="lazy"
-                className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04] group-active:scale-[1.04] md:aspect-auto md:h-full"
-                style={{ transitionTimingFunction: "cubic-bezier(0.22,1,0.36,1)" }}
-              />
+        <div className="grid h-full grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+          {/* image — fills its half of the card with equal inset on every side */}
+          <div className="relative order-1 aspect-[16/10] overflow-hidden rounded-[20px] md:order-2 md:aspect-auto md:rounded-[30px]">
+            <img
+              src={img}
+              alt={name}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04] group-active:scale-[1.04]"
+              style={{ transitionTimingFunction: "cubic-bezier(0.22,1,0.36,1)" }}
+            />
 
-              {/* floating stat chip */}
-              <motion.div
-                initial={{ opacity: 0, y: 16, scale: 0.75, rotate: 0 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1, rotate: dark ? -3 : 2 }}
-                viewport={{ once: true, margin: "-10%" }}
-                transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.25 }}
-                className={`absolute left-4 top-4 z-20 flex max-w-[60%] items-end gap-3 rounded-2xl px-3 py-2 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.35)] md:left-6 md:top-6 ${
-                  dark ? "bg-ink text-white" : "bg-card text-ink"
-                }`}
-              >
-                <div className="min-w-0">
-                  <div className="text-[20px] font-semibold leading-none tracking-tight md:text-[24px]">
-                    {stat}
-                  </div>
-                  <div className="mt-1 max-w-[14ch] text-[10px] leading-snug opacity-60 md:text-[11px]">
-                    {statLabel}
-                  </div>
+            {/* floating stat chip */}
+            <motion.div
+              initial={{ opacity: 0, y: 16, scale: 0.75, rotate: 0 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1, rotate: dark ? -3 : 2 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.25 }}
+              className={`absolute left-4 top-4 z-20 flex max-w-[60%] items-end gap-3 rounded-2xl px-3 py-2 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.35)] md:left-6 md:top-6 ${
+                dark ? "bg-ink text-white" : "bg-card text-ink"
+              }`}
+            >
+              <div className="min-w-0">
+                <div className="text-[20px] font-semibold leading-none tracking-tight md:text-[24px]">
+                  {stat}
                 </div>
-                <div className="flex shrink-0 items-end gap-1 pb-1 opacity-50">
-                  {[5, 9, 13, 17].map((h) => (
-                    <span
-                      key={h}
-                      className="w-1 rounded-full bg-current"
-                      style={{ height: `${h}px` }}
-                    />
-                  ))}
+                <div className="mt-1 max-w-[14ch] text-[10px] leading-snug opacity-60 md:text-[11px]">
+                  {statLabel}
                 </div>
-              </motion.div>
-
-              {/* corner marks */}
-              <div className="pointer-events-none absolute bottom-4 right-4 z-20 flex items-center gap-2">
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-card/85 text-ink opacity-80 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
-                  <ArrowUpRight size={14} />
-                </span>
-                <span className="grid h-9 w-9 place-items-center rounded-full bg-ink text-[11px] font-medium text-white">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
               </div>
+              <div className="flex shrink-0 items-end gap-1 pb-1 opacity-50">
+                {[5, 9, 13, 17].map((h) => (
+                  <span
+                    key={h}
+                    className="w-1 rounded-full bg-current"
+                    style={{ height: `${h}px` }}
+                  />
+                ))}
+              </div>
+            </motion.div>
+
+            {/* corner marks */}
+            <div className="pointer-events-none absolute bottom-4 right-4 z-20 flex items-center gap-2">
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-card/85 text-ink opacity-80 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
+                <ArrowUpRight size={14} />
+              </span>
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-ink text-[11px] font-medium text-white">
+                {String(index + 1).padStart(2, "0")}
+              </span>
             </div>
           </div>
 
           {/* text */}
-          <div className="order-2 flex flex-col justify-center gap-4 p-6 md:order-1 md:gap-5 md:p-12">
+          <div className="order-2 flex flex-col justify-center gap-4 p-3 pb-0 pt-1 md:order-1 md:gap-5 md:p-7">
             <span className="inline-flex w-fit items-center gap-2 rounded-full border border-ink/15 px-3 py-1 text-[12px] text-ink/70">
               <span className="h-1.5 w-1.5 rounded-full bg-sage" /> {tag}
             </span>
@@ -203,27 +222,6 @@ function ProjectCard({
           </div>
         </div>
       </motion.article>
-
-      {isLast && (
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: EASE }}
-          className="mx-auto mt-9 flex max-w-6xl items-center justify-center"
-        >
-          <a
-            href="#projects"
-            className="group inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors hover:bg-ink hover:text-white"
-          >
-            Explore all projects
-            <ArrowUpRight
-              size={14}
-              className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            />
-          </a>
-        </motion.div>
-      )}
     </div>
   );
 }
