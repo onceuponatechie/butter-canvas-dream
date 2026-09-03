@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { Nav } from "@/components/enigma/Nav";
 import { Footer } from "@/components/enigma/TouchBand";
 import phone from "@/assets/essy-phone.jpg";
@@ -27,6 +28,8 @@ export const Route = createFileRoute("/tools-and-templates")({
   }),
   component: ToolsPage,
 });
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 const kits = [
   {
@@ -93,33 +96,29 @@ function ToolsPage() {
               products, people, and the stories worth building — free to remix.
             </p>
 
-            {/* expanding thumbnail stack */}
-            <div className="mt-7 flex items-end group">
+            {/* thumbnail stack that fans out as it enters view */}
+            <div className="mt-7 flex items-end">
               {[phone, slide, notes].map((src, i) => (
-                <img
+                <motion.img
                   key={i}
                   src={src}
                   alt=""
                   aria-hidden
                   loading="lazy"
+                  initial={{ marginLeft: i === 0 ? 0 : -64, rotate: i === 1 ? 4 : i === 2 ? 8 : 0 }}
+                  whileInView={{ marginLeft: i === 0 ? 0 : 8, rotate: 0 }}
+                  viewport={{ once: true, amount: 0.8 }}
+                  transition={{ delay: 0.35 + i * 0.1, duration: 0.6, ease: EASE }}
                   style={{ zIndex: 3 - i }}
-                  className={[
-                    "relative h-[88px] w-[88px] rounded-[20px] object-cover shadow-[0_12px_28px_-16px_rgba(0,0,0,0.5)] ring-2 ring-backdrop",
-                    i === 0
-                      ? ""
-                      : i === 1
-                        ? "-ml-[64px] rotate-[4deg] group-hover:ml-2 group-hover:rotate-0"
-                        : "-ml-[64px] rotate-[8deg] group-hover:ml-2 group-hover:rotate-0",
-                    "transition-all duration-500 [transition-timing-function:cubic-bezier(0.7,0,0.2,1)]",
-                  ].join(" ")}
+                  className="relative h-[88px] w-[88px] rounded-[20px] object-cover shadow-[0_12px_28px_-16px_rgba(0,0,0,0.5)] ring-2 ring-backdrop"
                 />
               ))}
             </div>
 
             <div className="mt-6 flex flex-wrap items-center gap-2 text-[11px] font-medium text-ink/55">
-              <span className="rounded-full bg-black/[0.06] px-3 py-1.5">✦ Notion</span>
-              <span className="rounded-full bg-black/[0.06] px-3 py-1.5">◐ Figma</span>
-              <span className="rounded-full bg-black/[0.06] px-3 py-1.5">20+ kits</span>
+              <span className="rounded-full bg-black/[0.06] px-3 py-1.5">✦ Skip the blank page</span>
+              <span className="rounded-full bg-black/[0.06] px-3 py-1.5">◐ Steal my workflow</span>
+              <span className="rounded-full bg-black/[0.06] px-3 py-1.5">✿ Free to start</span>
             </div>
           </div>
         </section>
