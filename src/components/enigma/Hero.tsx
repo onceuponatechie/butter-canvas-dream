@@ -134,17 +134,12 @@ function Word({ children, delay }: { children: React.ReactNode; delay: number })
 export function Hero() {
   return (
     <section className="relative overflow-hidden px-4 py-16 md:pb-36 md:pt-6">
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="relative mx-auto max-w-5xl text-center"
-      >
-        <motion.div variants={fadeUp}>
+      <div className="relative mx-auto max-w-5xl text-center">
+        <motion.div {...rise(0.5)}>
           <SmileyReel />
         </motion.div>
 
-        <motion.div variants={fadeUp} className="mt-5">
+        <motion.div {...rise(0.68)} className="mt-5">
           <span className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-card px-4 py-2 text-[12px] font-medium text-ink/70 shadow-sm">
             <span className="relative grid h-2 w-2 place-items-center">
               <span className="absolute inline-flex h-2 w-2 animate-ping rounded-full bg-sage opacity-75" />
