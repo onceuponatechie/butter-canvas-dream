@@ -99,11 +99,13 @@ export function CasesSection() {
   return (
     <section className="relative px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-5xl text-center">
-        <h2 className="text-[clamp(28px,3.6vw,44px)] font-medium tracking-tight text-ink">
-          Pick an <span className="font-serif italic">adventure</span>
-        </h2>
+        <Reveal dir="down" blur>
+          <h2 className="text-[clamp(28px,3.6vw,44px)] font-medium tracking-tight text-ink">
+            Pick an <span className="font-serif italic">adventure</span>
+          </h2>
+        </Reveal>
         <p className="mx-auto mt-2 max-w-md text-[12px] text-muted-ink">
-          Each one leads somewhere small and useful.
+          <TypeWords delay={0.2} step={0.04} text="Each one leads somewhere small and useful." />
         </p>
       </div>
 
