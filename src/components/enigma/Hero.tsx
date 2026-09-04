@@ -150,32 +150,28 @@ export function Hero() {
         </motion.div>
 
         <h1 className="mt-8 text-[clamp(32px,6vw,68px)] font-normal leading-[1.12] tracking-tight text-ink md:tracking-[-2.5px]">
-          <Word delay={0.4}>
+          <Word delay={0.9}>
             <span className="inline-block mb-[0.14em] md:mb-0">Products, people,</span>
           </Word>
           <br className="md:hidden" />{" "}
-          <Word delay={0.51}>and the</Word>
+          <Word delay={1.02}>and the</Word>
           <br className="hidden md:block" />
-          <MediaChip offset={0} delay={0.14} />
-          <Word delay={0.62}>stories</Word>
+          <MediaChip offset={0} delay={0.12} />
+          <Word delay={1.14}>stories</Word>
           <br className="md:hidden" />{" "}
-          <Word delay={0.73}>worth</Word>
+          <Word delay={1.26}>worth</Word>
           <br className="hidden md:block" />
-          <MediaChip offset={2} delay={0.18} />
+          <MediaChip offset={2} delay={0.28} />
           <br className="md:hidden" />
-          <Word delay={0.84}>building.</Word>
+          <Word delay={1.38}>building.</Word>
         </h1>
 
 
-        <motion.p variants={fadeUp} className="mt-7 text-[16px] text-ink/70">
-          Researcher
-          <span className="mx-2 opacity-50">·</span>
-          Builder
-          <span className="mx-2 opacity-50">·</span>
-          Storyteller
+        <motion.p {...rise(1.7)} className="mt-7 text-[16px] text-ink/70">
+          <TypeWords text="Researcher · Builder · Storyteller" delay={1.75} step={0.09} inView={false} />
         </motion.p>
 
-        <motion.div variants={fadeUp} className="mt-9 flex flex-wrap items-center justify-center gap-3">
+        <motion.div {...rise(2.1)} className="mt-9 flex flex-wrap items-center justify-center gap-3">
           <a
             href="#projects"
             className="group inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-[13px] font-medium text-ink transition-all hover:bg-ink hover:text-white hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)]"
