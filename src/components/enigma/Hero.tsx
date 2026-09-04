@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { TypeWords } from "@/components/enigma/Reveal";
 import reading from "@/assets/essy-reading.jpg";
 import portrait from "@/assets/essy-portrait.jpg";
 import notes from "@/assets/essy-notes.jpg";
@@ -9,15 +10,13 @@ import waves from "@/assets/essy-waves.jpg";
 const EASE = [0.22, 1, 0.36, 1] as const;
 const heroImages = [reading, portrait, notes, waves];
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.14, delayChildren: 0.1 } },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 22 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
-};
+/* One shared entrance timeline. The inline media lands first, then the
+   supporting elements, then the headline, then the subline and CTAs. */
+const rise = (delay: number) => ({
+  initial: { opacity: 0, y: 22 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, ease: EASE, delay },
+});
 
 /* ---------- animated smiley reel ---------- */
 
@@ -136,17 +135,12 @@ function Word({ children, delay }: { children: React.ReactNode; delay: number })
 export function Hero() {
   return (
     <section className="relative overflow-hidden px-4 py-16 md:pb-36 md:pt-6">
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="relative mx-auto max-w-5xl text-center"
-      >
-        <motion.div variants={fadeUp}>
+      <div className="relative mx-auto max-w-5xl text-center">
+        <motion.div {...rise(0.5)}>
           <SmileyReel />
         </motion.div>
 
-        <motion.div variants={fadeUp} className="mt-5">
+        <motion.div {...rise(0.68)} className="mt-5">
           <span className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-card px-4 py-2 text-[12px] font-medium text-ink/70 shadow-sm">
             <span className="relative grid h-2 w-2 place-items-center">
               <span className="absolute inline-flex h-2 w-2 animate-ping rounded-full bg-sage opacity-75" />
@@ -157,32 +151,28 @@ export function Hero() {
         </motion.div>
 
         <h1 className="mt-8 text-[clamp(32px,6vw,68px)] font-normal leading-[1.12] tracking-tight text-ink md:tracking-[-2.5px]">
-          <Word delay={0.4}>
+          <Word delay={0.9}>
             <span className="inline-block mb-[0.14em] md:mb-0">Products, people,</span>
           </Word>
           <br className="md:hidden" />{" "}
-          <Word delay={0.51}>and the</Word>
+          <Word delay={1.02}>and the</Word>
           <br className="hidden md:block" />
-          <MediaChip offset={0} delay={0.14} />
-          <Word delay={0.62}>stories</Word>
+          <MediaChip offset={0} delay={0.12} />
+          <Word delay={1.14}>stories</Word>
           <br className="md:hidden" />{" "}
-          <Word delay={0.73}>worth</Word>
+          <Word delay={1.26}>worth</Word>
           <br className="hidden md:block" />
-          <MediaChip offset={2} delay={0.18} />
+          <MediaChip offset={2} delay={0.28} />
           <br className="md:hidden" />
-          <Word delay={0.84}>building.</Word>
+          <Word delay={1.38}>building.</Word>
         </h1>
 
 
-        <motion.p variants={fadeUp} className="mt-7 text-[16px] text-ink/70">
-          Researcher
-          <span className="mx-2 opacity-50">·</span>
-          Builder
-          <span className="mx-2 opacity-50">·</span>
-          Storyteller
+        <motion.p {...rise(1.7)} className="mt-7 text-[16px] text-ink/70">
+          <TypeWords text="Researcher · Builder · Storyteller" delay={1.75} step={0.09} inView={false} />
         </motion.p>
 
-        <motion.div variants={fadeUp} className="mt-9 flex flex-wrap items-center justify-center gap-3">
+        <motion.div {...rise(2.1)} className="mt-9 flex flex-wrap items-center justify-center gap-3">
           <a
             href="#projects"
             className="group inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-[13px] font-medium text-ink transition-all hover:bg-ink hover:text-white hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)]"
@@ -198,7 +188,7 @@ export function Hero() {
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
           </a>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

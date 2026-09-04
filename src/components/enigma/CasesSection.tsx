@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { Reveal, TypeWords } from "@/components/enigma/Reveal";
 import books from "@/assets/essy-books.jpg";
 import slide from "@/assets/essy-slide.jpg";
 import notes from "@/assets/essy-notes.jpg";
@@ -99,11 +100,13 @@ export function CasesSection() {
   return (
     <section className="relative px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-5xl text-center">
-        <h2 className="text-[clamp(28px,3.6vw,44px)] font-medium tracking-tight text-ink">
-          Pick an <span className="font-serif italic">adventure</span>
-        </h2>
+        <Reveal dir="down" blur>
+          <h2 className="text-[clamp(28px,3.6vw,44px)] font-medium tracking-tight text-ink">
+            Pick an <span className="font-serif italic">adventure</span>
+          </h2>
+        </Reveal>
         <p className="mx-auto mt-2 max-w-md text-[12px] text-muted-ink">
-          Each one leads somewhere small and useful.
+          <TypeWords delay={0.2} step={0.04} text="Each one leads somewhere small and useful." />
         </p>
       </div>
 
@@ -157,7 +160,7 @@ function AdventureCard({ tag, title, subtitle, body, img, alt, to, cta }: Advent
   return (
     <article className="grid items-center gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] md:gap-14">
       {/* framed, slightly slanted image */}
-      <div>
+      <Reveal dir="left">
         <div className="rotate-[-1.6deg] rounded-[30px] bg-paper p-2.5 shadow-[0_10px_26px_-20px_rgba(17,17,17,0.25)] ring-1 ring-black/[0.06]">
           <img
             src={img}
@@ -171,10 +174,10 @@ function AdventureCard({ tag, title, subtitle, body, img, alt, to, cta }: Advent
           <div className="text-[20px] font-medium tracking-tight text-ink">{title}</div>
           <div className="mt-0.5 text-[13px] text-muted-ink">{subtitle}</div>
         </div>
-      </div>
+      </Reveal>
 
       {/* copy */}
-      <div>
+      <Reveal dir="right" delay={0.1}>
         <span className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-ink/70">
           <span className="h-1.5 w-1.5 rounded-full bg-sage" /> {tag}
         </span>
@@ -189,7 +192,7 @@ function AdventureCard({ tag, title, subtitle, body, img, alt, to, cta }: Advent
         >
           {cta}
         </a>
-      </div>
+      </Reveal>
     </article>
   );
 }

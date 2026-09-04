@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Reveal, TypeWords } from "@/components/enigma/Reveal";
 import laptopDash from "@/assets/essy-laptop-dash.jpg";
 import insight from "@/assets/essy-insight.jpg";
 import phone from "@/assets/essy-phone.jpg";
@@ -57,11 +58,17 @@ export function PromiseSection() {
   return (
     <section id="projects" className="relative px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-5xl text-center">
-        <h2 className="font-serif text-[clamp(28px,3.6vw,44px)] italic leading-none tracking-tight text-ink">
-          projects
-        </h2>
+        <Reveal dir="down" blur>
+          <h2 className="font-serif text-[clamp(28px,3.6vw,44px)] italic leading-none tracking-tight text-ink">
+            projects
+          </h2>
+        </Reveal>
         <p className="mx-auto mt-4 max-w-md text-[13px] leading-relaxed text-muted-ink">
-          A handful of the things I've made lately — for people I like, on ideas I couldn't stop thinking about.
+          <TypeWords
+            delay={0.15}
+            step={0.03}
+            text="A handful of the things I've made lately — for people I like, on ideas I couldn't stop thinking about."
+          />
         </p>
       </div>
 

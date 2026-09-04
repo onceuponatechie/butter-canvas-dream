@@ -1,14 +1,13 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import heroCover from "@/assets/hero-cover.png.asset.json";
-
-
+import { Reveal, TypeWords } from "@/components/enigma/Reveal";
 
 export function TouchBand() {
   return (
     <section id="newsletter" className="scroll-mt-10 px-4 py-10 sm:px-8 sm:py-16">
-      <div className="mx-auto max-w-5xl overflow-hidden rounded-[28px] bg-ink p-6 text-white sm:p-10">
+      <Reveal dir="up" className="mx-auto max-w-5xl overflow-hidden rounded-[28px] bg-ink p-6 text-white sm:p-10">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center">
-          <div className="min-w-0">
+          <Reveal dir="left" delay={0.12} className="min-w-0">
             <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-[10px] font-semibold tracking-wider">
               ✦ THE LETTER
             </span>
@@ -27,7 +26,8 @@ export function TouchBand() {
               ))}
               <span className="ml-2 text-[11px] text-white/60">Loved by 3,400+ readers</span>
             </div>
-          </div>
+          </Reveal>
+          <Reveal dir="right" delay={0.2}>
           <form
             onSubmit={(e) => e.preventDefault()}
             className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10"
@@ -47,8 +47,9 @@ export function TouchBand() {
               No spam. No hand-wringing. Just Tuesdays.
             </p>
           </form>
+          </Reveal>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
@@ -70,16 +71,28 @@ export function Footer() {
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-backdrop via-transparent to-transparent" />
           <div className="relative">
-            <h3 className="mx-auto max-w-[20ch] text-[clamp(22px,2.4vw,30px)] font-medium leading-tight tracking-tight">
-              Let's build something people <span className="font-serif italic">remember</span>.
-            </h3>
+            <Reveal dir="down">
+              <h3 className="mx-auto max-w-[20ch] text-[clamp(22px,2.4vw,30px)] font-medium leading-tight tracking-tight">
+                Let's build something people <span className="font-serif italic">remember</span>.
+              </h3>
+            </Reveal>
             <p className="mx-auto mt-3 max-w-[38ch] text-[13px] leading-relaxed text-muted-ink">
-              Research, product, or a story that needs telling — the door is open.
+              <TypeWords
+                delay={0.2}
+                step={0.035}
+                text="Research, product, or a story that needs telling — the door is open."
+              />
             </p>
 
-            <a href="/#contact" className="mt-6 inline-flex items-center rounded-full bg-ink px-6 py-2.5 text-[12px] font-medium text-white transition-opacity hover:opacity-90">
-              Book a coffee
-            </a>
+            <Reveal dir="down" delay={0.35}>
+              <a
+                href="/#contact"
+                className="group mt-6 inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-[13px] font-medium text-ink transition-all hover:bg-ink hover:text-white hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)]"
+              >
+                Book a coffee
+                <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+              </a>
+            </Reveal>
 
             <nav className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12.5px] font-medium text-ink/75">
               {[
@@ -119,22 +132,6 @@ export function Footer() {
               <div className="mt-3">© 2026 Essy Udeme — made with care.</div>
             </div>
           </div>
-        </div>
-
-        {/* watermark */}
-        <div
-          className="pointer-events-none mt-6 select-none whitespace-nowrap text-center font-serif italic leading-none tracking-tight"
-          style={{
-            fontSize: "clamp(64px, 18vw, 220px)",
-            background:
-              "linear-gradient(180deg, rgba(17,17,17,0.10) 0%, rgba(17,17,17,0.02) 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-            color: "transparent",
-          }}
-        >
-          Essy Udeme
         </div>
       </div>
     </footer>
