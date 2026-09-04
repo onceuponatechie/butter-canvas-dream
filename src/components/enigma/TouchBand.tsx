@@ -47,8 +47,9 @@ export function TouchBand() {
               No spam. No hand-wringing. Just Tuesdays.
             </p>
           </form>
+          </Reveal>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
