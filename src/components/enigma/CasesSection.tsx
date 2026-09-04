@@ -192,7 +192,7 @@ function AdventureCard({ tag, title, subtitle, body, img, alt, to, cta }: Advent
         >
           {cta}
         </a>
-      </div>
+      </Reveal>
     </article>
   );
 }
