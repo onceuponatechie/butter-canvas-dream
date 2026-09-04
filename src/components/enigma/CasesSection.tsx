@@ -160,7 +160,7 @@ function AdventureCard({ tag, title, subtitle, body, img, alt, to, cta }: Advent
   return (
     <article className="grid items-center gap-10 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] md:gap-14">
       {/* framed, slightly slanted image */}
-      <div>
+      <Reveal dir="left">
         <div className="rotate-[-1.6deg] rounded-[30px] bg-paper p-2.5 shadow-[0_10px_26px_-20px_rgba(17,17,17,0.25)] ring-1 ring-black/[0.06]">
           <img
             src={img}
