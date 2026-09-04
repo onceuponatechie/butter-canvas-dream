@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { TypeWords } from "@/components/enigma/Reveal";
 import reading from "@/assets/essy-reading.jpg";
 import portrait from "@/assets/essy-portrait.jpg";
 import notes from "@/assets/essy-notes.jpg";
