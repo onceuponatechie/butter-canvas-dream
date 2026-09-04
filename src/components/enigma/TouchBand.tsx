@@ -26,7 +26,8 @@ export function TouchBand() {
               ))}
               <span className="ml-2 text-[11px] text-white/60">Loved by 3,400+ readers</span>
             </div>
-          </div>
+          </Reveal>
+          <Reveal dir="right" delay={0.2}>
           <form
             onSubmit={(e) => e.preventDefault()}
             className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10"
