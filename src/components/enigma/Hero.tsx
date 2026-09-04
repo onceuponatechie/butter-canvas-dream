@@ -187,7 +187,7 @@ export function Hero() {
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
           </a>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
