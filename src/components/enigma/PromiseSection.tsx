@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Reveal, TypeWords } from "@/components/enigma/Reveal";
 import laptopDash from "@/assets/essy-laptop-dash.jpg";
 import insight from "@/assets/essy-insight.jpg";
 import phone from "@/assets/essy-phone.jpg";
