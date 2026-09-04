@@ -133,22 +133,6 @@ export function Footer() {
             </div>
           </div>
         </div>
-
-        {/* watermark */}
-        <div
-          className="pointer-events-none mt-6 select-none whitespace-nowrap text-center font-serif italic leading-none tracking-tight"
-          style={{
-            fontSize: "clamp(64px, 18vw, 220px)",
-            background:
-              "linear-gradient(180deg, rgba(17,17,17,0.10) 0%, rgba(17,17,17,0.02) 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-            color: "transparent",
-          }}
-        >
-          Essy Udeme
-        </div>
       </div>
     </footer>
   );
