@@ -1,14 +1,13 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import heroCover from "@/assets/hero-cover.png.asset.json";
-
-
+import { Reveal, TypeWords } from "@/components/enigma/Reveal";
 
 export function TouchBand() {
   return (
     <section id="newsletter" className="scroll-mt-10 px-4 py-10 sm:px-8 sm:py-16">
-      <div className="mx-auto max-w-5xl overflow-hidden rounded-[28px] bg-ink p-6 text-white sm:p-10">
+      <Reveal dir="up" className="mx-auto max-w-5xl overflow-hidden rounded-[28px] bg-ink p-6 text-white sm:p-10">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center">
-          <div className="min-w-0">
+          <Reveal dir="left" delay={0.12} className="min-w-0">
             <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-[10px] font-semibold tracking-wider">
               ✦ THE LETTER
             </span>
