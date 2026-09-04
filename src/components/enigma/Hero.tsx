@@ -9,15 +9,13 @@ import waves from "@/assets/essy-waves.jpg";
 const EASE = [0.22, 1, 0.36, 1] as const;
 const heroImages = [reading, portrait, notes, waves];
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.14, delayChildren: 0.1 } },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 22 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
-};
+/* One shared entrance timeline. The inline media lands first, then the
+   supporting elements, then the headline, then the subline and CTAs. */
+const rise = (delay: number) => ({
+  initial: { opacity: 0, y: 22 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, ease: EASE, delay },
+});
 
 /* ---------- animated smiley reel ---------- */
 
