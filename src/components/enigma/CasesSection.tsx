@@ -174,10 +174,10 @@ function AdventureCard({ tag, title, subtitle, body, img, alt, to, cta }: Advent
           <div className="text-[20px] font-medium tracking-tight text-ink">{title}</div>
           <div className="mt-0.5 text-[13px] text-muted-ink">{subtitle}</div>
         </div>
-      </div>
+      </Reveal>
 
       {/* copy */}
-      <div>
+      <Reveal dir="right" delay={0.1}>
         <span className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-ink/70">
           <span className="h-1.5 w-1.5 rounded-full bg-sage" /> {tag}
         </span>
