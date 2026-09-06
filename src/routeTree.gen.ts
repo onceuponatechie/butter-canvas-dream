@@ -12,11 +12,13 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ToolsAndTemplatesRouteImport } from './routes/tools-and-templates'
 import { Route as ProductLabRouteImport } from './routes/product-lab'
 import { Route as CoursesRouteImport } from './routes/courses'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductLabIndexRouteImport } from './routes/product-lab.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as ProductLabSlugRouteImport } from './routes/product-lab.$slug'
+import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const ToolsAndTemplatesRoute = ToolsAndTemplatesRouteImport.update({
@@ -32,6 +34,11 @@ const ProductLabRoute = ProductLabRouteImport.update({
 const CoursesRoute = CoursesRouteImport.update({
   id: '/courses',
   path: '/courses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogRoute = BlogRouteImport.update({
@@ -59,6 +66,11 @@ const ProductLabSlugRoute = ProductLabSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ProductLabRoute,
 } as any)
+const CaseStudiesSlugRoute = CaseStudiesSlugRouteImport.update({
+  id: '/case-studies/$slug',
+  path: '/case-studies/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -68,19 +80,23 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blog': typeof BlogRouteWithChildren
+  '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/product-lab': typeof ProductLabRouteWithChildren
   '/tools-and-templates': typeof ToolsAndTemplatesRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/product-lab/$slug': typeof ProductLabSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/product-lab/': typeof ProductLabIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/tools-and-templates': typeof ToolsAndTemplatesRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/product-lab/$slug': typeof ProductLabSlugRoute
   '/blog': typeof BlogIndexRoute
   '/product-lab': typeof ProductLabIndexRoute
@@ -89,10 +105,12 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/blog': typeof BlogRouteWithChildren
+  '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/product-lab': typeof ProductLabRouteWithChildren
   '/tools-and-templates': typeof ToolsAndTemplatesRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/product-lab/$slug': typeof ProductLabSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/product-lab/': typeof ProductLabIndexRoute
@@ -102,19 +120,23 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/blog'
+    | '/contact'
     | '/courses'
     | '/product-lab'
     | '/tools-and-templates'
     | '/blog/$slug'
+    | '/case-studies/$slug'
     | '/product-lab/$slug'
     | '/blog/'
     | '/product-lab/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/contact'
     | '/courses'
     | '/tools-and-templates'
     | '/blog/$slug'
+    | '/case-studies/$slug'
     | '/product-lab/$slug'
     | '/blog'
     | '/product-lab'
@@ -122,10 +144,12 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/blog'
+    | '/contact'
     | '/courses'
     | '/product-lab'
     | '/tools-and-templates'
     | '/blog/$slug'
+    | '/case-studies/$slug'
     | '/product-lab/$slug'
     | '/blog/'
     | '/product-lab/'
@@ -134,9 +158,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlogRoute: typeof BlogRouteWithChildren
+  ContactRoute: typeof ContactRoute
   CoursesRoute: typeof CoursesRoute
   ProductLabRoute: typeof ProductLabRouteWithChildren
   ToolsAndTemplatesRoute: typeof ToolsAndTemplatesRoute
+  CaseStudiesSlugRoute: typeof CaseStudiesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -160,6 +186,13 @@ declare module '@tanstack/react-router' {
       path: '/courses'
       fullPath: '/courses'
       preLoaderRoute: typeof CoursesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog': {
@@ -196,6 +229,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/product-lab/$slug'
       preLoaderRoute: typeof ProductLabSlugRouteImport
       parentRoute: typeof ProductLabRoute
+    }
+    '/case-studies/$slug': {
+      id: '/case-studies/$slug'
+      path: '/case-studies/$slug'
+      fullPath: '/case-studies/$slug'
+      preLoaderRoute: typeof CaseStudiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/blog/$slug': {
       id: '/blog/$slug'
@@ -236,9 +276,11 @@ const ProductLabRouteWithChildren = ProductLabRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlogRoute: BlogRouteWithChildren,
+  ContactRoute: ContactRoute,
   CoursesRoute: CoursesRoute,
   ProductLabRoute: ProductLabRouteWithChildren,
   ToolsAndTemplatesRoute: ToolsAndTemplatesRoute,
+  CaseStudiesSlugRoute: CaseStudiesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
