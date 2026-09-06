@@ -9,30 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ToolsAndTemplatesRouteImport } from './routes/tools-and-templates'
-import { Route as ProductLabRouteImport } from './routes/product-lab'
 import { Route as CoursesRouteImport } from './routes/courses'
-import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
 
-const ToolsAndTemplatesRoute = ToolsAndTemplatesRouteImport.update({
-  id: '/tools-and-templates',
-  path: '/tools-and-templates',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProductLabRoute = ProductLabRouteImport.update({
-  id: '/product-lab',
-  path: '/product-lab',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CoursesRoute = CoursesRouteImport.update({
   id: '/courses',
   path: '/courses',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -43,81 +25,37 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/courses': typeof CoursesRoute
-  '/product-lab': typeof ProductLabRoute
-  '/tools-and-templates': typeof ToolsAndTemplatesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/courses': typeof CoursesRoute
-  '/product-lab': typeof ProductLabRoute
-  '/tools-and-templates': typeof ToolsAndTemplatesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/courses': typeof CoursesRoute
-  '/product-lab': typeof ProductLabRoute
-  '/tools-and-templates': typeof ToolsAndTemplatesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/blog'
-    | '/courses'
-    | '/product-lab'
-    | '/tools-and-templates'
+  fullPaths: '/' | '/courses'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blog' | '/courses' | '/product-lab' | '/tools-and-templates'
-  id:
-    | '__root__'
-    | '/'
-    | '/blog'
-    | '/courses'
-    | '/product-lab'
-    | '/tools-and-templates'
+  to: '/' | '/courses'
+  id: '__root__' | '/' | '/courses'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BlogRoute: typeof BlogRoute
   CoursesRoute: typeof CoursesRoute
-  ProductLabRoute: typeof ProductLabRoute
-  ToolsAndTemplatesRoute: typeof ToolsAndTemplatesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/tools-and-templates': {
-      id: '/tools-and-templates'
-      path: '/tools-and-templates'
-      fullPath: '/tools-and-templates'
-      preLoaderRoute: typeof ToolsAndTemplatesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/product-lab': {
-      id: '/product-lab'
-      path: '/product-lab'
-      fullPath: '/product-lab'
-      preLoaderRoute: typeof ProductLabRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/courses': {
       id: '/courses'
       path: '/courses'
       fullPath: '/courses'
       preLoaderRoute: typeof CoursesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -132,10 +70,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BlogRoute: BlogRoute,
   CoursesRoute: CoursesRoute,
-  ProductLabRoute: ProductLabRoute,
-  ToolsAndTemplatesRoute: ToolsAndTemplatesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
