@@ -1,11 +1,9 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
-import { Nav } from "@/components/enigma/Nav";
-import { Footer } from "@/components/enigma/TouchBand";
-import phone from "@/assets/essy-phone.jpg";
-import slide from "@/assets/essy-slide.jpg";
-import notes from "@/assets/essy-notes.jpg";
+import { Download, ArrowUpRight } from "lucide-react";
+import { PageShell, PageHeader, BackLink } from "@/components/enigma/PageShell";
+import { Reveal } from "@/components/enigma/Reveal";
+import { kits, kitCategories } from "@/content/kits";
 
 export const Route = createFileRoute("/tools-and-templates")({
   head: () => ({
@@ -14,13 +12,12 @@ export const Route = createFileRoute("/tools-and-templates")({
       {
         name: "description",
         content:
-          "Notion, Figma, and deck kits for builders and storytellers. 20+ templates for products, people, and the stories worth building.",
+          "Downloadable kits for builders: product briefs, idea scorecards, pitch deck outlines, rate sheets and checklists — the stack I'd hand a younger me.",
       },
       { property: "og:title", content: "Tools & Templates — Essy Udeme" },
       {
         property: "og:description",
-        content:
-          "Notion, Figma, and deck kits for builders and storytellers. 20+ templates.",
+        content: "Free and paid kits for building, pricing, writing and shipping your first real product.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -29,172 +26,112 @@ export const Route = createFileRoute("/tools-and-templates")({
   component: ToolsPage,
 });
 
-const EASE = [0.22, 1, 0.36, 1] as const;
-
-const kits = [
-  {
-    title: "Product brief template",
-    desc: "A one-pager that turns a fuzzy idea into a shippable scope.",
-    type: "Notion",
-    cover: notes,
-  },
-  {
-    title: "Pitch deck starter",
-    desc: "12 slides that respect the 3-second decision. Editable in Figma.",
-    type: "Figma",
-    cover: slide,
-  },
-  {
-    title: "Onboarding teardown canvas",
-    desc: "Audit any funnel step by step and find the drop-offs worth fixing.",
-    type: "Notion",
-    cover: phone,
-  },
-  {
-    title: "Story spine worksheet",
-    desc: "A simple scaffold for essays, launches, and founder notes.",
-    type: "Notion",
-    cover: notes,
-  },
-  {
-    title: "Landing page blocks",
-    desc: "Modular Figma sections — hero, proof, pricing, FAQ — ready to remix.",
-    type: "Figma",
-    cover: slide,
-  },
-  {
-    title: "Weekly review file",
-    desc: "The exact dashboard I use to ship, reflect, and plan the next week.",
-    type: "Notion",
-    cover: phone,
-  },
-];
-
 function ToolsPage() {
+  const [cat, setCat] = useState<string>("All");
+  const list = cat === "All" ? kits : kits.filter((k) => k.category === cat);
+
   return (
-    <div className="min-h-screen bg-backdrop">
-      <main className="relative mx-auto w-full max-w-[1440px] overflow-hidden bg-backdrop">
-        <Nav />
+    <PageShell>
+      <PageHeader
+        icon="✦"
+        eyebrow="Tools & Templates"
+        title="The stack I'd hand a"
+        accent="younger me"
+        blurb="Every kit here came out of real work — a brief I actually used, a quote that actually closed, a checklist that caught a real mistake."
+      />
 
-        {/* Hero */}
-        <section className="px-5 pb-10 pt-8 sm:px-10 sm:pt-12">
-          <div className="mx-auto max-w-5xl">
-            <div className="flex items-center gap-2.5">
-              <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-[#f4f4f2] text-[13px] text-ink ring-1 ring-black/[0.04]">
-                ✦
-              </span>
-              <span className="text-[15px] font-medium tracking-tight text-ink">
-                Tools & Templates
-              </span>
-            </div>
+      <div className="px-5 sm:px-10">
+        <div className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-center gap-2">
+          {kitCategories.map((c) => (
+            <button
+              key={c}
+              type="button"
+              onClick={() => setCat(c)}
+              className={`rounded-full border px-4 py-1.5 text-[12px] font-medium transition-colors ${
+                cat === c
+                  ? "border-ink bg-ink text-white"
+                  : "border-ink/12 text-ink/65 hover:border-ink/30 hover:text-ink"
+              }`}
+            >
+              {c}
+            </button>
+          ))}
+        </div>
+      </div>
 
-            <h1 className="mt-5 font-serif text-[44px] italic leading-[1.02] tracking-[-1.5px] text-ink sm:text-[64px]">
-              The stack I'd hand a younger me.
-            </h1>
-            <p className="mt-4 max-w-[52ch] text-[15px] leading-relaxed text-ink/70">
-              Notion, Figma, and deck kits for builders and storytellers. 20+ templates for
-              products, people, and the stories worth building — free to remix.
-            </p>
+      {/* masonry — CSS columns keep the pinboard rhythm without a JS layout pass */}
+      <section className="px-5 py-12 sm:px-10 sm:py-16">
+        <div className="mx-auto max-w-[1180px] [column-gap:22px] sm:columns-2 lg:columns-3">
+          {list.map((k, i) => (
+            <Reveal key={k.slug} dir="up" delay={0.04 * (i % 3)} className="mb-[22px] block break-inside-avoid">
+              <article
+                className={`${k.tint} group flex flex-col rounded-[24px] p-6 ring-1 ring-black/[0.06] transition-shadow hover:shadow-[0_26px_54px_-34px_rgba(17,17,17,0.4)]`}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <span className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-ink/45">
+                    {k.category}
+                  </span>
+                  <span
+                    className={`rounded-full px-2.5 py-1 text-[10.5px] font-semibold ${
+                      k.price === "Free" ? "bg-sage text-ink" : "bg-ink text-white"
+                    }`}
+                  >
+                    {k.price}
+                  </span>
+                </div>
 
-            {/* thumbnail stack that fans out as it enters view */}
-            <div className="mt-7 flex items-end">
-              {[phone, slide, notes].map((src, i) => (
-                <motion.img
-                  key={i}
-                  src={src}
-                  alt=""
-                  aria-hidden
-                  loading="lazy"
-                  initial={{ marginLeft: i === 0 ? 0 : -64, rotate: i === 1 ? 4 : i === 2 ? 8 : 0 }}
-                  whileInView={{ marginLeft: i === 0 ? 0 : 8, rotate: 0 }}
-                  viewport={{ once: true, amount: 0.8 }}
-                  transition={{ delay: 0.35 + i * 0.1, duration: 0.6, ease: EASE }}
-                  style={{ zIndex: 3 - i }}
-                  className="relative h-[88px] w-[88px] rounded-[20px] object-cover shadow-[0_12px_28px_-16px_rgba(0,0,0,0.5)] ring-2 ring-backdrop"
-                />
-              ))}
-            </div>
-
-            <div className="mt-6 flex flex-wrap items-center gap-2 text-[11px] font-medium text-ink/55">
-              <span className="rounded-full bg-black/[0.06] px-3 py-1.5">✦ Skip the blank page</span>
-              <span className="rounded-full bg-black/[0.06] px-3 py-1.5">◐ Steal my workflow</span>
-              <span className="rounded-full bg-black/[0.06] px-3 py-1.5">✿ Free to start</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Grid */}
-        <section className="px-5 pb-16 sm:px-10">
-          <div className="mx-auto max-w-5xl">
-            <div className="mb-5 flex items-center justify-between">
-              <h2 className="text-[15px] font-medium tracking-tight text-ink">All kits</h2>
-              <span className="text-[12px] text-ink/45">{kits.length} templates</span>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {kits.map((k) => (
-                <article
-                  key={k.title}
-                  className="group flex cursor-pointer flex-col overflow-hidden rounded-[22px] bg-[#f4f4f2] ring-1 ring-black/[0.04] transition-shadow hover:shadow-[0_18px_40px_-24px_rgba(0,0,0,0.35)]"
+                <h3 className="mt-5 text-[19px] font-medium leading-snug tracking-tight text-ink">
+                  {k.title}
+                </h3>
+                <p
+                  className={`mt-3 text-[13px] leading-relaxed text-ink/65 ${
+                    k.span === "tall" ? "pb-10" : ""
+                  }`}
                 >
-                  <div className="relative h-[150px] overflow-hidden">
-                    <img
-                      src={k.cover}
-                      alt=""
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <span className="absolute left-3 top-3 rounded-full bg-white/85 px-2.5 py-1 text-[10.5px] font-medium text-ink/70 backdrop-blur">
-                      {k.type}
-                    </span>
-                  </div>
-                  <div className="flex flex-1 flex-col p-5">
-                    <h3 className="text-[17px] font-medium leading-[1.2] tracking-[-0.3px] text-ink transition-colors group-hover:text-[#6b7d3a]">
-                      {k.title}
-                    </h3>
-                    <p className="mt-2 text-[12.5px] leading-relaxed text-ink/60">
-                      {k.desc}
-                    </p>
-                    <span className="mt-4 inline-flex w-fit items-center gap-1.5 text-[12px] font-medium text-ink/70 transition-colors group-hover:text-ink">
-                      Open template <ArrowUpRight size={12} />
-                    </span>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+                  {k.desc}
+                </p>
 
-        {/* CTA */}
-        <section className="px-5 pb-16 sm:px-10">
-          <div className="mx-auto flex max-w-5xl flex-col items-start gap-4 rounded-[28px] bg-sage-soft p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-            <div>
-              <h2 className="text-[22px] font-medium tracking-[-0.4px] text-ink">
-                Want the whole bundle?
+                <div className="mt-6 flex items-center justify-between gap-3 border-t border-black/[0.07] pt-4">
+                  <span className="text-[11.5px] text-muted-ink">{k.format}</span>
+                  <a
+                    href={k.file}
+                    download
+                    className="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2 text-[12px] font-medium text-white transition-colors hover:bg-sage hover:text-ink"
+                  >
+                    <Download size={13} />
+                    {k.price === "Free" ? "Download" : "Get preview"}
+                  </a>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-5 pb-20 sm:px-10">
+        <Reveal dir="up" className="mx-auto max-w-[1180px] overflow-hidden rounded-[28px] bg-ink p-8 text-white sm:p-12">
+          <div className="grid gap-8 md:grid-cols-[1.2fr_auto] md:items-center">
+            <div className="min-w-0">
+              <h2 className="text-[clamp(24px,3vw,36px)] font-normal leading-tight tracking-tight">
+                Want the whole shelf, <span className="font-serif italic">one download</span>?
               </h2>
-              <p className="mt-1.5 text-[13px] leading-relaxed text-ink/65">
-                One Notion + Figma pack with everything above, plus new kits as I make them.
+              <p className="mt-4 max-w-[48ch] text-[13.5px] leading-relaxed text-white/70">
+                Every kit, bundled, plus the two I only send to people who ask. Tell me what you're
+                building and I'll point you at the right three.
               </p>
             </div>
-            <button className="inline-flex shrink-0 items-center rounded-full bg-ink px-6 py-2.5 text-[12px] font-medium text-white transition-opacity hover:opacity-90">
-              Browse the kits
-            </button>
-          </div>
-        </section>
-
-        <section className="px-5 pb-20 sm:px-10">
-          <div className="mx-auto max-w-5xl">
             <Link
-              to="/"
-              className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-card px-5 py-2.5 text-[13px] font-medium text-ink/80 transition-colors hover:text-ink"
+              to="/contact"
+              className="inline-flex w-fit items-center gap-1.5 rounded-full bg-sage px-6 py-3 text-[13px] font-medium text-ink transition-opacity hover:opacity-90"
             >
-              ← Back to home
+              Ask for the bundle <ArrowUpRight size={14} />
             </Link>
           </div>
-        </section>
-
-        <Footer />
-      </main>
-    </div>
+        </Reveal>
+        <div className="mt-12 text-center">
+          <BackLink to="/" label="Back to home" />
+        </div>
+      </section>
+    </PageShell>
   );
 }

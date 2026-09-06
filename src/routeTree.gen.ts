@@ -12,8 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ToolsAndTemplatesRouteImport } from './routes/tools-and-templates'
 import { Route as ProductLabRouteImport } from './routes/product-lab'
 import { Route as CoursesRouteImport } from './routes/courses'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProductLabIndexRouteImport } from './routes/product-lab.index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as ProductLabSlugRouteImport } from './routes/product-lab.$slug'
+import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const ToolsAndTemplatesRoute = ToolsAndTemplatesRouteImport.update({
   id: '/tools-and-templates',
@@ -30,6 +36,11 @@ const CoursesRoute = CoursesRouteImport.update({
   path: '/courses',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
@@ -40,54 +51,118 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductLabIndexRoute = ProductLabIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProductLabRoute,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogRoute,
+} as any)
+const ProductLabSlugRoute = ProductLabSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProductLabRoute,
+} as any)
+const CaseStudiesSlugRoute = CaseStudiesSlugRouteImport.update({
+  id: '/case-studies/$slug',
+  path: '/case-studies/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
-  '/product-lab': typeof ProductLabRoute
+  '/product-lab': typeof ProductLabRouteWithChildren
   '/tools-and-templates': typeof ToolsAndTemplatesRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/case-studies/$slug': typeof CaseStudiesSlugRoute
+  '/product-lab/$slug': typeof ProductLabSlugRoute
+  '/blog/': typeof BlogIndexRoute
+  '/product-lab/': typeof ProductLabIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
+  '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
-  '/product-lab': typeof ProductLabRoute
   '/tools-and-templates': typeof ToolsAndTemplatesRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/case-studies/$slug': typeof CaseStudiesSlugRoute
+  '/product-lab/$slug': typeof ProductLabSlugRoute
+  '/blog': typeof BlogIndexRoute
+  '/product-lab': typeof ProductLabIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
-  '/product-lab': typeof ProductLabRoute
+  '/product-lab': typeof ProductLabRouteWithChildren
   '/tools-and-templates': typeof ToolsAndTemplatesRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/case-studies/$slug': typeof CaseStudiesSlugRoute
+  '/product-lab/$slug': typeof ProductLabSlugRoute
+  '/blog/': typeof BlogIndexRoute
+  '/product-lab/': typeof ProductLabIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/blog'
+    | '/contact'
     | '/courses'
     | '/product-lab'
     | '/tools-and-templates'
+    | '/blog/$slug'
+    | '/case-studies/$slug'
+    | '/product-lab/$slug'
+    | '/blog/'
+    | '/product-lab/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blog' | '/courses' | '/product-lab' | '/tools-and-templates'
+  to:
+    | '/'
+    | '/contact'
+    | '/courses'
+    | '/tools-and-templates'
+    | '/blog/$slug'
+    | '/case-studies/$slug'
+    | '/product-lab/$slug'
+    | '/blog'
+    | '/product-lab'
   id:
     | '__root__'
     | '/'
     | '/blog'
+    | '/contact'
     | '/courses'
     | '/product-lab'
     | '/tools-and-templates'
+    | '/blog/$slug'
+    | '/case-studies/$slug'
+    | '/product-lab/$slug'
+    | '/blog/'
+    | '/product-lab/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BlogRoute: typeof BlogRoute
+  BlogRoute: typeof BlogRouteWithChildren
+  ContactRoute: typeof ContactRoute
   CoursesRoute: typeof CoursesRoute
-  ProductLabRoute: typeof ProductLabRoute
+  ProductLabRoute: typeof ProductLabRouteWithChildren
   ToolsAndTemplatesRoute: typeof ToolsAndTemplatesRoute
+  CaseStudiesSlugRoute: typeof CaseStudiesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -113,6 +188,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoursesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog': {
       id: '/blog'
       path: '/blog'
@@ -127,15 +209,78 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/product-lab/': {
+      id: '/product-lab/'
+      path: '/'
+      fullPath: '/product-lab/'
+      preLoaderRoute: typeof ProductLabIndexRouteImport
+      parentRoute: typeof ProductLabRoute
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/product-lab/$slug': {
+      id: '/product-lab/$slug'
+      path: '/$slug'
+      fullPath: '/product-lab/$slug'
+      preLoaderRoute: typeof ProductLabSlugRouteImport
+      parentRoute: typeof ProductLabRoute
+    }
+    '/case-studies/$slug': {
+      id: '/case-studies/$slug'
+      path: '/case-studies/$slug'
+      fullPath: '/case-studies/$slug'
+      preLoaderRoute: typeof CaseStudiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
   }
 }
 
+interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
+interface ProductLabRouteChildren {
+  ProductLabSlugRoute: typeof ProductLabSlugRoute
+  ProductLabIndexRoute: typeof ProductLabIndexRoute
+}
+
+const ProductLabRouteChildren: ProductLabRouteChildren = {
+  ProductLabSlugRoute: ProductLabSlugRoute,
+  ProductLabIndexRoute: ProductLabIndexRoute,
+}
+
+const ProductLabRouteWithChildren = ProductLabRoute._addFileChildren(
+  ProductLabRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BlogRoute: BlogRoute,
+  BlogRoute: BlogRouteWithChildren,
+  ContactRoute: ContactRoute,
   CoursesRoute: CoursesRoute,
-  ProductLabRoute: ProductLabRoute,
+  ProductLabRoute: ProductLabRouteWithChildren,
   ToolsAndTemplatesRoute: ToolsAndTemplatesRoute,
+  CaseStudiesSlugRoute: CaseStudiesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
