@@ -4,8 +4,8 @@ import reading from "@/assets/essy-reading.jpg";
 import phone from "@/assets/essy-phone.jpg";
 import slide from "@/assets/essy-slide.jpg";
 import notes from "@/assets/essy-notes.jpg";
-import rabbitHole from "@/assets/rabbit-hole-3d.png";
 import productLabIcon from "@/assets/product-lab-icon-new.png";
+import { WhyNotBuildCard } from "@/components/enigma/WhyNotBuildCard";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -67,27 +67,9 @@ export function BentoGrid() {
       >
         {/* ---------- Why Not Build? — dark anchor, tall left ---------- */}
         <motion.div variants={cardReveal} className="order-1 flex md:col-span-4 md:row-span-2">
-          <article className={`${cardBase} w-full bg-ink p-7 text-white`}>
-            <CornerArrow tone="dark" />
-            <Kicker className="text-white/40">The Publication</Kicker>
-            <h3 className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.8px]">
-              Why Not Build?
-            </h3>
-            <p className="mt-2.5 max-w-[28ch] text-[13px] leading-relaxed text-white/60">
-              Turning curiosity into action — deep dives into products, people, careers,
-              and the ideas worth building.
-            </p>
-            <div className="relative mt-6 flex flex-1 items-end justify-center">
-              <img
-                src={rabbitHole}
-                alt="A laptop glowing with a spiral tunnel, surrounded by floating idea cards"
-                loading="lazy"
-                width={1024}
-                height={1024}
-                className="w-[80%] max-w-[340px] translate-y-4 select-none drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 md:w-[105%] md:max-w-none"
-              />
-            </div>
-          </article>
+          <div className="flex w-full items-center justify-center py-2 md:py-0">
+            <WhyNotBuildCard />
+          </div>
         </motion.div>
 
         {/* ---------- Tools & Templates ---------- */}

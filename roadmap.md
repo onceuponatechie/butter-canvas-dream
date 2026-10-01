@@ -1,3 +1,3 @@
 # Roadmap
 
-- [ ] Recreate the Why Not Build motion card and artwork from the supplied screenshot and specification.
+- [x] Recreate the Why Not Build motion card and artwork from the supplied screenshot and specification.
