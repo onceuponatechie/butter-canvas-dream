@@ -8,7 +8,16 @@ const HEIGHT = 486;
 const SCREEN_MS = 3800;
 const LOOP_MS = SCREEN_MS * 6;
 
-const screens = [
+type Screen = {
+  category: string;
+  lead?: string;
+  title: string;
+  body: readonly [string, string];
+  dark?: boolean;
+  image?: "sage" | "ribbon";
+};
+
+const screens: readonly Screen[] = [
   { category: "Careers", lead: "06", title: "Six territories. One instinct.", body: ["Understand what's changing.", "Build what comes next."], dark: true },
   { category: "Businesses", title: "Make room for a better way.", body: ["Small experiments. Real possibilities.", "Build a business on your own terms."], image: "sage" },
   { category: "Products", lead: "01", title: "Start with a better question.", body: ["What could work differently?", "Make something worth finding out."], dark: true },
