@@ -9,199 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ToolsAndTemplatesRouteImport } from './routes/tools-and-templates'
-import { Route as ProductLabRouteImport } from './routes/product-lab'
-import { Route as CoursesRouteImport } from './routes/courses'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ProductLabIndexRouteImport } from './routes/product-lab.index'
-import { Route as BlogIndexRouteImport } from './routes/blog.index'
-import { Route as ProductLabSlugRouteImport } from './routes/product-lab.$slug'
-import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
-import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
-const ToolsAndTemplatesRoute = ToolsAndTemplatesRouteImport.update({
-  id: '/tools-and-templates',
-  path: '/tools-and-templates',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProductLabRoute = ProductLabRouteImport.update({
-  id: '/product-lab',
-  path: '/product-lab',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CoursesRoute = CoursesRouteImport.update({
-  id: '/courses',
-  path: '/courses',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProductLabIndexRoute = ProductLabIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ProductLabRoute,
-} as any)
-const BlogIndexRoute = BlogIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => BlogRoute,
-} as any)
-const ProductLabSlugRoute = ProductLabSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ProductLabRoute,
-} as any)
-const CaseStudiesSlugRoute = CaseStudiesSlugRouteImport.update({
-  id: '/case-studies/$slug',
-  path: '/case-studies/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogSlugRoute = BlogSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => BlogRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRouteWithChildren
-  '/contact': typeof ContactRoute
-  '/courses': typeof CoursesRoute
-  '/product-lab': typeof ProductLabRouteWithChildren
-  '/tools-and-templates': typeof ToolsAndTemplatesRoute
-  '/blog/$slug': typeof BlogSlugRoute
-  '/case-studies/$slug': typeof CaseStudiesSlugRoute
-  '/product-lab/$slug': typeof ProductLabSlugRoute
-  '/blog/': typeof BlogIndexRoute
-  '/product-lab/': typeof ProductLabIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/contact': typeof ContactRoute
-  '/courses': typeof CoursesRoute
-  '/tools-and-templates': typeof ToolsAndTemplatesRoute
-  '/blog/$slug': typeof BlogSlugRoute
-  '/case-studies/$slug': typeof CaseStudiesSlugRoute
-  '/product-lab/$slug': typeof ProductLabSlugRoute
-  '/blog': typeof BlogIndexRoute
-  '/product-lab': typeof ProductLabIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/blog': typeof BlogRouteWithChildren
-  '/contact': typeof ContactRoute
-  '/courses': typeof CoursesRoute
-  '/product-lab': typeof ProductLabRouteWithChildren
-  '/tools-and-templates': typeof ToolsAndTemplatesRoute
-  '/blog/$slug': typeof BlogSlugRoute
-  '/case-studies/$slug': typeof CaseStudiesSlugRoute
-  '/product-lab/$slug': typeof ProductLabSlugRoute
-  '/blog/': typeof BlogIndexRoute
-  '/product-lab/': typeof ProductLabIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/blog'
-    | '/contact'
-    | '/courses'
-    | '/product-lab'
-    | '/tools-and-templates'
-    | '/blog/$slug'
-    | '/case-studies/$slug'
-    | '/product-lab/$slug'
-    | '/blog/'
-    | '/product-lab/'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/contact'
-    | '/courses'
-    | '/tools-and-templates'
-    | '/blog/$slug'
-    | '/case-studies/$slug'
-    | '/product-lab/$slug'
-    | '/blog'
-    | '/product-lab'
-  id:
-    | '__root__'
-    | '/'
-    | '/blog'
-    | '/contact'
-    | '/courses'
-    | '/product-lab'
-    | '/tools-and-templates'
-    | '/blog/$slug'
-    | '/case-studies/$slug'
-    | '/product-lab/$slug'
-    | '/blog/'
-    | '/product-lab/'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BlogRoute: typeof BlogRouteWithChildren
-  ContactRoute: typeof ContactRoute
-  CoursesRoute: typeof CoursesRoute
-  ProductLabRoute: typeof ProductLabRouteWithChildren
-  ToolsAndTemplatesRoute: typeof ToolsAndTemplatesRoute
-  CaseStudiesSlugRoute: typeof CaseStudiesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/tools-and-templates': {
-      id: '/tools-and-templates'
-      path: '/tools-and-templates'
-      fullPath: '/tools-and-templates'
-      preLoaderRoute: typeof ToolsAndTemplatesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/product-lab': {
-      id: '/product-lab'
-      path: '/product-lab'
-      fullPath: '/product-lab'
-      preLoaderRoute: typeof ProductLabRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/courses': {
-      id: '/courses'
-      path: '/courses'
-      fullPath: '/courses'
-      preLoaderRoute: typeof CoursesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -209,78 +48,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/product-lab/': {
-      id: '/product-lab/'
-      path: '/'
-      fullPath: '/product-lab/'
-      preLoaderRoute: typeof ProductLabIndexRouteImport
-      parentRoute: typeof ProductLabRoute
-    }
-    '/blog/': {
-      id: '/blog/'
-      path: '/'
-      fullPath: '/blog/'
-      preLoaderRoute: typeof BlogIndexRouteImport
-      parentRoute: typeof BlogRoute
-    }
-    '/product-lab/$slug': {
-      id: '/product-lab/$slug'
-      path: '/$slug'
-      fullPath: '/product-lab/$slug'
-      preLoaderRoute: typeof ProductLabSlugRouteImport
-      parentRoute: typeof ProductLabRoute
-    }
-    '/case-studies/$slug': {
-      id: '/case-studies/$slug'
-      path: '/case-studies/$slug'
-      fullPath: '/case-studies/$slug'
-      preLoaderRoute: typeof CaseStudiesSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog/$slug': {
-      id: '/blog/$slug'
-      path: '/$slug'
-      fullPath: '/blog/$slug'
-      preLoaderRoute: typeof BlogSlugRouteImport
-      parentRoute: typeof BlogRoute
-    }
   }
 }
 
-interface BlogRouteChildren {
-  BlogSlugRoute: typeof BlogSlugRoute
-  BlogIndexRoute: typeof BlogIndexRoute
-}
-
-const BlogRouteChildren: BlogRouteChildren = {
-  BlogSlugRoute: BlogSlugRoute,
-  BlogIndexRoute: BlogIndexRoute,
-}
-
-const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
-
-interface ProductLabRouteChildren {
-  ProductLabSlugRoute: typeof ProductLabSlugRoute
-  ProductLabIndexRoute: typeof ProductLabIndexRoute
-}
-
-const ProductLabRouteChildren: ProductLabRouteChildren = {
-  ProductLabSlugRoute: ProductLabSlugRoute,
-  ProductLabIndexRoute: ProductLabIndexRoute,
-}
-
-const ProductLabRouteWithChildren = ProductLabRoute._addFileChildren(
-  ProductLabRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BlogRoute: BlogRouteWithChildren,
-  ContactRoute: ContactRoute,
-  CoursesRoute: CoursesRoute,
-  ProductLabRoute: ProductLabRouteWithChildren,
-  ToolsAndTemplatesRoute: ToolsAndTemplatesRoute,
-  CaseStudiesSlugRoute: CaseStudiesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
