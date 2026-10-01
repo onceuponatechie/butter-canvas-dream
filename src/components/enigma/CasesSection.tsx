@@ -29,7 +29,7 @@ const adventures: Adventure[] = [
     body: "Twelve slides that respect the three-second decision — structured the way investors actually read, and editable in Figma without touching a single master component.",
     img: slide,
     alt: "A pitch deck slide open on a laptop",
-    to: "/tools-and-templates",
+    to: "#resources",
     cta: "Browse the kits",
   },
   {
@@ -39,7 +39,7 @@ const adventures: Adventure[] = [
     body: "Curiosity compounds. A short field guide to following the thread all the way down without losing the plot — and turning what you find into something you can actually build.",
     img: books,
     alt: "A stack of books on a desk",
-    to: "/blog",
+    to: "#resources",
     cta: "Read the publication",
   },
   {
@@ -49,7 +49,7 @@ const adventures: Adventure[] = [
     body: "From fuzzy idea to a real thing people can use. Research it, scope it, ship it, then tell the story — the same loop I run in public, taught step by step.",
     img: laptopDash,
     alt: "A dashboard being designed on a laptop",
-    to: "/courses",
+    to: "#resources",
     cta: "Enter the classroom",
   },
   {
@@ -59,7 +59,7 @@ const adventures: Adventure[] = [
     body: "The one-pager that turns a fuzzy idea into a scope you can hand to someone else. Problem, user, bet, and the smallest thing worth shipping first.",
     img: notes,
     alt: "A notebook open beside a laptop",
-    to: "/tools-and-templates",
+    to: "#resources",
     cta: "Browse the kits",
   },
 ];

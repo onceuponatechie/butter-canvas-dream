@@ -7,7 +7,7 @@ import { AboutSection } from "@/components/enigma/AboutSection";
 import { PromiseSection } from "@/components/enigma/PromiseSection";
 import { CasesSection } from "@/components/enigma/CasesSection";
 import { TouchBand, Footer } from "@/components/enigma/TouchBand";
-import heroCover from "@/assets/hero-cover.png.asset.json";
+import heroCover from "@/assets/hero-cover.webp";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -40,7 +40,7 @@ function Index() {
       <main className="relative mx-auto w-full max-w-[1440px] overflow-x-clip bg-backdrop">
         <div className="relative overflow-hidden">
           <img
-            src={heroCover.url}
+            src={heroCover}
             alt=""
             aria-hidden
             className="pointer-events-none absolute inset-0 h-full w-full object-cover"

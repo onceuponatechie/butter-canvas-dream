@@ -1,5 +1,4 @@
 import { ArrowUpRight, Layers } from "lucide-react";
-import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import reading from "@/assets/essy-reading.jpg";
 import phone from "@/assets/essy-phone.jpg";
@@ -68,7 +67,7 @@ export function BentoGrid() {
       >
         {/* ---------- Why Not Build? — dark anchor, tall left ---------- */}
         <motion.div variants={cardReveal} className="order-1 flex md:col-span-4 md:row-span-2">
-          <Link to="/blog" className={`${cardBase} w-full bg-ink p-7 text-white`}>
+          <article className={`${cardBase} w-full bg-ink p-7 text-white`}>
             <CornerArrow tone="dark" />
             <Kicker className="text-white/40">The Publication</Kicker>
             <h3 className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.8px]">
@@ -88,15 +87,12 @@ export function BentoGrid() {
                 className="w-[80%] max-w-[340px] translate-y-4 select-none drop-shadow-[0_30px_60px_rgba(0,0,0,0.5)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 md:w-[105%] md:max-w-none"
               />
             </div>
-          </Link>
+          </article>
         </motion.div>
 
         {/* ---------- Tools & Templates ---------- */}
         <motion.div variants={cardReveal} className="order-2 flex md:col-span-5">
-          <Link
-            to="/tools-and-templates"
-            className={`${cardBase} w-full bg-stone p-7 ring-1 ring-black/5`}
-          >
+          <article className={`${cardBase} w-full bg-stone p-7 ring-1 ring-black/5`}>
             <div className="flex flex-1 items-center gap-4">
               {/* copy + the site's own pill button */}
               <div className="flex min-w-0 flex-1 flex-col justify-between self-stretch">
@@ -155,7 +151,7 @@ export function BentoGrid() {
                 </div>
               </div>
             </div>
-          </Link>
+          </article>
         </motion.div>
 
         {/* ---------- portrait → about ---------- */}
@@ -181,7 +177,7 @@ export function BentoGrid() {
 
         {/* ---------- courses — the serif accent card ---------- */}
         <motion.div variants={cardReveal} className="order-4 flex md:col-span-3">
-          <Link to="/courses" className={`${cardBase} w-full justify-between bg-sage-soft p-7`}>
+          <article className={`${cardBase} w-full justify-between bg-sage-soft p-7`}>
             <div>
               <Kicker className="text-ink/45">Courses & certifications</Kicker>
               <h3 className="mt-3 font-serif text-[34px] italic leading-none tracking-tight text-ink">
@@ -195,15 +191,12 @@ export function BentoGrid() {
             <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-ink/25 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
               Enter the classroom
             </span>
-          </Link>
+          </article>
         </motion.div>
 
         {/* ---------- The Product Lab ---------- */}
         <motion.div variants={cardReveal} className="order-3 md:order-5 flex md:col-span-5">
-          <Link
-            to="/product-lab"
-            className={`${cardBase} min-h-[280px] w-full bg-stone p-7 ring-1 ring-black/5 md:min-h-0`}
-          >
+          <article className={`${cardBase} min-h-[280px] w-full bg-stone p-7 ring-1 ring-black/5 md:min-h-0`}>
             <div className="relative z-10 max-w-[62%]">
               <Kicker className="text-ink/45">Teardowns & case studies</Kicker>
               <h3 className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.8px] text-ink">
@@ -227,7 +220,7 @@ export function BentoGrid() {
               height={1024}
               className="pointer-events-none absolute -bottom-6 -right-4 w-[39%] max-w-[210px] select-none drop-shadow-[0_24px_44px_rgba(17,17,17,0.18)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-2 group-hover:rotate-2"
             />
-          </Link>
+          </article>
         </motion.div>
       </motion.div>
     </section>

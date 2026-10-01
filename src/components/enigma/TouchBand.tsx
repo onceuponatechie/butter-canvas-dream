@@ -1,5 +1,5 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import heroCover from "@/assets/hero-cover.png.asset.json";
+import heroCover from "@/assets/hero-cover.webp";
 import { Reveal, TypeWords } from "@/components/enigma/Reveal";
 
 export function TouchBand() {
@@ -63,7 +63,7 @@ export function Footer() {
             the bottom instead of the top */}
         <div className="relative overflow-hidden rounded-[24px] bg-white p-8 text-center ring-1 ring-black/5 sm:p-12">
           <img
-            src={heroCover.url}
+            src={heroCover}
             alt=""
             aria-hidden
             className="pointer-events-none absolute inset-0 h-full w-full object-cover"
@@ -97,10 +97,8 @@ export function Footer() {
             <nav className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12.5px] font-medium text-ink/75">
               {[
                 { label: "Home", href: "/" },
-                { label: "Why Not Build?", href: "/blog" },
-                { label: "Tools & Templates", href: "/tools-and-templates" },
-                { label: "The Product Lab", href: "/product-lab" },
-                { label: "Courses", href: "/courses" },
+                { label: "Why Not Build?", href: "/#resources" },
+                { label: "Resources", href: "/#resources" },
                 { label: "Projects", href: "/#projects" },
                 { label: "About", href: "/#about" },
               ].map((l) => (
