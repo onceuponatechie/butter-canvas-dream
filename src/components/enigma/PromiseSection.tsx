@@ -52,7 +52,7 @@ const projects = [
   },
 ];
 
-const tints = ["bg-butter-soft", "bg-sage-soft", "bg-lavender-soft", "bg-[#f6f6f6]"];
+const tints = ["bg-butter-soft", "bg-sage-soft", "bg-lavender-soft", "bg-stone"];
 
 export function PromiseSection() {
   return (
@@ -131,13 +131,13 @@ function ProjectCard({
           y: isLast ? 0 : y,
           transformOrigin: "top center",
         }}
-        className={`group relative mx-auto max-w-6xl overflow-hidden rounded-[32px] p-4 ring-1 ring-black/5 md:h-[calc(100svh-8rem)] md:rounded-[44px] md:p-5 ${tints[index % tints.length]} shadow-[0_1px_2px_rgba(0,0,0,0.03),0_24px_44px_-32px_rgba(0,0,0,0.14)]`}
+        className={`premium-card group relative mx-auto h-[540px] max-w-6xl overflow-hidden rounded-[32px] p-4 md:rounded-[36px] md:p-5 ${tints[index % tints.length]}`}
       >
         <a href="#projects" aria-label={name} className="absolute inset-0 z-10" />
 
         <div className="grid h-full grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
           {/* image — fills its half of the card with equal inset on every side */}
-          <div className="relative order-1 aspect-[16/10] overflow-hidden rounded-[20px] md:order-2 md:aspect-auto md:rounded-[30px]">
+          <div className="relative order-1 min-h-0 overflow-hidden rounded-[20px] md:order-2 md:rounded-[28px]">
             <img
               src={img}
               alt={name}
@@ -187,7 +187,7 @@ function ProjectCard({
           </div>
 
           {/* text */}
-          <div className="order-2 flex flex-col justify-center gap-4 p-3 pb-0 pt-1 md:order-1 md:gap-5 md:p-7">
+          <div className="order-2 flex min-h-0 flex-col justify-center gap-3 overflow-hidden p-3 pb-0 pt-1 md:order-1 md:gap-5 md:p-7">
             <span className="inline-flex w-fit items-center gap-2 rounded-full border border-ink/15 px-3 py-1 text-[12px] text-ink/70">
               <span className="h-1.5 w-1.5 rounded-full bg-sage" /> {tag}
             </span>
