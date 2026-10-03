@@ -59,7 +59,7 @@ export function PracticeSection() {
               key={practice.title}
               dir="up"
               delay={index * 0.08}
-              className="premium-card min-w-[calc(100vw-2rem)] snap-center overflow-hidden rounded-[26px] border border-ink/10 bg-paper md:min-w-0"
+              className="premium-card group min-w-[calc(100vw-2rem)] snap-center overflow-hidden rounded-[26px] border border-ink/10 bg-paper md:min-w-0"
             >
               <article className="flex min-h-[590px] flex-col">
                 <div className={`relative h-[230px] overflow-hidden border-b border-ink/10 p-7 ${practice.tone}`}>

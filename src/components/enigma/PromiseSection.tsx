@@ -131,7 +131,7 @@ function ProjectCard({
           y: isLast ? 0 : y,
           transformOrigin: "top center",
         }}
-        className={`premium-card group relative mx-auto max-w-6xl overflow-hidden rounded-[32px] p-4 md:h-[540px] md:rounded-[36px] md:p-5 ${tints[index % tints.length]}`}
+        className={`premium-card group relative mx-auto h-[540px] max-w-6xl overflow-hidden rounded-[32px] p-4 md:rounded-[36px] md:p-5 ${tints[index % tints.length]}`}
       >
         <a href="#projects" aria-label={name} className="absolute inset-0 z-10" />
 
