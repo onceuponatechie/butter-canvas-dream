@@ -32,11 +32,12 @@ export function Reveal({
   once?: boolean;
 }) {
   const reduce = useReducedMotion();
+  if (reduce) return <div className={className}>{children}</div>;
 
   return (
     <motion.div
       className={className}
-      initial={reduce ? false : { opacity: 0, ...offsets[dir], ...(blur ? { filter: "blur(8px)" } : {}) }}
+      initial={{ opacity: 0, ...offsets[dir], ...(blur ? { filter: "blur(8px)" } : {}) }}
       whileInView={{ opacity: 1, x: 0, y: 0, ...(blur ? { filter: "blur(0px)" } : {}) }}
       viewport={{ once, margin: "-12% 0px -12% 0px" }}
       transition={{ duration, ease: EASE, delay }}
@@ -62,6 +63,7 @@ export function TypeWords({
 }) {
   const reduce = useReducedMotion();
   const words = text.split(" ");
+  if (reduce) return <span className={className}>{text}</span>;
 
   const anim = { opacity: 1, y: 0, filter: "blur(0px)" };
 
@@ -71,7 +73,7 @@ export function TypeWords({
         <motion.span
           key={`${w}-${i}`}
           className="inline-block whitespace-pre"
-          initial={reduce ? false : { opacity: 0, y: 12, filter: "blur(6px)" }}
+          initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
           {...(inView
             ? { whileInView: anim, viewport: { once: true, margin: "-10%" } }
             : { animate: anim })}

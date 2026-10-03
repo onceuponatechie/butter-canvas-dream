@@ -5,7 +5,6 @@ import { Hero } from "@/components/enigma/Hero";
 import { BentoGrid } from "@/components/enigma/BentoGrid";
 import { AboutSection } from "@/components/enigma/AboutSection";
 import { PromiseSection } from "@/components/enigma/PromiseSection";
-import { PracticeSection } from "@/components/enigma/PracticeSection";
 import { CasesSection } from "@/components/enigma/CasesSection";
 import { TouchBand, Footer } from "@/components/enigma/TouchBand";
 import heroCover from "@/assets/hero-cover.webp";
@@ -55,7 +54,6 @@ function Index() {
         <BentoGrid />
         <AboutSection />
         <PromiseSection />
-        <PracticeSection />
         <CasesSection />
         <TouchBand />
         <Footer />

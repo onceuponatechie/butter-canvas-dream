@@ -51,7 +51,7 @@ function CornerArrow({ tone = "light" }: { tone?: "light" | "dark" | "glass" }) 
 }
 
 const cardBase =
-  "premium-card group relative flex flex-col overflow-hidden rounded-[28px] transition-all duration-500 hover:-translate-y-1 hover:shadow-premium-hover";
+  "group relative flex flex-col overflow-hidden rounded-[28px] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_50px_-24px_rgba(17,17,17,0.25)]";
 
 /* Section ------------------------------------------------------------ */
 
@@ -63,18 +63,18 @@ export function BentoGrid() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
-        className="mx-auto grid max-w-6xl gap-4 md:grid-cols-12 md:grid-rows-2"
+        className="mx-auto grid max-w-6xl gap-4 md:grid-cols-12 md:grid-rows-[minmax(290px,auto)_minmax(290px,auto)]"
       >
         {/* ---------- Why Not Build? — dark anchor, tall left ---------- */}
         <motion.div variants={cardReveal} className="order-1 flex md:col-span-4 md:row-span-2">
-          <div className="flex w-full items-start justify-center">
+          <div className="flex w-full items-center justify-center py-2 md:py-0">
             <WhyNotBuildCard />
           </div>
         </motion.div>
 
         {/* ---------- Tools & Templates ---------- */}
         <motion.div variants={cardReveal} className="order-2 flex md:col-span-5">
-          <article className={`${cardBase} w-full bg-stone p-7`}>
+          <article className={`${cardBase} w-full bg-stone p-7 ring-1 ring-black/5`}>
             <div className="flex flex-1 items-center gap-4">
               {/* copy + the site's own pill button */}
               <div className="flex min-w-0 flex-1 flex-col justify-between self-stretch">
@@ -138,7 +138,7 @@ export function BentoGrid() {
 
         {/* ---------- portrait → about ---------- */}
         <motion.div variants={cardReveal} className="order-5 md:order-3 flex md:col-span-3">
-          <a href="#about" className={`${cardBase} w-full`}>
+          <a href="#about" className={`${cardBase} w-full ring-1 ring-black/5`}>
             <CornerArrow tone="glass" />
             <img
               src={reading}
@@ -178,7 +178,7 @@ export function BentoGrid() {
 
         {/* ---------- The Product Lab ---------- */}
         <motion.div variants={cardReveal} className="order-3 md:order-5 flex md:col-span-5">
-          <article className={`${cardBase} min-h-[280px] w-full bg-stone p-7 md:min-h-0`}>
+          <article className={`${cardBase} min-h-[280px] w-full bg-stone p-7 ring-1 ring-black/5 md:min-h-0`}>
             <div className="relative z-10 max-w-[62%]">
               <Kicker className="text-ink/45">Teardowns & case studies</Kicker>
               <h3 className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.8px] text-ink">
