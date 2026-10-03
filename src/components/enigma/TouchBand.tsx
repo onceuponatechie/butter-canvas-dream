@@ -1,5 +1,4 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import heroCover from "@/assets/hero-cover.webp";
 import { Reveal, TypeWords } from "@/components/enigma/Reveal";
 
 export function TouchBand() {
@@ -56,27 +55,16 @@ export function TouchBand() {
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden px-4 pb-10 pt-6 sm:px-8">
+    <footer className="relative overflow-hidden bg-ink px-4 pb-10 pt-14 text-paper sm:px-8 sm:pt-20">
       <div className="relative mx-auto max-w-5xl">
-
-        {/* same cover art as the hero, flipped vertically so the grey sits at
-            the bottom instead of the top */}
-        <div className="relative overflow-hidden rounded-[24px] bg-white p-8 text-center ring-1 ring-black/5 sm:p-12">
-          <img
-            src={heroCover}
-            alt=""
-            aria-hidden
-            className="pointer-events-none absolute inset-0 h-full w-full object-cover"
-            style={{ transform: "scaleY(-1)" }}
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-backdrop via-transparent to-transparent" />
+        <div className="relative overflow-hidden rounded-[24px] border border-paper/10 bg-ink p-8 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] sm:p-12">
           <div className="relative">
             <Reveal dir="down">
               <h3 className="mx-auto max-w-[20ch] text-[clamp(22px,2.4vw,30px)] font-medium leading-tight tracking-tight">
                 Let's build something people <span className="font-serif italic">remember</span>.
               </h3>
             </Reveal>
-            <p className="mx-auto mt-3 max-w-[38ch] text-[13px] leading-relaxed text-muted-ink">
+            <p className="mx-auto mt-3 max-w-[38ch] text-[13px] leading-relaxed text-paper/60">
               <TypeWords
                 delay={0.2}
                 step={0.035}
@@ -94,7 +82,7 @@ export function Footer() {
               </a>
             </Reveal>
 
-            <nav className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12.5px] font-medium text-ink/75">
+            <nav className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12.5px] font-medium text-paper/70">
               {[
                 { label: "Home", href: "/" },
                 { label: "Why Not Build?", href: "/#resources" },
@@ -102,29 +90,29 @@ export function Footer() {
                 { label: "Projects", href: "/#projects" },
                 { label: "About", href: "/#about" },
               ].map((l) => (
-                <a key={l.label} href={l.href} className="transition-colors hover:text-ink">
+                <a key={l.label} href={l.href} className="transition-colors hover:text-paper">
                   {l.label}
                 </a>
               ))}
             </nav>
 
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[12px] text-muted-ink">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[12px] text-paper/50">
               {["Twitter / X", "LinkedIn", "Instagram"].map((l) => (
-                <a key={l} href="#" className="transition-colors hover:text-ink">
+                <a key={l} href="#" className="transition-colors hover:text-paper">
                   {l}
                 </a>
               ))}
-              <a href="mailto:hi@essyudeme.com" className="transition-colors hover:text-ink">
+              <a href="mailto:hi@essyudeme.com" className="transition-colors hover:text-paper">
                 hi@essyudeme.com
               </a>
             </div>
 
-            <div className="mt-9 border-t border-black/5 pt-5 text-[11px] text-muted-ink">
+            <div className="mt-9 border-t border-paper/10 pt-5 text-[11px] text-paper/45">
               <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-                <a href="#" className="transition-colors hover:text-ink">Privacy</a>
-                <span className="h-1 w-1 rounded-full bg-ink/15" />
-                <a href="#" className="transition-colors hover:text-ink">Colophon</a>
-                <span className="h-1 w-1 rounded-full bg-ink/15" />
+                <a href="#" className="transition-colors hover:text-paper">Privacy</a>
+                <span className="h-1 w-1 rounded-full bg-paper/20" />
+                <a href="#" className="transition-colors hover:text-paper">Colophon</a>
+                <span className="h-1 w-1 rounded-full bg-paper/20" />
                 <span>Lagos → Everywhere</span>
               </div>
               <div className="mt-3">© 2026 Essy Udeme — made with care.</div>

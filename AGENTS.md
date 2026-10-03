@@ -11,3 +11,4 @@
 
 - Keep the site as a single-page experience at `/`; homepage sections use hash navigation because secondary routes are intentionally excluded.
 - Render the Why Not Build feature as a Canvas 2D animation with DOM controls and semantic fallback so its 360×486 composition stays exact at every size.
+- Keep the three research-led product practice cards data-driven in one component so desktop columns and mobile snap-scrolling stay synchronized.

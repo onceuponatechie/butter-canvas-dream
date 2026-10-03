@@ -51,7 +51,7 @@ function CornerArrow({ tone = "light" }: { tone?: "light" | "dark" | "glass" }) 
 }
 
 const cardBase =
-  "group relative flex flex-col overflow-hidden rounded-[28px] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_50px_-24px_rgba(17,17,17,0.25)]";
+  "premium-card group relative flex flex-col overflow-hidden rounded-[28px] transition-all duration-500 hover:-translate-y-1";
 
 /* Section ------------------------------------------------------------ */
 
@@ -63,7 +63,7 @@ export function BentoGrid() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
-        className="mx-auto grid max-w-6xl gap-4 md:grid-cols-12 md:grid-rows-[minmax(290px,auto)_minmax(290px,auto)]"
+        className="mx-auto grid max-w-6xl gap-4 md:grid-cols-12 md:grid-rows-[235px_235px]"
       >
         {/* ---------- Why Not Build? — dark anchor, tall left ---------- */}
         <motion.div variants={cardReveal} className="order-1 flex md:col-span-4 md:row-span-2">
