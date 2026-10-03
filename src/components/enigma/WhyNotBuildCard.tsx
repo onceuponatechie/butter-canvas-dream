@@ -197,8 +197,14 @@ export function WhyNotBuildCard() {
       const delta = Math.min(now - previous, 60); previous = now;
       if (ready && playingRef.current && visibleRef.current) elapsedRef.current = (elapsedRef.current + delta) % LOOP_MS;
       const dpr = Math.min(window.devicePixelRatio || 1, 3);
-      if (canvas.width !== WIDTH * dpr) { canvas.width = WIDTH * dpr; canvas.height = HEIGHT * dpr; }
-      context.setTransform(dpr, 0, 0, dpr, 0, 0); context.clearRect(0, 0, WIDTH, HEIGHT);
+      const displayWidth = canvas.clientWidth || WIDTH;
+      const displayHeight = canvas.clientHeight || HEIGHT;
+      const pixelWidth = Math.round(displayWidth * dpr);
+      const pixelHeight = Math.round(displayHeight * dpr);
+      if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) { canvas.width = pixelWidth; canvas.height = pixelHeight; }
+      const scaleX = displayWidth / WIDTH;
+      const scaleY = displayHeight / HEIGHT;
+      context.setTransform(dpr * scaleX, 0, 0, dpr * scaleY, 0, 0); context.clearRect(0, 0, WIDTH, HEIGHT);
       if (ready) {
         const index = Math.floor(elapsedRef.current / SCREEN_MS) % 6;
         const local = elapsedRef.current % SCREEN_MS;
@@ -225,7 +231,7 @@ export function WhyNotBuildCard() {
   const toggle = () => setPlaying((value) => !value);
 
   return (
-    <div ref={hostRef} className="mx-auto w-full max-w-[360px] font-[Arial,Helvetica,sans-serif]">
+    <div ref={hostRef} className="mx-auto w-full font-[Arial,Helvetica,sans-serif]">
       <div className="relative aspect-[360/486] w-full overflow-hidden rounded-[27px] bg-[#121311] shadow-[0_17px_26px_-20px_rgba(43,57,40,.31),0_2px_3px_rgba(21,29,21,.08)] ring-1 ring-inset ring-white/[0.13]" onKeyDown={(event) => { if (event.key === " ") { event.preventDefault(); toggle(); } if (event.key === "ArrowLeft") select((current + 5) % 6); if (event.key === "ArrowRight") select((current + 1) % 6); }}>
         <canvas ref={canvasRef} className="h-full w-full" aria-hidden="true" />
         <Button variant="ghost" size="icon" type="button" aria-label={`Open ${screens[current].category}`} onClick={() => setPlaying(false)} className="absolute right-[5.8%] top-[3.3%] h-[8%] w-[8%] rounded-full bg-transparent p-0 text-transparent hover:bg-transparent focus-visible:ring-2 focus-visible:ring-[#e7efd9]" />
@@ -234,12 +240,6 @@ export function WhyNotBuildCard() {
         </div>
         <section className="sr-only" aria-live="polite"><h3>Why Not Build</h3><p>Essy's public laboratory for questions worth investigating and things worth building.</p><h4>{screens[current].category}</h4><p>{screens[current].title} {screens[current].body.join(" ")}</p></section>
       </div>
-      <div className="mt-[25px] flex items-center justify-center gap-[22px] text-[11px] text-[#656b60]">
-        <Button variant="ghost" size="sm" type="button" onClick={toggle} className="h-auto rounded-none bg-transparent px-1 py-2 font-normal text-current hover:bg-transparent hover:text-[#121311]">{playing ? "Pause" : "Play"}</Button>
-        <span className="h-3 w-px bg-[#c8ccc2]" />
-        <Button variant="ghost" size="sm" type="button" onClick={() => { elapsedRef.current = 0; setCurrent(0); setPlaying(true); }} className="h-auto rounded-none bg-transparent px-1 py-2 font-normal text-current hover:bg-transparent hover:text-[#121311]">Replay</Button>
-      </div>
-      <p className="mt-[14px] text-center text-[9px] uppercase tracking-[1.4px] text-[#656b60]/60">Why Not Build · Essy's public laboratory</p>
     </div>
   );
 }
