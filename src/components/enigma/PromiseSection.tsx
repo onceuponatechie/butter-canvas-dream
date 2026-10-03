@@ -131,18 +131,18 @@ function ProjectCard({
           y: isLast ? 0 : y,
           transformOrigin: "top center",
         }}
-        className={`group relative mx-auto max-w-6xl overflow-hidden rounded-[32px] p-4 ring-1 ring-black/5 md:h-[calc(100svh-8rem)] md:rounded-[44px] md:p-5 ${tints[index % tints.length]} shadow-[0_1px_2px_rgba(0,0,0,0.03),0_24px_44px_-32px_rgba(0,0,0,0.14)]`}
+        className={`premium-card group relative mx-auto h-[540px] max-w-6xl overflow-hidden rounded-[32px] p-4 md:rounded-[36px] md:p-5 ${tints[index % tints.length]}`}
       >
         <a href="#projects" aria-label={name} className="absolute inset-0 z-10" />
 
         <div className="grid h-full grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
           {/* image — fills its half of the card with equal inset on every side */}
-          <div className="relative order-1 aspect-[16/10] overflow-hidden rounded-[20px] md:order-2 md:aspect-auto md:rounded-[30px]">
+          <div className="relative order-1 aspect-[16/10] overflow-hidden rounded-[20px] ring-1 ring-inset ring-paper/20 md:order-2 md:aspect-auto md:rounded-[28px]">
             <img
               src={img}
               alt={name}
               loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04] group-active:scale-[1.04]"
+              className="absolute inset-0 h-full w-full object-cover saturate-[1.08] contrast-[1.04] transition-transform duration-700 group-hover:scale-[1.04] group-active:scale-[1.04]"
               style={{ transitionTimingFunction: "cubic-bezier(0.22,1,0.36,1)" }}
             />
 

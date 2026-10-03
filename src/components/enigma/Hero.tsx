@@ -172,7 +172,7 @@ export function Hero() {
           <TypeWords text="Researcher · Builder · Storyteller" delay={1.75} step={0.09} inView={false} />
         </motion.p>
 
-        <motion.div {...rise(2.1)} className="mt-9 flex flex-wrap items-center justify-center gap-3">
+        <motion.div {...rise(2.1)} className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
             href="#projects"
             className="group inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-[13px] font-medium text-ink transition-all hover:bg-ink hover:text-white hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)]"
