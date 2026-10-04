@@ -1,6 +1,13 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
+
+const resourceLinks = [
+  { label: "Tools & Templates", href: "/#tools-and-templates" },
+  { label: "Research Vault", href: "/#research-vault" },
+  { label: "The Classroom", href: "/#classroom" },
+] as const;
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -22,12 +29,18 @@ export function Nav() {
             Stories
           </a>
 
-          <a
-            href="/#resources"
-            className="text-[13px] font-medium text-ink/70 transition-colors hover:text-ink"
-          >
-            Resources
-          </a>
+          <div className="group relative">
+            <a href="/#resources" className="inline-flex items-center gap-1 text-[13px] font-medium text-ink/70 transition-colors hover:text-ink">
+              Resources <ChevronDown size={13} className="transition-transform group-hover:rotate-180" />
+            </a>
+            <div className="invisible absolute left-1/2 top-full z-50 w-52 -translate-x-1/2 pt-3 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              <div className="rounded-[18px] border border-ink/10 bg-paper p-2 shadow-[0_20px_50px_-24px_rgba(17,17,17,0.35)]">
+                {resourceLinks.map((item) => (
+                  <a key={item.label} href={item.href} className="block rounded-[12px] px-3 py-2.5 text-[12px] font-medium text-ink/70 transition-colors hover:bg-stone hover:text-ink">{item.label}</a>
+                ))}
+              </div>
+            </div>
+          </div>
 
           <a
             href="/#projects"
@@ -50,13 +63,15 @@ export function Nav() {
           >
             Say hi
           </a>
-          <button
+          <Button
+            variant="outline"
+            size="icon"
             onClick={() => setOpen((v) => !v)}
             aria-label="Menu"
             className="grid h-10 w-10 place-items-center rounded-full border border-ink/10 bg-card md:hidden"
           >
             {open ? <X size={16} /> : <Menu size={16} />}
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -77,6 +92,12 @@ export function Nav() {
           >
             Resources
           </a>
+
+          <div className="ml-3 grid border-l border-ink/10 pl-3">
+            {resourceLinks.map((item) => (
+              <a key={item.label} href={item.href} onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-[12px] text-ink/60 hover:bg-black/5 hover:text-ink">{item.label}</a>
+            ))}
+          </div>
 
           <a
             href="/#projects"
