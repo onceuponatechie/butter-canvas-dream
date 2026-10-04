@@ -63,10 +63,10 @@ export function BentoGrid() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
-        className="mx-auto grid max-w-6xl gap-4 lg:grid-cols-12 lg:grid-rows-[235px_235px]"
+        className="mx-auto grid max-w-6xl gap-4 md:grid-cols-2 md:grid-rows-[235px_235px_auto] lg:grid-cols-12 lg:grid-rows-[235px_235px]"
       >
         {/* ---------- Why Not Build? — dark anchor, tall left ---------- */}
-        <motion.div variants={cardReveal} className="order-1 flex lg:col-span-4 lg:row-span-2">
+        <motion.div variants={cardReveal} className="order-1 flex md:row-span-2 lg:col-span-4">
           <div className="flex w-full items-center justify-center py-2 lg:py-0">
             <WhyNotBuildCard />
           </div>
@@ -74,7 +74,7 @@ export function BentoGrid() {
 
         {/* ---------- Tools & Templates ---------- */}
         <motion.div variants={cardReveal} className="order-2 flex lg:col-span-5">
-          <article className={`${cardBase} w-full bg-stone p-7 ring-1 ring-black/5`}>
+          <article id="tools-and-templates" className={`${cardBase} w-full scroll-mt-24 bg-stone p-7 ring-1 ring-black/5`}>
             <div className="flex flex-1 items-center gap-4">
               {/* copy + the site's own pill button */}
               <div className="flex min-w-0 flex-1 flex-col justify-between self-stretch">
@@ -137,7 +137,7 @@ export function BentoGrid() {
         </motion.div>
 
         {/* ---------- portrait → about ---------- */}
-        <motion.div variants={cardReveal} className="order-5 lg:order-3 flex lg:col-span-3">
+        <motion.div variants={cardReveal} className="order-5 flex md:min-h-[235px] lg:order-3 lg:col-span-3">
           <a href="#about" className={`${cardBase} w-full ring-1 ring-black/5`}>
             <CornerArrow tone="glass" />
             <img
@@ -158,8 +158,8 @@ export function BentoGrid() {
         </motion.div>
 
         {/* ---------- courses — the serif accent card ---------- */}
-        <motion.div variants={cardReveal} className="order-4 flex lg:col-span-3">
-          <article className={`${cardBase} w-full justify-between bg-sage-soft p-7`}>
+        <motion.div variants={cardReveal} className="order-4 flex md:min-h-[235px] lg:col-span-3">
+          <article id="classroom" className={`${cardBase} w-full scroll-mt-24 justify-between bg-sage-soft p-7`}>
             <div>
               <Kicker className="text-ink/45">Courses & certifications</Kicker>
               <h3 className="mt-3 font-serif text-[34px] italic leading-none tracking-tight text-ink">
@@ -176,22 +176,22 @@ export function BentoGrid() {
           </article>
         </motion.div>
 
-        {/* ---------- The Product Lab ---------- */}
-        <motion.div variants={cardReveal} className="order-3 lg:order-5 flex lg:col-span-5">
-          <article className={`${cardBase} min-h-[280px] w-full bg-stone p-7 ring-1 ring-black/5 lg:min-h-0`}>
+        {/* ---------- Research Vault ---------- */}
+        <motion.div variants={cardReveal} className="order-3 flex lg:order-5 lg:col-span-5">
+          <article id="research-vault" className={`${cardBase} min-h-[235px] w-full scroll-mt-24 bg-stone p-7 ring-1 ring-black/5 lg:min-h-0`}>
             <div className="relative z-10 max-w-[62%]">
               <Kicker className="text-ink/45">Teardowns & case studies</Kicker>
               <h3 className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.8px] text-ink">
-                The Product Lab
+                Research Vault
               </h3>
               <p className="mt-2.5 text-[13px] leading-relaxed text-ink/60">
-                Breakdowns of products worth studying — what shipped, what stuck, and why.
+                Research, teardowns, and evidence worth keeping — across products, markets, and culture.
               </p>
             </div>
             {/* spacer keeps a minimum gap while pushing the button to the bottom */}
             <div className="min-h-6 flex-1" />
             <span className="relative z-10 inline-flex w-fit items-center gap-2 rounded-full border border-ink/25 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
-              Enter the Lab
+              Open the Vault
             </span>
             <img
               src={productLabIcon}
@@ -200,7 +200,7 @@ export function BentoGrid() {
               loading="lazy"
               width={1024}
               height={1024}
-              className="pointer-events-none absolute -bottom-6 -right-4 w-[39%] max-w-[210px] select-none drop-shadow-[0_24px_44px_rgba(17,17,17,0.18)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-2 group-hover:rotate-2"
+              className="pointer-events-none absolute bottom-0 right-0 h-[92%] w-auto max-w-[46%] select-none object-contain object-right-bottom drop-shadow-[0_24px_44px_rgba(17,17,17,0.18)] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-2 group-hover:rotate-2"
             />
           </article>
         </motion.div>
