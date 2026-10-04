@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, ArrowUpRight, CirclePlay, Sprout } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Sprout } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/enigma/Reveal";
@@ -140,15 +140,17 @@ export function PersonalBuilds() {
             </article>
           </Reveal>
 
-          <Reveal dir="up" delay={0.06} className="premium-card overflow-hidden rounded-[28px] bg-playlist p-6 text-paper ring-1 ring-ink/[0.06]">
-            <article className="flex h-full items-center justify-between gap-5">
-              <div>
-                <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-paper/65">On repeat</p>
-                <h3 className="mt-2 text-[21px] font-medium leading-tight">Essy’s working soundtrack</h3>
-              </div>
-              <a href="https://open.spotify.com/" target="_blank" rel="noreferrer" aria-label="Open Essy's playlist on Spotify" className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-ink text-paper transition-transform hover:scale-105">
-                <CirclePlay size={25} />
-              </a>
+          <Reveal dir="up" delay={0.06} className="premium-card overflow-hidden rounded-[28px] bg-playlist ring-1 ring-ink/[0.06]">
+            <article className="h-full min-h-[152px]">
+              <iframe
+                title="Spotify working playlist"
+                src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZeKCadgRdKQ?utm_source=generator&theme=0"
+                width="100%"
+                height="152"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                className="block h-full min-h-[152px] w-full border-0"
+              />
             </article>
           </Reveal>
 
