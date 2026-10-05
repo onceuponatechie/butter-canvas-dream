@@ -1,4 +1,5 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Reveal, TypeWords } from "@/components/enigma/Reveal";
 
 export function TouchBand() {
@@ -55,7 +56,7 @@ export function TouchBand() {
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-ink px-4 pb-10 pt-14 text-paper sm:px-8 sm:pt-20">
+    <footer className="relative overflow-hidden px-4 pb-5 pt-10 text-paper sm:px-8 sm:pb-8 sm:pt-14">
       <div className="relative mx-auto max-w-5xl">
         <div className="relative overflow-hidden rounded-[24px] border border-paper/10 bg-ink p-8 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] sm:p-12">
           <div className="relative">
@@ -73,13 +74,13 @@ export function Footer() {
             </p>
 
             <Reveal dir="down" delay={0.35}>
-              <a
-                href="/#contact"
+              <Link
+                to="/contact"
                 className="group mt-6 inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-[13px] font-medium text-ink transition-all hover:bg-ink hover:text-white hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)]"
               >
                 Book a coffee
                 <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-              </a>
+              </Link>
             </Reveal>
 
             <nav className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12.5px] font-medium text-paper/70">
@@ -89,6 +90,7 @@ export function Footer() {
                 { label: "Resources", href: "/#resources" },
                 { label: "Projects", href: "/#projects" },
                 { label: "About", href: "/#about" },
+                { label: "Contact", href: "/contact" },
               ].map((l) => (
                 <a key={l.label} href={l.href} className="transition-colors hover:text-paper">
                   {l.label}

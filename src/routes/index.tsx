@@ -39,7 +39,7 @@ function Index() {
       <Preloader />
       {/* overflow-x-clip (not overflow-hidden) — a hidden ancestor disables the
           position:sticky card stacking in the projects section */}
-      <main className="relative mx-auto w-full max-w-[1440px] overflow-x-clip bg-backdrop">
+      <main className="site-artwork relative mx-auto w-full max-w-[1440px] overflow-x-clip">
         <div className="relative overflow-hidden">
           <img
             src={heroCover}
