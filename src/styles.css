@@ -193,3 +193,14 @@
     mix-blend-mode: soft-light;
   }
 }
+
+@utility site-artwork {
+  position: relative;
+  background-color: var(--color-backdrop);
+  background-image:
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-backdrop) 44%, transparent), color-mix(in oklab, var(--color-backdrop) 70%, transparent)),
+    url("./assets/hero-cover.webp");
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: repeat-y;
+}

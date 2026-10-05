@@ -9,3 +9,4 @@
 - [x] Restore the clean What I Do background and add the six-card personal builds grid.
 - [x] Restore the Resources menu with homepage links and rename Product Lab to Research Vault.
 - [x] Recompose the bento grid for tablet screens.
+- [ ] Extend the hero artwork across the homepage, simplify the footer edge, and add the contact page.
