@@ -57,12 +57,12 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href="/#contact"
+          <Link
+            to="/contact"
             className="rounded-full bg-ink px-6 py-2.5 text-[12px] font-medium text-white transition-opacity hover:opacity-90"
           >
             Say hi
-          </a>
+          </Link>
           <Button
             variant="outline"
             size="icon"

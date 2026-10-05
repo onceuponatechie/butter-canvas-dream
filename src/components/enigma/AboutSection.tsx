@@ -2,7 +2,7 @@ import { Reveal, TypeWords } from "@/components/enigma/Reveal";
 
 export function AboutSection() {
   return (
-    <section id="about" className="bg-backdrop px-4 py-16 sm:px-8 sm:py-24">
+    <section id="about" className="px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-3xl lg:max-w-[1180px]">
         <Reveal dir="down" className="mb-8 text-center text-[10px] font-medium uppercase tracking-[0.35em] text-muted-ink">
           What I Do
