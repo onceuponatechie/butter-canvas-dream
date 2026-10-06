@@ -9,7 +9,7 @@ import { PracticeSection } from "@/components/enigma/PracticeSection";
 import { PersonalBuilds } from "@/components/enigma/PersonalBuilds";
 import { CasesSection } from "@/components/enigma/CasesSection";
 import { TouchBand, Footer } from "@/components/enigma/TouchBand";
-import heroCover from "@/assets/hero-cover.webp";
+import heroCover from "@/assets/hero-clouds.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -47,7 +47,7 @@ function Index() {
             aria-hidden
             className="pointer-events-none absolute inset-0 h-full w-full object-cover"
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-backdrop" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-backdrop" />
           <div className="relative">
             <Nav />
             <Hero />
