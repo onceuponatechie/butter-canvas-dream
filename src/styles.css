@@ -20,9 +20,12 @@
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
-  --color-backdrop: #fcfcfc;
+  --color-backdrop: #fbfaf9;
   --color-canvas-soft: #f0f0f0;
   --color-canvas-bright: #fefefe;
+  --color-preloader-glow: #fefcfb;
+  --color-preloader-blush: #faf4f2;
+  --color-preloader-shadow: #f2e9e6;
   --color-paper: #ffffff;
   --color-butter: #fcffe1;
   --color-butter-deep: #f4f9c8;
@@ -160,7 +163,7 @@
   }
 
   body {
-    background-color: #fcfcfc;
+    background-color: var(--color-backdrop);
     color: #111111;
     font-family: "Hanken Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -198,21 +201,11 @@
 
 @utility site-artwork {
   position: relative;
-  background-color: var(--color-canvas-bright);
-  background-image: radial-gradient(
-    circle at 50% 24%,
-    var(--color-canvas-bright) 0%,
-    var(--color-canvas-soft) 100%
-  );
+  background-color: var(--color-backdrop);
 }
 
 @utility resource-card {
   background-color: var(--color-paper);
-  background-image: radial-gradient(
-    circle at 84% 10%,
-    color-mix(in oklab, var(--color-sage-soft) 78%, var(--color-paper)),
-    var(--color-paper) 68%
-  );
   box-shadow:
     inset 0 1px 0 color-mix(in oklab, var(--color-paper) 92%, transparent),
     0 3px 7px color-mix(in oklab, var(--color-ink) 10%, transparent),
@@ -220,9 +213,5 @@
 }
 
 @utility resource-card-vault {
-  background-image: radial-gradient(
-    circle at 86% 28%,
-    color-mix(in oklab, var(--color-butter-deep) 72%, var(--color-paper)),
-    var(--color-paper) 70%
-  );
+  background-color: var(--color-paper);
 }

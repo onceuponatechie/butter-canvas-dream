@@ -30,7 +30,7 @@ export function Preloader() {
           className="fixed inset-0 z-[100] flex items-center justify-center"
           style={{
             background:
-              "radial-gradient(circle at 50% 45%, #fafafa 0%, #ececee 70%, #e4e4e4 100%)",
+              "radial-gradient(circle at 50% 42%, var(--color-preloader-glow) 0%, var(--color-preloader-blush) 58%, var(--color-backdrop) 100%)",
           }}
         >
           <div className="relative flex flex-col items-center">
@@ -41,9 +41,9 @@ export function Preloader() {
                 height: 440,
                 borderRadius: 9999,
                 background:
-                  "radial-gradient(circle at 35% 25%, #ffffff 0%, #f2f2f4 45%, #e7e7ea 70%, #dcdce0 100%)",
+                  "radial-gradient(circle at 35% 25%, var(--color-paper) 0%, var(--color-preloader-glow) 44%, var(--color-preloader-blush) 74%, var(--color-preloader-shadow) 100%)",
                 boxShadow:
-                  "0 40px 80px rgba(0,0,0,0.10), inset 0 -30px 60px rgba(255,255,255,0.9)",
+                  "0 40px 80px color-mix(in oklab, var(--color-ink) 9%, transparent), inset 0 -30px 60px color-mix(in oklab, var(--color-paper) 90%, transparent)",
               }}
             >
               <div
@@ -54,7 +54,7 @@ export function Preloader() {
                   left: 30,
                   bottom: 40,
                   background:
-                    "radial-gradient(ellipse at center, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 70%)",
+                    "radial-gradient(ellipse at center, color-mix(in oklab, var(--color-paper) 85%, transparent) 0%, transparent 70%)",
                   filter: "blur(10px)",
                 }}
               />
