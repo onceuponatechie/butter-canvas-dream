@@ -21,6 +21,8 @@
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --color-backdrop: #fcfcfc;
+  --color-canvas-soft: #f0f0f0;
+  --color-canvas-bright: #fefefe;
   --color-paper: #ffffff;
   --color-butter: #fcffe1;
   --color-butter-deep: #f4f9c8;
@@ -196,11 +198,31 @@
 
 @utility site-artwork {
   position: relative;
-  background-color: var(--color-backdrop);
-  background-image:
-    linear-gradient(to bottom, color-mix(in oklab, var(--color-backdrop) 44%, transparent), color-mix(in oklab, var(--color-backdrop) 70%, transparent)),
-    url("./assets/hero-cover.webp");
-  background-size: 100% auto;
-  background-position: center top;
-  background-repeat: repeat-y;
+  background-color: var(--color-canvas-bright);
+  background-image: radial-gradient(
+    circle at 50% 24%,
+    var(--color-canvas-bright) 0%,
+    var(--color-canvas-soft) 100%
+  );
+}
+
+@utility resource-card {
+  background-color: var(--color-paper);
+  background-image: radial-gradient(
+    circle at 84% 10%,
+    color-mix(in oklab, var(--color-sage-soft) 78%, var(--color-paper)),
+    var(--color-paper) 68%
+  );
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, var(--color-paper) 92%, transparent),
+    0 3px 7px color-mix(in oklab, var(--color-ink) 10%, transparent),
+    0 28px 48px -28px color-mix(in oklab, var(--color-ink) 42%, transparent);
+}
+
+@utility resource-card-vault {
+  background-image: radial-gradient(
+    circle at 86% 28%,
+    color-mix(in oklab, var(--color-butter-deep) 72%, var(--color-paper)),
+    var(--color-paper) 70%
+  );
 }

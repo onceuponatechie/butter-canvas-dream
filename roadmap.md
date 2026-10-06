@@ -10,3 +10,4 @@
 - [x] Restore the Resources menu with homepage links and rename Product Lab to Research Vault.
 - [x] Recompose the bento grid for tablet screens.
 - [x] Extend the hero artwork across the homepage, simplify the footer edge, and add the contact page.
+- [x] Restore a clean radial page background and polish the resource card artwork, contrast, copy, and spacing.

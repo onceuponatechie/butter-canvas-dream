@@ -74,64 +74,53 @@ export function BentoGrid() {
 
         {/* ---------- Tools & Templates ---------- */}
         <motion.div variants={cardReveal} className="order-2 flex lg:col-span-5">
-          <article id="tools-and-templates" className={`${cardBase} w-full scroll-mt-24 bg-stone p-7 ring-1 ring-black/5`}>
-            <div className="flex flex-1 items-center gap-4">
-              {/* copy + the site's own pill button */}
-              <div className="flex min-w-0 flex-1 flex-col justify-between self-stretch">
+          <article id="tools-and-templates" className={`${cardBase} resource-card w-full scroll-mt-24 p-7 ring-1 ring-ink/10`}>
+            <div className="relative z-10 flex min-h-[179px] w-[58%] min-w-0 flex-1 flex-col justify-between sm:w-[54%]">
                 <div>
-                  <Kicker className="text-muted-ink">Free kits & files</Kicker>
+                  <Kicker className="text-ink/55">Free kits & files</Kicker>
                   <h3 className="mt-3 text-[24px] font-medium leading-tight tracking-[-0.8px] text-ink lg:text-[26px]">
                     Tools & Templates
                   </h3>
-                  <p className="mt-2.5 text-[13px] leading-relaxed text-muted-ink">
-                    The systems, files, and checklists I actually use — packaged up and
-                    free to take.
+                  <p className="mt-2.5 max-w-[24ch] text-[13px] leading-relaxed text-ink/65">
+                    Practical files for clearer, faster work.
                   </p>
                 </div>
 
-                <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-ink/25 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
+                <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-ink/35 bg-paper/70 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
                   Browse the kits
                 </span>
-              </div>
+            </div>
 
-              {/* fanned cards — sized in % of their column so they scale with the
-                  card instead of colliding with the copy on narrow widths */}
-              <div className="flex w-[40%] max-w-[200px] shrink-0 items-center">
-                <div className="relative aspect-[196/145] w-full">
-                  {[
-                    { src: phone, left: "0%", top: "4.8%", rotate: -9 },
-                    { src: slide, left: "26.5%", top: "0%", rotate: -1 },
-                    { src: notes, left: "53%", top: "6.2%", rotate: 8 },
-                  ].map((c, i) => (
-                    <motion.img
-                      key={i}
-                      src={c.src}
-                      alt=""
-                      aria-hidden
-                      loading="lazy"
-                      initial={{ x: `${(1 - i) * 53}%`, rotate: 0, opacity: 0 }}
-                      whileInView={{ x: "0%", rotate: c.rotate, opacity: 1 }}
-                      viewport={{ once: true, amount: 0.6 }}
-                      transition={{ delay: 0.35 + i * 0.12, duration: 0.7, ease: EASE }}
-                      style={{ left: c.left, top: c.top, zIndex: 3 - i }}
-                      className="absolute h-[94%] w-[47%] rounded-[14px] object-cover shadow-[0_16px_34px_-18px_rgba(0,0,0,0.45)] ring-1 ring-black/[0.06]"
-                    />
-                  ))}
-
-                  {/* minimalist circular badge sitting over the fan */}
-                  <motion.span
-                    initial={{ scale: 0.5, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true, amount: 0.6 }}
-                    transition={{ delay: 0.8, type: "spring", stiffness: 250, damping: 18 }}
-                    className="absolute bottom-[8%] left-[36%] z-10 grid aspect-square w-[24%] place-items-center rounded-full bg-paper shadow-[0_10px_24px_-10px_rgba(0,0,0,0.4)] ring-1 ring-black/[0.06]"
-                  >
-                    <span className="grid aspect-square w-[58%] place-items-center rounded-full bg-sage-soft text-ink">
-                      <Layers size={12} />
-                    </span>
-                  </motion.span>
-                </div>
-              </div>
+            {/* Three portrait tiles rise from the bottom edge, like a loose hand of cards. */}
+            <div className="pointer-events-none absolute -bottom-[14%] right-[-3%] h-[104%] w-[48%] sm:right-[1%] sm:w-[46%]">
+              {[
+                { src: phone, left: "2%", top: "12%", rotate: -10, zIndex: 1 },
+                { src: slide, left: "32%", top: "3%", rotate: 3, zIndex: 3 },
+                { src: notes, left: "61%", top: "17%", rotate: 13, zIndex: 2 },
+              ].map((card, index) => (
+                <motion.img
+                  key={card.src}
+                  src={card.src}
+                  alt=""
+                  aria-hidden
+                  loading="lazy"
+                  initial={{ y: 44, rotate: 0, opacity: 0 }}
+                  whileInView={{ y: 0, rotate: card.rotate, opacity: 1 }}
+                  viewport={{ once: true, amount: 0.45 }}
+                  transition={{ delay: 0.25 + index * 0.1, duration: 0.75, ease: EASE }}
+                  style={{ left: card.left, top: card.top, zIndex: card.zIndex }}
+                  className="absolute h-[88%] w-[48%] rounded-[14px] border-2 border-paper object-cover shadow-[0_20px_38px_-18px_color-mix(in_oklab,var(--color-ink)_55%,transparent)]"
+                />
+              ))}
+              <motion.span
+                initial={{ scale: 0.65, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true, amount: 0.45 }}
+                transition={{ delay: 0.68, duration: 0.5, ease: EASE }}
+                className="absolute left-[43%] top-[52%] z-10 grid aspect-square w-[25%] place-items-center rounded-full bg-ink text-butter shadow-lg ring-2 ring-paper"
+              >
+                <Layers size={14} />
+              </motion.span>
             </div>
           </article>
         </motion.div>
@@ -178,19 +167,19 @@ export function BentoGrid() {
 
         {/* ---------- Research Vault ---------- */}
         <motion.div variants={cardReveal} className="order-3 flex lg:order-5 lg:col-span-5">
-          <article id="research-vault" className={`${cardBase} min-h-[235px] w-full scroll-mt-24 bg-stone p-7 ring-1 ring-black/5 lg:min-h-0`}>
+          <article id="research-vault" className={`${cardBase} resource-card resource-card-vault min-h-[235px] w-full scroll-mt-24 p-7 ring-1 ring-ink/10 lg:min-h-0`}>
             <div className="relative z-10 max-w-[62%]">
               <Kicker className="text-ink/45">Teardowns & case studies</Kicker>
               <h3 className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.8px] text-ink">
                 Research Vault
               </h3>
-              <p className="mt-2.5 text-[13px] leading-relaxed text-ink/60">
-                Research, teardowns, and evidence worth keeping — across products, markets, and culture.
+              <p className="mt-2.5 max-w-[25ch] text-[13px] leading-relaxed text-ink/65">
+                Sharp evidence for better decisions.
               </p>
             </div>
             {/* spacer keeps a minimum gap while pushing the button to the bottom */}
-            <div className="min-h-6 flex-1" />
-            <span className="relative z-10 inline-flex w-fit items-center gap-2 rounded-full border border-ink/25 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
+            <div className="min-h-5 flex-1" />
+            <span className="relative z-10 mb-0 inline-flex w-fit items-center gap-2 rounded-full border border-ink/35 bg-paper/70 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
               Open the Vault
             </span>
             <img
