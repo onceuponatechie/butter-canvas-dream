@@ -11,3 +11,4 @@
 - [x] Recompose the bento grid for tablet screens.
 - [x] Extend the hero artwork across the homepage, simplify the footer edge, and add the contact page.
 - [x] Restore a clean radial page background and polish the resource card artwork, contrast, copy, and spacing.
+- [ ] Replace the hero artwork, update the site and preloader palette, and flatten the resource cards.
